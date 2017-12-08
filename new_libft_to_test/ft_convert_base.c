@@ -1,5 +1,5 @@
 
-#include "libft/includes/libft.h"
+#include "../libft/includes/libft.h"
 #include <stdlib.h>
 
 static int		limits_check(unsigned long long result, int sign, int count, int base)
@@ -26,14 +26,15 @@ int		ft_index_first_c_in_str(char c, char *str)
 
 	if (!str)
 		exit(0);
+	i = 0;
 	while (str[i] != 0)
 	{
 		if (str[i] == c)
 			return (i);
 		i++;
 	}
-	if (c == 0)
-		return (i);
+//	if (c == 0)
+//		return (i);
 	return (-1);
 }
 
@@ -87,8 +88,10 @@ int				ft_atoi_base(char *str, char *base)
 		i++;
 	}
 	start = i;
+
 	while (ft_index_first_c_in_str(str[i], base) >= 0)
 	{
+		ft_putnbr(i);
 		result = result * ft_strlen(base) + ft_index_first_c_in_str(str[i], base);
 		i++;
 		if (limits_check(result, sign, i - start, ft_strlen(base)) != 1)

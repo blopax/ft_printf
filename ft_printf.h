@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/07 13:41:56 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/08 19:23:48 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,18 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "libft/includes/libft.h"
 
-typedef struct	s_list
+typedef struct	s_info
+{
+	char			*flags;
+	char			*size;
+	char			*accuracy;
+	char			*modifier;
+	char			type;
+}					t_info;
+
+typedef struct	s_lst
 {
 	char			*init_str;
 	char			*final_str;
@@ -25,13 +35,13 @@ typedef struct	s_list
 	char			*size;
 	char			*accuracy;
 	char			*modifier;
-	char			*type;
+	char			type;
 	struct s_list	*next;
-}					t_list;;
+}					t_lst;
 
-t_list	*ft_format_split(char *format);
-t_list	ft_struct_init();
-t_list	*ft_struct_fill(char *str);
-t_list	*ft_lst_pushback();
+t_lst	*ft_format_split(char *format);
+t_lst	ft_struct_init();
+t_lst	*ft_struct_fill(char *str);
+t_lst	*ft_lst_pushback();
 
 #endif

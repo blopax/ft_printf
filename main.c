@@ -28,7 +28,7 @@ int		main(int argc, char **argv)
 	str[i] = 0;
 	
 	printf("%d\n", printf("%d", 30));
-	printf("Gestion %----+++    ### *012.034530sssans conversion avec double\\ pour echapper:\t\tSalut ca va\n");
+	printf("Gestion %12. ssans conversion avec double\\ pour echapper:\t\tSalut ca va\n");
 	printf("Gestion sans conversion avec double%%:\t\t37,5%%\n");
 	printf("gestion de s ac parametre str:\t\t%s\n", str);
 	printf("gestion de s avec chaine statique:\t\t%s\n", "chaine statique");
