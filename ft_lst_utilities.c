@@ -34,15 +34,27 @@ t_lst	*ft_lst_init(void)
 
 void	ft_empty_struct(t_info *info_struct_ptr)
 {
-	//free(info_struct_ptr->flags);
-	info_struct_ptr->flags = ft_strnew(0);
-	//free(info_struct_ptr->size);
-	info_struct_ptr->size = ft_strnew(0);
-//	free(info_struct_ptr->acc);
-	info_struct_ptr->acc = ft_strnew(0);
-//	free(info_struct_ptr->mdf);
-	info_struct_ptr->mdf = ft_strnew(0);
-	info_struct_ptr->type = 0;
+		if (info_struct_ptr->flags)
+		{
+			free(info_struct_ptr->flags);
+			info_struct_ptr->flags = ft_strnew(0);
+		}
+		if (info_struct_ptr->size)
+		{
+			free(info_struct_ptr->size);
+			info_struct_ptr->size = ft_strnew(0);
+		}
+		if (info_struct_ptr->acc)
+		{
+			free(info_struct_ptr->acc);
+			info_struct_ptr->acc = ft_strnew(0);
+		}
+		if (info_struct_ptr->mdf)
+		{
+//			free(info_struct_ptr->mdf);
+			info_struct_ptr->mdf = ft_strnew(0);
+		}
+		info_struct_ptr->type = 0;
 }
 
 void	ft_info_show(t_info info_struct)
@@ -84,10 +96,10 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("size = \t\t|");
 	ft_putstr(index->size);
 	ft_putstr("|\n");
-	ft_putstr("acc = \t|");
+	ft_putstr("acc = \t\t|");
 	ft_putstr(index->acc);
 	ft_putstr("|\n");
-	ft_putstr("mdf = \t|");
+	ft_putstr("mdf = \t\t|");
 	ft_putstr(index->mdf);
 	ft_putstr("|\n");
 	ft_putstr("type = \t\t|");
@@ -122,11 +134,12 @@ int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
 	while (index->next)
 		index = index -> next;
 	new_lst = ft_lst_init();
-	len = len + ft_strlen(new_lst->flags = info_struct_ptr->flags);
-	len = len + ft_strlen(new_lst->size = info_struct_ptr->size);
-	len = len + ft_strlen(new_lst->acc = info_struct_ptr->acc);
-	len = len + ft_strlen(new_lst->mdf = info_struct_ptr->mdf);
+	len = len + ft_strlen(new_lst->flags = ft_strdup(info_struct_ptr->flags));
+	len = len + ft_strlen(new_lst->size = ft_strdup(info_struct_ptr->size));
+	len = len + ft_strlen(new_lst->acc = ft_strdup(info_struct_ptr->acc));
+	len = len + ft_strlen(new_lst->mdf = ft_strdup(info_struct_ptr->mdf));
 	new_lst->type = info_struct_ptr->type;
+	ft_empty_struct(info_struct_ptr);
 	len++;
 	index->next = new_lst;
 

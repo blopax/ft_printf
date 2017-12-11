@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	}
 	first = ft_lst_init();
 //	info_struct = ft_info_init();
-	format = "chaine%   164.14hhdalors %d%hhschaine_finale";
+	format = "chaine%   164.14hhdalors %d%hschaine_finale";
 //	n = ft_is_conv(format, 1, 0, &info_struct);
 //	ft_putnbr(n);
 //	ft_putstr("\n");
@@ -42,6 +42,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 
+//	sleep(100);
 
 	return (0);
 }

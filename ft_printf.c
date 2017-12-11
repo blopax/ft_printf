@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/11 17:32:07 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 19:06:39 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_lst	*ft_format_split(char *format)
 	ft_init_format_split(&sp_sct);
 	while (format[sp_sct.i++] != 0)
 	{
-		if (ft_is_conv(format, sp_sct.i, 0, &(sp_sct.info_struct)) >= 1)
+		if (ft_conv(format, sp_sct.i, 0, &(sp_sct.info_struct)) >= 1)
 		{
 			if (sp_sct.spec_flag == 0)
 				ft_add_str_lst(format, sp_sct.i, sp_sct.start, sp_sct.first);
