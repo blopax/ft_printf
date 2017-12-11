@@ -7,10 +7,10 @@ t_info	ft_info_init(void)
 {
 	t_info	new_info;
 
-	new_info.flags = ft_strnew(0);
-	new_info.size = ft_strnew(0);
-	new_info.acc = ft_strnew(0);
-	new_info.mdf = ft_strnew(0);
+	new_info.flags = NULL;
+	new_info.size = NULL;
+	new_info.acc = NULL;
+	new_info.mdf = NULL;
 	new_info.type = 0;
 	return (new_info);
 }
@@ -21,12 +21,12 @@ t_lst	*ft_lst_init(void)
 
 	if (!(new_lst = (t_lst *)malloc(sizeof(t_lst))))
 		return (NULL);
-	new_lst->init_str = ft_strnew(0);
-	new_lst->final_str = ft_strnew(0);
-	new_lst->flags = ft_strnew(0);
-	new_lst->size = ft_strnew(0);
-	new_lst->acc = ft_strnew(0);
-	new_lst->mdf = ft_strnew(0);
+	new_lst->init_str = NULL;
+	new_lst->final_str = NULL;
+	new_lst->flags = NULL;
+	new_lst->size = NULL;
+	new_lst->acc = NULL;
+	new_lst->mdf = NULL;
 	new_lst->type = 0;
 	new_lst->next = NULL;
 	return (new_lst);
@@ -190,6 +190,7 @@ void	ft_add_str_lst(char *format, int i, int start, t_lst *first)
 	while (index->next)
 		index = index->next;
 	new_lst = ft_lst_init();
-	new_lst->init_str = str;
+	new_lst->init_str = ft_strdup(str);
 	index->next = new_lst;
+	free(str);
 }
