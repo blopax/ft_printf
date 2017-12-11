@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/11 19:06:39 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 20:13:42 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_lst	*ft_format_split(char *format)
 			sp_sct.spec_size = ft_add_spec_lst(sp_sct.first,
 					&(sp_sct.info_struct));
 			sp_sct.i = sp_sct.i + sp_sct.spec_size;
-			ft_empty_struct(&(sp_sct.info_struct));
 		}
 		else
 			sp_sct.spec_flag = ft_else_spec_flag(sp_sct.spec_flag,
@@ -52,5 +51,6 @@ t_lst	*ft_format_split(char *format)
 	}
 	if (sp_sct.spec_flag == 0)
 		ft_add_str_lst(format, sp_sct.i, sp_sct.start, sp_sct.first);
+	ft_empty_struct(&(sp_sct.info_struct));
 	return (sp_sct.first);
 }

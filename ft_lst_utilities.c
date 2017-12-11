@@ -32,7 +32,34 @@ t_lst	*ft_lst_init(void)
 	return (new_lst);
 }
 
+void	ft_empty_lst(t_lst *first)
+{
+	while (first)
+	{
+		free(first->init_str);
+		free(first->final_str);
+		free(first->flags);
+		free(first->size);
+		free(first->acc);
+		free(first->mdf);
+		first = first->next;
+	}
+}
+
 void	ft_empty_struct(t_info *info_struct_ptr)
+{
+		if (info_struct_ptr->flags)
+			free(info_struct_ptr->flags);
+		if (info_struct_ptr->size)
+			free(info_struct_ptr->size);
+		if (info_struct_ptr->acc)
+			free(info_struct_ptr->acc);
+		if (info_struct_ptr->mdf)
+			free(info_struct_ptr->mdf);
+		info_struct_ptr->type = 0;
+}
+
+void	ft_reinit_struct(t_info *info_struct_ptr)
 {
 		if (info_struct_ptr->flags)
 		{
@@ -51,7 +78,7 @@ void	ft_empty_struct(t_info *info_struct_ptr)
 		}
 		if (info_struct_ptr->mdf)
 		{
-//			free(info_struct_ptr->mdf);
+			free(info_struct_ptr->mdf);
 			info_struct_ptr->mdf = ft_strnew(0);
 		}
 		info_struct_ptr->type = 0;
@@ -139,10 +166,9 @@ int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
 	len = len + ft_strlen(new_lst->acc = ft_strdup(info_struct_ptr->acc));
 	len = len + ft_strlen(new_lst->mdf = ft_strdup(info_struct_ptr->mdf));
 	new_lst->type = info_struct_ptr->type;
-	ft_empty_struct(info_struct_ptr);
+	ft_reinit_struct(info_struct_ptr);
 	len++;
 	index->next = new_lst;
-
 	return (len);
 }
 

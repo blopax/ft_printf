@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:13:14 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/11 19:15:05 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 19:29:28 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ int		ft_chk_spec_mdf(char *format, int st, char mdf_str, t_info *info)
 	{
 		if (format[st + 1] == mdf_str)
 		{
-			if (mdf_str == 'h')
-				info->mdf = "hh";
-			else
-				info->mdf = "ll";
+			free(info->mdf);
+			info->mdf = ft_strnew(2);
+			info->mdf[0] = mdf_str;
+			info->mdf[1] = mdf_str;
 			return (2);
 		}
 		else
 		{
+			free(info->mdf);
 			info->mdf = ft_strnew(1);
 			info->mdf[0] = mdf_str;
 			return (1);
@@ -62,9 +63,9 @@ int		ft_mdf(char *format, int st, t_info *inf)
 	j = 0;
 	while (mdf_str[j] != 0)
 	{
-		if (format[st] == mdf_str[j] && mdf_str[j] != 'h'
-				&& mdf_str[j] != 'l')
+		if (format[st] == mdf_str[j] && mdf_str[j] != 'h' && mdf_str[j] != 'l')
 		{
+			free(inf->mdf);
 			inf->mdf = ft_strnew(1);
 			inf->mdf[0] = mdf_str[j];
 			return (1);
@@ -107,6 +108,7 @@ int		ft_acc(char *format, int st, t_info *inf)
 			exit(0);
 		k++;
 	}
+	free(inf->acc);
 	if (!(inf->acc = ft_strdup(tmp)))
 		exit(0);
 	free(tmp);
@@ -141,6 +143,7 @@ int		ft_size(char *format, int st, t_info *inf)
 			exit(0);
 		k++;
 	}
+	free(inf->size);
 	if (!(inf->size = ft_strdup(tmp)))
 		exit(0);
 	free(tmp);
@@ -189,6 +192,7 @@ int		ft_flag(char *format, int st, t_info *inf)
 		}
 		flag.k++;
 	}
+	free(inf->flags);
 	if (!(inf->flags = ft_strdup(flag.tmp)))
 		exit(0);
 	free(flag.tmp);

@@ -18,7 +18,7 @@ int		main(int argc, char **argv)
 		printf("%s", argv[i]);
 		i++;
 	}
-	first = ft_lst_init();
+//	first = ft_lst_init();
 //	info_struct = ft_info_init();
 	format = "chaine%   164.14hhdalors %d%hschaine_finale";
 //	n = ft_is_conv(format, 1, 0, &info_struct);
@@ -41,8 +41,8 @@ int		main(int argc, char **argv)
 		ft_lst_show(first, i);
 		i++;
 	}
-
-//	sleep(100);
+	ft_empty_lst(first);
+	sleep(100);
 
 	return (0);
 }
