@@ -33,8 +33,6 @@ int		ft_index_first_c_in_str(char c, char *str)
 			return (i);
 		i++;
 	}
-//	if (c == 0)
-//		return (i);
 	return (-1);
 }
 
@@ -60,13 +58,11 @@ int		ft_check_base(char *base)
 }
 
 /*
-**Works as for ft_atoi
-**+ and - taken into account
+**Works as for ft_atoi if more than long int returns -1, less than long int min returns 0
+**+ and - taken into account even for other bases
 **char 9 to 13 and space ignored at the first
-**if string too big for long int returns -1
 */
-
-int				ft_atoi_base(char *str, char *base)
+int			ft_atoi_base(char *str, char *base)
 {
 	int					i;
 	int					start;
@@ -91,13 +87,12 @@ int				ft_atoi_base(char *str, char *base)
 
 	while (ft_index_first_c_in_str(str[i], base) >= 0)
 	{
-		ft_putnbr(i);
 		result = result * ft_strlen(base) + ft_index_first_c_in_str(str[i], base);
 		i++;
 		if (limits_check(result, sign, i - start, ft_strlen(base)) != 1)
 			return (limits_check(result, sign, i - start, ft_strlen(base)));
 	}
-	return (sign * result);
+	return ((sign * result));
 }
 
 
@@ -128,20 +123,20 @@ char	*ft_itoa_base(int value, char *base)
 
 	base_size = ft_strlen(base);
 	neg = ft_neg(value, base_size);
-	result = (long)value * neg;
-	tab_len = 1 + neg;
+	(value < 0) ? (result = -(long)value) : (result = (long)value);
+	(neg > 0) ? (tab_len = 1) : (tab_len = 2);
 	while ((result = result / base_size) >= 1)
 		tab_len++;
 	if (!(tab = ft_strnew(tab_len + 1)))
 		return (0);
-	result = (long)value * neg;
+	(value < 0) ? (result = -(long)value) : (result = (long)value);
 	i = 0;
-	while (i++ <= tab_len)
+	while (++i <= tab_len)
 	{
 		tab[tab_len - i] = base[result % base_size];
 		result = result / base_size;
 	}
-	if (neg == 1)
+	if (neg == -1)
 		tab[0] = '-';
 	return (tab);
 }

@@ -46,6 +46,7 @@ int		ft_check_special_modifier(char *format,int start, char modifier_str, t_info
 		}
 		else
 		{
+			info_struct->modifier = ft_strnew(1);
 			info_struct->modifier[0] = modifier_str;
 			return (1);
 		}
@@ -64,6 +65,7 @@ int		ft_is_modif_array(char *format, int start, t_info *info_struct)
 	{
 		if (format[start] == modifier_str[j] && modifier_str[j] != 'h' && modifier_str[j] != 'l')
 		{
+			info_struct->modifier = ft_strnew(1);
 			info_struct->modifier[0] = modifier_str[j];
 			return (1);
 		}
@@ -77,11 +79,10 @@ int		ft_is_modif_array(char *format, int start, t_info *info_struct)
 int		ft_is_accuracy_array(char *format, int start, t_info *info_struct)
 {
 	int		k;
-	char	*tmp;
+	char	*tmp = ".";
 	char	*buf;
 
-	*tmp = '.';
-	if (!(buf = (char *)malloc(sizeof(char) * 2)))
+	if (!(buf = ft_strnew(1)))
 		exit(0);
 	if (format[start] != '.')
 		return (0);
@@ -106,6 +107,8 @@ int		ft_is_size_array(char *format, int start, t_info *info_struct)
 
 	k = 0;
 	tmp = ft_strnew(0);
+	if (!(buf = ft_strnew(1)))
+		exit(0);
 	while (format[start + k] >= '0' && format[start + k] <= '0' + 9)
 	{	
 		buf[0] = format[start + k];
@@ -152,26 +155,27 @@ int		ft_is_flag_array(char *format, int start, t_info *info_struct)
 		}
 		k++;
 	}
+	if (!(info_struct->size = ft_strjoin(info_struct->flags, tmp)))
+		exit (0);
 
 	return (k);
 }
 
-int		ft_is_conv(char *format, int start, int flag, t_info info_struct)
+int		ft_is_conv(char *format, int start, int flag, t_info *info_struct_ptr)
 {
 	if (format[start] != '%' && flag == 0)
 		return (0);
 	if (flag == 0)
 		start++;
-	if (ft_is_type_array(format, start, &info_struct) >= 1 && flag <= 5)
+	if (ft_is_type_array(format, start, info_struct_ptr) >= 1 && flag <= 5)
 		return (1);
-	if (ft_is_modif_array(format, start, &info_struct) >= 1 && flag <= 4)
-		return (ft_is_conv(format, start + ft_is_modif_array(format, start, &info_struct), 5, info_struct));
-	if (ft_is_accuracy_array(format, start, &info_struct) >= 1 && flag <= 3)
-		return (ft_is_conv(format, start + ft_is_accuracy_array(format, start, &info_struct), 4, info_struct));
-	if (ft_is_size_array(format, start, &info_struct) >= 1 && flag <= 2)
-		return (ft_is_conv(format, start + ft_is_size_array(format, start, &info_struct), 3, info_struct));
-	if (ft_is_flag_array(format, start, &info_struct) >= 1 && flag <= 1)
-		return (ft_is_conv(format, start + ft_is_flag_array(format, start, &info_struct), 2, info_struct));
-	ft_empty_struct(&info_struct);
+	if (ft_is_modif_array(format, start, info_struct_ptr) >= 1 && flag <= 4)
+		return (ft_is_conv(format, start + ft_is_modif_array(format, start, info_struct_ptr), 5, info_struct_ptr));
+	if (ft_is_accuracy_array(format, start, info_struct_ptr) >= 1 && flag <= 3)
+		return (ft_is_conv(format, start + ft_is_accuracy_array(format, start, info_struct_ptr), 4, info_struct_ptr));
+	if (ft_is_size_array(format, start, info_struct_ptr) >= 1 && flag <= 2)
+		return (ft_is_conv(format, start + ft_is_size_array(format, start, info_struct_ptr), 3, info_struct_ptr));
+	if (ft_is_flag_array(format, start, info_struct_ptr) >= 1 && flag <= 1)
+		return (ft_is_conv(format, start + ft_is_flag_array(format, start, info_struct_ptr), 2, info_struct_ptr));
 	return (0);
 }

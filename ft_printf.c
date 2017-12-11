@@ -12,26 +12,6 @@
 
 #include "ft_printf.h"
 
-//add list cree le maillon, le pushback a la liste
-
-t_lst	*ft_lst_init(void)
-{
-	t_lst	*new;
-
-	if (!(new = (t_lst *)malloc(sizeof(t_lst))))
-		return (NULL);
-	new->init_str = ft_strnew(0);
-	new->final_str = ft_strnew(0);
-	new->flags = ft_strnew(0);
-	new->size = ft_strnew(0);
-	new->accuracy = ft_strnew(0);
-	new->modifier = ft_strnew(0);
-	new->type = 0;
-	new->next = NULL;
-	return (new);
-}
-
-
 t_lst	*ft_format_split(char *format)
 {
 	t_lst	*first;
@@ -40,30 +20,32 @@ t_lst	*ft_format_split(char *format)
 	int		i;
 	int		spec_size;
 	int		start;
-	int		flag;
+	int		spec_flag;
 
-	flag = 0;
+	spec_flag = 0;
 	start  = 0;
 	first = ft_lst_init();
+	info_struct = ft_info_init();
 	while (format[i] != 0)
 	{
-		if (ft_is_conv(format, i, 0, info_struct) == 1)
+		if (ft_is_conv(format, i, 0, &info_struct) >= 1)
 		{
-			if (flag == 0)
+			if (spec_flag == 0)
 				ft_add_str_lst(format, i, start, first);
-			flag = 1;
-			spec_size = ft_add_spec_lst(format, i, first);
+			spec_flag = 1;
+			spec_size = ft_add_spec_lst(first, &info_struct);
 			i = i + spec_size - 1;
+			ft_empty_struct(&info_struct);
 		}
 		else
 		{
-			if (flag == 1)
+			if (spec_flag == 1)
 				start = i;
-			flag = 0;
+			spec_flag = 0;
 		}
 		i++;
 	}
-	if (flag == 0)
+	if (spec_flag == 0)
 		ft_add_str_lst(format, i, start, first);
 	return (first);
 }

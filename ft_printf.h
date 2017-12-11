@@ -36,12 +36,19 @@ typedef struct	s_lst
 	char			*accuracy;
 	char			*modifier;
 	char			type;
-	struct s_list	*next;
+	struct s_lst	*next;
 }					t_lst;
 
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
 t_lst	*ft_struct_fill(char *str);
 t_lst	*ft_lst_pushback();
+int		ft_is_conv(char *format, int start, int flag, t_info *info_struct);
+void	ft_lst_show(t_lst *first, int n);
+void	ft_empty_struct(t_info *info_struct_ptr);
+t_lst	*ft_lst_init(void);
+t_info	ft_info_init(void);
+int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr);
+void	ft_add_str_lst(char *format, int i, int start, t_lst *first);
 
 #endif

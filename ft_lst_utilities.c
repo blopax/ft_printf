@@ -1,0 +1,136 @@
+
+#include "ft_printf.h"
+
+//add list cree le maillon, le pushback a la liste
+
+t_info	ft_info_init(void)
+{
+	t_info	new_info;
+
+	new_info.flags = ft_strnew(0);
+	new_info.size = ft_strnew(0);
+	new_info.accuracy = ft_strnew(0);
+	new_info.modifier = ft_strnew(0);
+	new_info.type = 0;
+	return (new_info);
+}
+
+
+
+t_lst	*ft_lst_init(void)
+{
+	t_lst	*new_lst;
+
+	if (!(new_lst = (t_lst *)malloc(sizeof(t_lst))))
+		return (NULL);
+	new_lst->init_str = ft_strnew(0);
+	new_lst->final_str = ft_strnew(0);
+	new_lst->flags = ft_strnew(0);
+	new_lst->size = ft_strnew(0);
+	new_lst->accuracy = ft_strnew(0);
+	new_lst->modifier = ft_strnew(0);
+	new_lst->type = 0;
+	new_lst->next = NULL;
+	return (new_lst);
+}
+
+void	ft_empty_struct(t_info *info_struct_ptr)
+{
+	free(info_struct_ptr->flags);
+	info_struct_ptr->flags = ft_strnew(0);
+	free(info_struct_ptr->size);
+	info_struct_ptr->size = ft_strnew(0);
+	free(info_struct_ptr->accuracy);
+	info_struct_ptr->accuracy = ft_strnew(0);
+	free(info_struct_ptr->modifier);
+	info_struct_ptr->modifier = ft_strnew(0);
+	info_struct_ptr->type = 0;
+}
+
+void	ft_print_lst(t_lst *index, int n)
+{
+	ft_putstr("MAILLON = \t");
+	ft_putnbr(n);
+	ft_putstr("\n");
+	ft_putstr("init_str = \t");
+	ft_putstr(index->init_str);
+	ft_putstr("\n");
+	ft_putstr("final_str = \t");
+	ft_putstr(index->final_str);
+	ft_putstr("\n");
+	ft_putstr("flags = \t");
+	ft_putstr(index->flags);
+	ft_putstr("\n");
+	ft_putstr("size = \t");
+	ft_putstr(index->size);
+	ft_putstr("\n");
+	ft_putstr("accuracy = \t");
+	ft_putstr(index->accuracy);
+	ft_putstr("\n");
+	ft_putstr("modifier = \t");
+	ft_putstr(index->modifier);
+	ft_putstr("\n");
+	ft_putstr("type = \t");
+	write(1, &(index->type), 1);
+	ft_putstr("\n\n");
+}
+
+void	ft_lst_show(t_lst *first, int n)
+{
+	t_lst	*index;
+	int		i;
+
+	i = 0;
+	index = first;
+	while (i < n)
+	{
+		index = index->next;
+		i++;
+	}
+
+	ft_print_lst(index, n);
+}
+
+int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
+{
+	t_lst	*new_lst;
+	t_lst	*index;
+	int		len;
+
+	len = 0;
+	index = first;
+	while (index->next)
+		index = index -> next;
+	new_lst = ft_lst_init();
+	len = len + ft_strlen(new_lst->flags = info_struct_ptr->flags);
+	len = len + ft_strlen(new_lst->size = info_struct_ptr->size);
+	len = len + ft_strlen(new_lst->accuracy = info_struct_ptr->accuracy);
+	len = len + ft_strlen(new_lst->modifier = info_struct_ptr->modifier);
+	new_lst->type = info_struct_ptr->type;
+	len++;
+	index->next = new_lst;
+
+	return (len);
+}
+
+void	ft_add_str_lst(char *format, int i, int start, t_lst *first)
+{
+	t_lst	*new_lst;
+	t_lst	*index;
+	char	*str;
+	int		k;
+
+	str = ft_strnew(i - start + 1);
+	k = 0;
+	while (k < i - start)
+	{
+		str[k] = format[start + k];
+		k++;
+	}
+	index = first;
+	while (index->next)
+		index = index->next;
+	new_lst = ft_lst_init();
+	new_lst->init_str = str;
+	index->next = new_lst;
+}
