@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/11 14:02:35 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 17:19:11 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ typedef struct	s_lst
 	char			type;
 	struct s_lst	*next;
 }					t_lst;
+
+typedef struct	s_split
+{
+	t_lst	*first;
+	t_info	info_struct;
+	int		i;
+	int		spec_size;
+	int		start;
+	int		spec_flag;
+}				t_split;
 
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();

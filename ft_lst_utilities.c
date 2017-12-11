@@ -15,8 +15,6 @@ t_info	ft_info_init(void)
 	return (new_info);
 }
 
-
-
 t_lst	*ft_lst_init(void)
 {
 	t_lst	*new_lst;
@@ -36,13 +34,13 @@ t_lst	*ft_lst_init(void)
 
 void	ft_empty_struct(t_info *info_struct_ptr)
 {
-	free(info_struct_ptr->flags);
+	//free(info_struct_ptr->flags);
 	info_struct_ptr->flags = ft_strnew(0);
-	free(info_struct_ptr->size);
+	//free(info_struct_ptr->size);
 	info_struct_ptr->size = ft_strnew(0);
-	free(info_struct_ptr->accuracy);
+	//free(info_struct_ptr->accuracy);
 	info_struct_ptr->accuracy = ft_strnew(0);
-	free(info_struct_ptr->modifier);
+	//free(info_struct_ptr->modifier);
 	info_struct_ptr->modifier = ft_strnew(0);
 	info_struct_ptr->type = 0;
 }
@@ -72,29 +70,29 @@ void	ft_info_show(t_info info_struct)
 void	ft_print_lst(t_lst *index, int n)
 {
 	ft_putstr("MAILLON = \t");
-	ft_putnbr(n);
+	ft_putnbr(n - 1);
 	ft_putstr("\n");
-	ft_putstr("init_str = \t");
+	ft_putstr("init_str = \t|");
 	ft_putstr(index->init_str);
-	ft_putstr("\n");
-	ft_putstr("final_str = \t");
+	ft_putstr("|\n");
+	ft_putstr("final_str = \t|");
 	ft_putstr(index->final_str);
-	ft_putstr("\n");
-	ft_putstr("flags = \t");
+	ft_putstr("|\n");
+	ft_putstr("flags = \t|");
 	ft_putstr(index->flags);
-	ft_putstr("\n");
-	ft_putstr("size = \t");
+	ft_putstr("|\n");
+	ft_putstr("size = \t\t|");
 	ft_putstr(index->size);
-	ft_putstr("\n");
-	ft_putstr("accuracy = \t");
+	ft_putstr("|\n");
+	ft_putstr("accuracy = \t|");
 	ft_putstr(index->accuracy);
-	ft_putstr("\n");
-	ft_putstr("modifier = \t");
+	ft_putstr("|\n");
+	ft_putstr("modifier = \t|");
 	ft_putstr(index->modifier);
-	ft_putstr("\n");
-	ft_putstr("type = \t");
+	ft_putstr("|\n");
+	ft_putstr("type = \t\t|");
 	write(1, &(index->type), 1);
-	ft_putstr("\n\n");
+	ft_putstr("|\n\n");
 }
 
 void	ft_lst_show(t_lst *first, int n)
