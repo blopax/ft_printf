@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/08 19:23:48 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 14:02:35 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_lst	*ft_struct_fill(char *str);
 t_lst	*ft_lst_pushback();
 int		ft_is_conv(char *format, int start, int flag, t_info *info_struct);
 void	ft_lst_show(t_lst *first, int n);
+void	ft_info_show(t_info info_struct);
 void	ft_empty_struct(t_info *info_struct_ptr);
 t_lst	*ft_lst_init(void);
 t_info	ft_info_init(void);

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 19:24:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/08 19:36:01 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/11 14:44:39 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		ft_is_accuracy_array(char *format, int start, t_info *info_struct)
 			exit (0);
 		k++;
 	}
-	if (!(info_struct->accuracy = ft_strjoin(info_struct->accuracy, tmp)))
+	if (!(info_struct->accuracy = ft_strdup(tmp)))
 		exit (0);
 	return (k);
 }
@@ -116,7 +116,7 @@ int		ft_is_size_array(char *format, int start, t_info *info_struct)
 			exit (0);
 		k++;
 	}
-	if (!(info_struct->size = ft_strjoin(info_struct->size, tmp)))
+	if (!(info_struct->size = ft_strdup(tmp)))
 		exit (0);
 	return (k);
 }
@@ -151,14 +151,14 @@ int		ft_is_flag_array(char *format, int start, t_info *info_struct)
 				switch_flag = 0;
 				break;
 			}
-		j++;
+			j++;
 		}
 		k++;
 	}
-	if (!(info_struct->size = ft_strjoin(info_struct->flags, tmp)))
+	if (!(info_struct->flags = ft_strdup(tmp)))
 		exit (0);
 
-	return (k);
+	return (k - 1);
 }
 
 int		ft_is_conv(char *format, int start, int flag, t_info *info_struct_ptr)

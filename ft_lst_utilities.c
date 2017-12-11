@@ -47,6 +47,28 @@ void	ft_empty_struct(t_info *info_struct_ptr)
 	info_struct_ptr->type = 0;
 }
 
+void	ft_info_show(t_info info_struct)
+{
+	ft_putstr("INFO STRUCT = \t");
+	ft_putstr("\n");
+	ft_putstr("flags = \t|");
+	ft_putstr(info_struct.flags);
+	ft_putstr("|\n");
+	ft_putstr("size = \t\t|");
+	ft_putstr(info_struct.size);
+	ft_putstr("|\n");
+	ft_putstr("accuracy = \t|");
+	ft_putstr(info_struct.accuracy);
+	ft_putstr("|\n");
+	ft_putstr("modifier = \t|");
+	ft_putstr(info_struct.modifier);
+	ft_putstr("|\n");
+	ft_putstr("type = \t\t|");
+	write(1, &(info_struct.type), 1);
+	ft_putstr("|\n\n");
+}
+
+
 void	ft_print_lst(t_lst *index, int n)
 {
 	ft_putstr("MAILLON = \t");
