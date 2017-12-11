@@ -9,8 +9,8 @@ t_info	ft_info_init(void)
 
 	new_info.flags = ft_strnew(0);
 	new_info.size = ft_strnew(0);
-	new_info.accuracy = ft_strnew(0);
-	new_info.modifier = ft_strnew(0);
+	new_info.acc = ft_strnew(0);
+	new_info.mdf = ft_strnew(0);
 	new_info.type = 0;
 	return (new_info);
 }
@@ -25,8 +25,8 @@ t_lst	*ft_lst_init(void)
 	new_lst->final_str = ft_strnew(0);
 	new_lst->flags = ft_strnew(0);
 	new_lst->size = ft_strnew(0);
-	new_lst->accuracy = ft_strnew(0);
-	new_lst->modifier = ft_strnew(0);
+	new_lst->acc = ft_strnew(0);
+	new_lst->mdf = ft_strnew(0);
 	new_lst->type = 0;
 	new_lst->next = NULL;
 	return (new_lst);
@@ -38,10 +38,10 @@ void	ft_empty_struct(t_info *info_struct_ptr)
 	info_struct_ptr->flags = ft_strnew(0);
 	//free(info_struct_ptr->size);
 	info_struct_ptr->size = ft_strnew(0);
-	//free(info_struct_ptr->accuracy);
-	info_struct_ptr->accuracy = ft_strnew(0);
-	//free(info_struct_ptr->modifier);
-	info_struct_ptr->modifier = ft_strnew(0);
+//	free(info_struct_ptr->acc);
+	info_struct_ptr->acc = ft_strnew(0);
+//	free(info_struct_ptr->mdf);
+	info_struct_ptr->mdf = ft_strnew(0);
 	info_struct_ptr->type = 0;
 }
 
@@ -55,11 +55,11 @@ void	ft_info_show(t_info info_struct)
 	ft_putstr("size = \t\t|");
 	ft_putstr(info_struct.size);
 	ft_putstr("|\n");
-	ft_putstr("accuracy = \t|");
-	ft_putstr(info_struct.accuracy);
+	ft_putstr("acc = \t\t|");
+	ft_putstr(info_struct.acc);
 	ft_putstr("|\n");
-	ft_putstr("modifier = \t|");
-	ft_putstr(info_struct.modifier);
+	ft_putstr("mdf = \t\t|");
+	ft_putstr(info_struct.mdf);
 	ft_putstr("|\n");
 	ft_putstr("type = \t\t|");
 	write(1, &(info_struct.type), 1);
@@ -84,11 +84,11 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("size = \t\t|");
 	ft_putstr(index->size);
 	ft_putstr("|\n");
-	ft_putstr("accuracy = \t|");
-	ft_putstr(index->accuracy);
+	ft_putstr("acc = \t|");
+	ft_putstr(index->acc);
 	ft_putstr("|\n");
-	ft_putstr("modifier = \t|");
-	ft_putstr(index->modifier);
+	ft_putstr("mdf = \t|");
+	ft_putstr(index->mdf);
 	ft_putstr("|\n");
 	ft_putstr("type = \t\t|");
 	write(1, &(index->type), 1);
@@ -124,8 +124,8 @@ int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
 	new_lst = ft_lst_init();
 	len = len + ft_strlen(new_lst->flags = info_struct_ptr->flags);
 	len = len + ft_strlen(new_lst->size = info_struct_ptr->size);
-	len = len + ft_strlen(new_lst->accuracy = info_struct_ptr->accuracy);
-	len = len + ft_strlen(new_lst->modifier = info_struct_ptr->modifier);
+	len = len + ft_strlen(new_lst->acc = info_struct_ptr->acc);
+	len = len + ft_strlen(new_lst->mdf = info_struct_ptr->mdf);
 	new_lst->type = info_struct_ptr->type;
 	len++;
 	index->next = new_lst;
