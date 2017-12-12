@@ -4,9 +4,9 @@
 int		main(int argc, char **argv)
 {
 	int		i;
-	char	*str;
+//	char	*str;
 	int		nb;
-	int		size;
+//	int		size;
 
 	i = 1;
 	while (i < argc)
@@ -15,6 +15,8 @@ int		main(int argc, char **argv)
 		i++;
 	}
 
+	nb = 30;
+/*
 	printf("LIST OF CONVERSIONS WITHOUT FLAGS, ACCURACY AND FIELD MIN SIZE \n\n");
 	i = 0;
 	size = 26;
@@ -26,7 +28,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	str[i] = 0;
-	
+
 	printf("%d\n", printf("%d", 30));
 	printf("Gestion sans conversion avec double\\ pour echapper:\t\tSalut ca va\n");
 	printf("Gestion sans conversion avec double%%:\t\t37,5%%\n");
@@ -58,8 +60,10 @@ int		main(int argc, char **argv)
 	printf("gestion de c avec -200:\t\t%c\n", -200);
 	printf("gestion de C avec 48:\t\t%C\n", 48);
 	printf("gestion de C avec -200:\t\t%C\n", 200);
-
+*/
 //	printf("gestion de s avec nb:\t\t%s\n", nb);
+
+	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
 
 	return (0);
 }

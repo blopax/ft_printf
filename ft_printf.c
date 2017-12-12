@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/11 20:13:42 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/12 17:30:04 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,27 @@ int		ft_else_spec_flag(int spec_flag, int *start_ptr, int i)
 void	ft_init_format_split(t_split *sp_sct)
 {
 	sp_sct->i = 0;
-	sp_sct->spec_flag = 0;
+	sp_sct->spec_flag = 1;
 	sp_sct->start  = 0;
 	sp_sct->first = ft_lst_init();
 	sp_sct->info_struct = ft_info_init();
 }
 
+int		ft_double_percent(int i, char *format)
+{
+	while (format[i] == '%' && format [i + 1] == '%')
+		i = i + 2;
+	return (i);
+}
 
 t_lst	*ft_format_split(char *format)
 {
 	t_split	sp_sct;
 
 	ft_init_format_split(&sp_sct);
-	while (format[sp_sct.i++] != 0)
-	{
+		while (format[sp_sct.i] != 0)
+		{
+		sp_sct.i = ft_double_percent(sp_sct.i , format);
 		if (ft_conv(format, sp_sct.i, 0, &(sp_sct.info_struct)) >= 1)
 		{
 			if (sp_sct.spec_flag == 0)
@@ -48,6 +55,7 @@ t_lst	*ft_format_split(char *format)
 		else
 			sp_sct.spec_flag = ft_else_spec_flag(sp_sct.spec_flag,
 					&(sp_sct.start), sp_sct.i);
+		(sp_sct.i)++;
 	}
 	if (sp_sct.spec_flag == 0)
 		ft_add_str_lst(format, sp_sct.i, sp_sct.start, sp_sct.first);
