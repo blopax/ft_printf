@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/11 19:56:28 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/13 16:50:13 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_lst
 	char			*acc;
 	char			*mdf;
 	char			type;
+	char			*v_type;
 	struct s_lst	*next;
 }					t_lst;
 
@@ -57,6 +58,45 @@ typedef struct	s_split
 	int		start;
 	int		spec_flag;
 }				t_split;
+
+struct			s_va_type
+{
+	char*	v_type;
+	void	(*ft_va_ptr)(va_list vl);
+};
+
+struct s_va_type	va_type_tab[] =
+{
+	{"int", &va_int},
+	{"short int", &va_sh_int},
+	{"signed char", &va_char},
+	{"long", &va_long},
+	{"long long", &va_longlong},
+	{"intmax_t", &va_intmax},
+	{"size_t", &va_size_t},
+	{"unsigned short int", &va_u_sh_int},
+	{"unsigned char", &va_u_char},
+	{"unsigned long", &va_u_long},
+	{"unsigned long long", &va_u_longlong},
+	{"unsigned intmax_t", &va_u_intmax},
+	{ 0 , 0}
+};
+
+//fonction separee pour modifier, D en ld, U en lu O en lo C en lc et S en ls
+
+const char	*type_tab[9][6] =
+{
+	{0,		"di",			"uouxX",				"c",		"s",			"p"},
+	{0,		"int",			"int",					"int",		"char *",		"void *"},
+	{"h",	"short int",	"unsigned short int",	0,			0,				0},
+	{"hh",	"signed char",	"unsigned char",		0,			0,				0},
+	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0},
+	{"ll",	"long long",	"unsigned long long",	0,			0,				0},
+	{"j",	"intmax_t",		"unsigned intmax_t",	0,			0,				0},
+	{"z",	"size_t",		"size_t",				0,			0,				0},
+	{0}
+};
+
 
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
