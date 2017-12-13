@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/13 16:50:13 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:55:42 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_lst
 	char			*mdf;
 	char			type;
 	char			*v_type;
+	void			*value;
 	struct s_lst	*next;
 }					t_lst;
 
@@ -84,16 +85,16 @@ struct s_va_type	va_type_tab[] =
 
 //fonction separee pour modifier, D en ld, U en lu O en lo C en lc et S en ls
 
-const char	*type_tab[9][6] =
+const char	*type_tab[9][7] =
 {
-	{0,		"di",			"uouxX",				"c",		"s",			"p"},
-	{0,		"int",			"int",					"int",		"char *",		"void *"},
-	{"h",	"short int",	"unsigned short int",	0,			0,				0},
-	{"hh",	"signed char",	"unsigned char",		0,			0,				0},
-	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0},
-	{"ll",	"long long",	"unsigned long long",	0,			0,				0},
-	{"j",	"intmax_t",		"unsigned intmax_t",	0,			0,				0},
-	{"z",	"size_t",		"size_t",				0,			0,				0},
+	{0,		"di",			"uouxX",				"c",		"s",			"p",		0},
+	{0,		"int",			"int",					"int",		"char *",		"void *",	0},
+	{"h",	"short int",	"unsigned short int",	0,			0,				0,			0},
+	{"hh",	"signed char",	"unsigned char",		0,			0,				0,			0},
+	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0,			0},
+	{"ll",	"long long",	"unsigned long long",	0,			0,				0,			0},
+	{"j",	"intmax_t",		"unsigned intmax_t",	0,			0,				0,			0},
+	{"z",	"size_t",		"size_t",				0,			0,				0,			0},
 	{0}
 };
 
