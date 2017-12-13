@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/13 17:55:42 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:28:48 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,25 +87,24 @@ struct s_va_type	va_type_tab[] =
 
 const char	*type_tab[9][7] =
 {
-	{0,		"di",			"uouxX",				"c",		"s",			"p",		0},
+	{0,		"di",			"ouxX",					"c",		"s",			"p",		0},
 	{0,		"int",			"int",					"int",		"char *",		"void *",	0},
 	{"h",	"short int",	"unsigned short int",	0,			0,				0,			0},
 	{"hh",	"signed char",	"unsigned char",		0,			0,				0,			0},
 	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0,			0},
 	{"ll",	"long long",	"unsigned long long",	0,			0,				0,			0},
-	{"j",	"intmax_t",		"unsigned intmax_t",	0,			0,				0,			0},
+	{"j",	"intmax_t",		"uintmax_t",			0,			0,				0,			0},
 	{"z",	"size_t",		"size_t",				0,			0,				0,			0},
 	{0}
 };
 
 
+//ft_format_split et fonctions dependantes : transforme format en une liste exploitable
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
 t_lst	*ft_struct_fill(char *str);
 t_lst	*ft_lst_pushback();
 int		ft_conv(char *format, int start, int flag, t_info *info_struct);
-void	ft_lst_show(t_lst *first, int n);
-void	ft_info_show(t_info info_struct);
 void	ft_empty_struct(t_info *info_struct_ptr);
 void	ft_empty_lst(t_lst *first);
 t_lst	*ft_lst_init(void);
@@ -113,4 +112,12 @@ t_info	ft_info_init(void);
 int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr);
 void	ft_add_str_lst(char *format, int i, int start, t_lst *first);
 
+// Fonctions utiles pour afficher les listes
+void	ft_lst_show(t_lst *first, int n);
+void	ft_info_show(t_info info_struct);
+
+// Fonctions utiles pour va_arg
+char	*ft_v_type(char type, char *mdf);
+void	ft_v_type_clean(t_lst *first);
+void	*va_arg_type(va_list ap, char *v_type);
 #endif
