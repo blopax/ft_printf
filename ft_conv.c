@@ -16,13 +16,14 @@ int		ft_type(char *format, int st, t_info *inf)
 {
 	int		j;
 	char	*type_str;
-
-	type_str = "sSpdDioOuUxXc";
+	
+	type_str = "sSpdDioOuUxXcC";
 	j = 0;
 	while (type_str[j] != 0)
 	{
 		if (format[st] == type_str[j])
 		{
+		ft_putstr("A\n\n");
 			inf->type = type_str[j];
 			return (1);
 		}

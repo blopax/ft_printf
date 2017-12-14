@@ -5,10 +5,10 @@
 int		main(int argc, char **argv)
 {
 	int		i;
-	int		count;
+//	int		count;
 	char	*format;
 	t_lst	*first;
-	t_lst	*index;
+//	t_lst	*index;
 //	int		n;
 //	t_info	info_struct;
 
@@ -20,13 +20,23 @@ int		main(int argc, char **argv)
 	}
 //	first = ft_lst_init();
 //	info_struct = ft_info_init();
-	format = "af%   164.14hhdalors %d%hschaine_finale";
-//	n = ft_is_conv(format, 1, 0, &info_struct);
-//	ft_putnbr(n);
-//	ft_putstr("\n");
-//	ft_info_show(info_struct);
-	first = ft_format_split(format);
+//	format = "af%   164.14hhSalors %d%hschaine_finale";
 
+//ATTENTION
+	format = "af%   164.14hhCalors %d%hschaine_finale";
+
+
+first = ft_format_split(format);
+	ft_v_type_clean(first);
+	
+	while (first)
+	{
+		ft_lst_show(first, 0);
+		first = first->next;
+	}
+// ft_putstr(ft_v_type('s', "hh"));
+
+/*
 	count = 0;
 	index = first;
 	while (index != 0)
@@ -43,7 +53,7 @@ int		main(int argc, char **argv)
 	}
 	ft_empty_lst(first);
 //	sleep(100);
-
+*/
 	return (0);
 }
 

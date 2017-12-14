@@ -12,24 +12,46 @@
 
 #include "ft_printf.h"
 
+const char	*type_tab[9][7] =
+{
+	{0,		"di",			"ouxX",					"c",		"s",			"p",		"END"},
+	{0,		"int",			"int",					"int",		"char *",		"void *",	"END"},
+	{"h",	"short int",	"unsigned short int",	0,			0,				0,			"END"},
+	{"hh",	"signed char",	"unsigned char",		0,			0,				0,			"END"},
+	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0,			"END"},
+	{"ll",	"long long",	"unsigned long long",	0,			0,				0,			"END"},
+	{"j",	"intmax_t",		"uintmax_t",			0,			0,				0,			"END"},
+	{"z",	"size_t",		"size_t",				0,			0,				0,			"END"},
+	{"END",	"END",			"END",					"END",		"END",			"END",		"END"}
+};
+
 char	*ft_v_type(char type, char *mdf)
 {
 	int		i;
 	int		j;
 	char	*v_type;
 
-	j = 0;
-	while (type_tab[0][j] != 0)
+	j = 1;
+	while (type_tab[0][j] == 0 || ft_strcmp(type_tab[0][j], "END") != 0)
 	{
 		if (ft_strchr(type_tab[0][j], (int)type))
 		{
-			i = 0;
-			while (type_tab[i] != 0)
+			i = 1;
+			while (type_tab[i][j] == 0 || ft_strcmp(type_tab[i][j], "END") != 0)
 			{
-				if (ft_strcmp(type_tab[i][0], mdf) == 0)
-					v_type = (char *)type_tab[i][j];
+				if (mdf == 0)
+					v_type = (char *)type_tab[1][j];
+				else if (type_tab[i][0] != 0)
+				{
+					if(ft_strcmp(type_tab[i][0], mdf) == 0 && type_tab[i][j] == 0)
+						v_type = (char *)type_tab[1][j];
+					else if(ft_strcmp(type_tab[i][0], mdf) == 0)
+						v_type = (char *)type_tab[i][j];
+				}
+				i++;
 			}
 		}
+		j++;
 	}
 	return (v_type);
 }
@@ -55,62 +77,58 @@ void	ft_v_type_clean(t_lst *first)
 			}
 			i++;
 		}
-		first->v_type = ft_v_type(first->type, first->mdf);
+		if (first->type)
+			first->v_type = ft_v_type(first->type, first->mdf);
 		first = first->next;
 	}
 }
 
-void	*va_arg_type_diouxX(va_list ap, char *v_type)
+intmax_t	va_arg_intmax(va_list ap, char *v_type)
 {
 		if (ft_strcmp(v_type, "int") == 1)
-			return ((void *)(intmax_t)va_arg(ap, int));
+			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "short int") == 1)
-			return ((void *)va_arg(ap, short int));
+			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "signed char") == 1)
-			return ((void *)va_arg(ap, signed char));
+			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "long") == 1)
-			return ((void *)va_arg(ap, long));
+			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "long long") == 1)
-			return ((void *)va_arg(ap, long long));
+			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "intmax_t") == 1)
-			return ((void *)va_arg(ap, intmax_t));
-		if (ft_strcmp(v_type, "size_t") == 1)
-			return ((void *)va_arg(ap, size_t));
-		if (ft_strcmp(v_type, "unsigned short int") == 1)
-			return ((void *)va_arg(ap, unsigned short int));
-		if (ft_strcmp(v_type, "unsigned char") == 1)
-			return ((void *)va_arg(ap, unsigned char));
-		if (ft_strcmp(v_type, "unsigned long") == 1)
-			return ((void *)va_arg(ap, unsigned long));
-		if (ft_strcmp(v_type, "unsigned long long") == 1)
-			return ((void *)va_arg(ap, unsigned long long));
-		if (ft_strcmp(v_type, "uintmax_t") == 1)
-			return ((void *)va_arg(ap, uintmax_t));
+			return (va_arg(ap, intmax_t));
+		if (ft_strcmp(v_type, "wint_t") == 1)
+			return (va_arg(ap, intmax_t));
 		return (0);
 }
 
-void	*va_arg_type_csp(va_list ap, char *v_type)
+uintmax_t	va_arg_uintmax(va_list ap, char *v_type)
 {
-	if (ft_strcmp(v_type, "int") == 1)
-		return ((void *)va_arg(ap, int));
+		if (ft_strcmp(v_type, "size_t") == 1)
+			return (va_arg(ap, uintmax_t));
+		if (ft_strcmp(v_type, "unsigned short int") == 1)
+			return (va_arg(ap, uintmax_t));
+		if (ft_strcmp(v_type, "unsigned char") == 1)
+			return (va_arg(ap, uintmax_t));
+		if (ft_strcmp(v_type, "unsigned long") == 1)
+			return (va_arg(ap, uintmax_t));
+		if (ft_strcmp(v_type, "unsigned long long") == 1)
+			return (va_arg(ap, uintmax_t));
+		if (ft_strcmp(v_type, "uintmax_t") == 1)
+			return (va_arg(ap, uintmax_t));
+		return (0);
+}
+
+
+void	*va_arg_void(va_list ap, char *v_type)
+{
 	if (ft_strcmp(v_type, "char *") == 1)
-		return ((void *)va_arg(ap, char *));
-	if (ft_strcmp(v_type, "wint_t") == 1)
-		return ((void *)va_arg(ap, wint_t));
+		return (va_arg(ap, char *));
 	if (ft_strcmp(v_type, "wchar_t *") == 1)
-		return ((void *)va_arg(ap, wchar_t *));
+		return (va_arg(ap, void *));
 	if (ft_strcmp(v_type, "void *") == 1)
 		return (va_arg(ap, void *));
 	return (0);
 }
 
-void	*va_arg_type(va_list ap, char *v_type)
-{
-	void *value;
 
-	value = 0;
-	value = va_arg_type_diouxX(ap, v_type);
-	if (value == 0)
-		value = va_arg_type_csp(ap, v_type);
-	return (value);
-}

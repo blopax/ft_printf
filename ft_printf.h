@@ -46,7 +46,9 @@ typedef struct	s_lst
 	char			*mdf;
 	char			type;
 	char			*v_type;
-	void			*value;
+	void			*value_ptr;
+	intmax_t		value_signed;
+	uintmax_t		value_unsigned;
 	struct s_lst	*next;
 }					t_lst;
 
@@ -65,7 +67,7 @@ struct			s_va_type
 	char*	v_type;
 	void	(*ft_va_ptr)(va_list vl);
 };
-
+/*
 struct s_va_type	va_type_tab[] =
 {
 	{"int", &va_int},
@@ -82,24 +84,14 @@ struct s_va_type	va_type_tab[] =
 	{"unsigned intmax_t", &va_u_intmax},
 	{ 0 , 0}
 };
-
+*/
 //fonction separee pour modifier, D en ld, U en lu O en lo C en lc et S en ls
 
-const char	*type_tab[9][7] =
-{
-	{0,		"di",			"ouxX",					"c",		"s",			"p",		0},
-	{0,		"int",			"int",					"int",		"char *",		"void *",	0},
-	{"h",	"short int",	"unsigned short int",	0,			0,				0,			0},
-	{"hh",	"signed char",	"unsigned char",		0,			0,				0,			0},
-	{"l",	"long",			"unsigned long",		"wint_t",	"wchar_t *",	0,			0},
-	{"ll",	"long long",	"unsigned long long",	0,			0,				0,			0},
-	{"j",	"intmax_t",		"uintmax_t",			0,			0,				0,			0},
-	{"z",	"size_t",		"size_t",				0,			0,				0,			0},
-	{0}
-};
+
 
 
 //ft_format_split et fonctions dependantes : transforme format en une liste exploitable
+int		ft_printf(const char * restrict format, ...);
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
 t_lst	*ft_struct_fill(char *str);
@@ -119,5 +111,7 @@ void	ft_info_show(t_info info_struct);
 // Fonctions utiles pour va_arg
 char	*ft_v_type(char type, char *mdf);
 void	ft_v_type_clean(t_lst *first);
-void	*va_arg_type(va_list ap, char *v_type);
+void	*va_arg_void(va_list ap, char *v_type);
+intmax_t	va_arg_intmax(va_list ap, char *v_type);
+uintmax_t	va_arg_uintmax(va_list ap, char *v_type);
 #endif

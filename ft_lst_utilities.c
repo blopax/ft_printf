@@ -105,6 +105,8 @@ void	ft_info_show(t_info info_struct)
 	ft_putstr("|\n\n");
 }
 
+//ATTENTION ENLEVER PRINTF et include stdio
+#include <stdio.h>
 
 void	ft_print_lst(t_lst *index, int n)
 {
@@ -131,7 +133,11 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("|\n");
 	ft_putstr("type = \t\t|");
 	write(1, &(index->type), 1);
-	ft_putstr("|\n\n");
+	ft_putstr("|\n");
+	
+	printf("v_type = \t|%s|\nvalue_ptr = \t|%p|\nvalue_signed = \t|%jd|\nvalue_unsigned = |%ju|\n\n", index->v_type, index->value_ptr, index->value_signed, index->value_unsigned);
+
+ft_putstr("|\n\n");
 }
 
 void	ft_lst_show(t_lst *first, int n)
