@@ -6,19 +6,18 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:58:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/14 18:29:33 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 19:00:27 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr_intmax(intmax_t n)
 {
-	long	result;
-	char	c;
-	int		size;
+	intmax_t	result;
+	char		c;
 
-	result = (long)(n);
+	result = (intmax_t)(n);
 	if (result < 0)
 	{
 		write(1, "-", 1);

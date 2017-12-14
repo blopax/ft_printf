@@ -138,8 +138,11 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("type = \t\t|");
 	write(1, &(index->type), 1);
 	ft_putstr("|\n");
+	ft_putstr("v_type =\t|");
+	ft_putstr(index->v_type);
+	ft_putstr("|\n");
 	ft_putstr("val_signed =\t|");
-	ft_putnbr(index->value_signed);
+	ft_putnbr_intmax(index->value_signed);
 	ft_putstr("|\n");
 	ft_putstr("val_unsigned =\t|");
 	ft_putnbr(index->value_unsigned);

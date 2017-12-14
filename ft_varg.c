@@ -86,15 +86,15 @@ void	ft_v_type_clean(t_lst *first)
 intmax_t	va_arg_intmax(va_list ap, char *v_type)
 {
 		if (ft_strcmp(v_type, "int") == 0)
-			return (va_arg(ap, intmax_t));
+			return (va_arg(ap, int));
 		if (ft_strcmp(v_type, "short int") == 0)
-			return (va_arg(ap, intmax_t));
+			return ((short int)va_arg(ap, int));
 		if (ft_strcmp(v_type, "signed char") == 0)
-			return (va_arg(ap, intmax_t));
+			return ((signed char)va_arg(ap, int));
 		if (ft_strcmp(v_type, "long") == 0)
-			return (va_arg(ap, intmax_t));
+			return (va_arg(ap, long));
 		if (ft_strcmp(v_type, "long long") == 0)
-			return (va_arg(ap, intmax_t));
+			return (va_arg(ap, long long));
 		if (ft_strcmp(v_type, "intmax_t") == 0)
 			return (va_arg(ap, intmax_t));
 		if (ft_strcmp(v_type, "wint_t") == 0)
@@ -125,7 +125,7 @@ void	*va_arg_void(va_list ap, char *v_type)
 	if (ft_strcmp(v_type, "char *") == 0)
 		return (va_arg(ap, char *));
 	if (ft_strcmp(v_type, "wchar_t *") == 0)
-		return (va_arg(ap, void *));
+		return (va_arg(ap, wchar_t *));
 	if (ft_strcmp(v_type, "void *") == 0)
 		return (va_arg(ap, void *));
 	return (0);
