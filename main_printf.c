@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "libft/includes/libft.h"
 
 int		main(int argc, char **argv)
 {
 	int		i;
-//	char	*str;
+	char	*str;
 	int		nb;
 //	int		size;
 
@@ -15,7 +16,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 
-	nb = 30;
+	nb = -30;
 /*
 	printf("LIST OF CONVERSIONS WITHOUT FLAGS, ACCURACY AND FIELD MIN SIZE \n\n");
 	i = 0;
@@ -63,8 +64,11 @@ int		main(int argc, char **argv)
 */
 //	printf("gestion de s avec nb:\t\t%s\n", nb);
 
-	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
+//	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
 
+	str = "Yo";
+	printf("S =%c\n", nb + 141);
+	ft_putchar((char)(nb + 141));
 	return (0);
 }
 
