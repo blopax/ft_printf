@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/14 19:04:58 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 20:32:39 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,5 @@ void	ft_v_type_clean(t_lst *first);
 void	*va_arg_void(va_list ap, char *v_type);
 intmax_t	va_arg_intmax(va_list ap, char *v_type);
 uintmax_t	va_arg_uintmax(va_list ap, char *v_type);
+char		*ft_itoa_base(intmax_t n, int base);
 #endif

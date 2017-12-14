@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "libft/includes/libft.h"
+#include "ft_printf.h"
 
 int		main(int argc, char **argv)
 {
 	int		i;
 	char	*str;
 	int		nb;
+	intmax_t test;
 //	int		size;
 
 	i = 1;
+	test = (intmax_t)&i;
 	while (i < argc)
 	{
 		printf("%s", argv[i]);
@@ -65,12 +68,8 @@ int		main(int argc, char **argv)
 //	printf("gestion de s avec nb:\t\t%s\n", nb);
 
 //	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
-	printf("hhC =%hhU\n", 123456789);
-	printf("hhC =%hhu\n", 123456789);
-
-	str = "Yo";
-	printf("S =%c\n", nb + 141);
-	ft_putchar((char)(nb + 141));
+	printf("adresse avec %%p : \t\t%p\n", &i);
+	printf("adresse avec itoa_base : \t%s\n", ft_itoa_base(test, 16));
 	return (0);
 }
 
