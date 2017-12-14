@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 18:55:55 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/13 18:59:09 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 16:33:37 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s1)
 	size_t	len;
 	size_t	i;
 
+	if (!s1)
+		return (0);
 	len = ft_strlen(s1);
 	if (!(dest = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);

@@ -29,6 +29,10 @@ t_lst	*ft_lst_init(void)
 	new_lst->mdf = NULL;
 	new_lst->type = 0;
 	new_lst->next = NULL;
+	new_lst->v_type = 0;
+	new_lst->value_ptr = 0;
+	new_lst->value_signed = 0;
+	new_lst->value_unsigned = 0;
 	return (new_lst);
 }
 
@@ -111,7 +115,7 @@ void	ft_info_show(t_info info_struct)
 void	ft_print_lst(t_lst *index, int n)
 {
 	ft_putstr("MAILLON = \t");
-	ft_putnbr(n - 1);
+	ft_putnbr(n);
 	ft_putstr("\n");
 	ft_putstr("init_str = \t|");
 	ft_putstr(index->init_str);
@@ -134,27 +138,32 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("type = \t\t|");
 	write(1, &(index->type), 1);
 	ft_putstr("|\n");
-	
-	printf("v_type = \t|%s|\nvalue_ptr = \t|%p|\nvalue_signed = \t|%jd|\nvalue_unsigned = |%ju|\n\n", index->v_type, index->value_ptr, index->value_signed, index->value_unsigned);
-
-ft_putstr("|\n\n");
+	ft_putstr("val_signed =\t|");
+	ft_putnbr(index->value_signed);
+	ft_putstr("|\n");
+	ft_putstr("val_unsigned =\t|");
+	ft_putnbr(index->value_unsigned);
+	ft_putstr("|\n");
+	ft_putstr("value_ptr = \t|");
+	ft_putnbr((long long)index->value_ptr);
+	ft_putstr("|\n\n");
 }
 
-void	ft_lst_show(t_lst *first, int n)
+void	ft_lst_show(t_lst *first)
 {
 	t_lst	*index;
 	int		i;
 
 	i = 0;
 	index = first;
-	while (i < n)
+	while (index)
 	{
+		ft_print_lst(index, i);
 		index = index->next;
 		i++;
 	}
-
-	ft_print_lst(index, n);
 }
+
 
 int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
 {
@@ -166,6 +175,7 @@ int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr)
 	index = first;
 	while (index->next)
 		index = index -> next;
+	
 	new_lst = ft_lst_init();
 	len = len + ft_strlen(new_lst->flags = ft_strdup(info_struct_ptr->flags));
 	len = len + ft_strlen(new_lst->size = ft_strdup(info_struct_ptr->size));

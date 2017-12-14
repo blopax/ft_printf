@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/13 19:28:48 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 18:18:26 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ struct s_va_type	va_type_tab[] =
 
 
 //ft_format_split et fonctions dependantes : transforme format en une liste exploitable
-int		ft_printf(const char * restrict format, ...);
+int		ft_printf(const char *format, ...);
 t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
 t_lst	*ft_struct_fill(char *str);
@@ -105,7 +105,8 @@ int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr);
 void	ft_add_str_lst(char *format, int i, int start, t_lst *first);
 
 // Fonctions utiles pour afficher les listes
-void	ft_lst_show(t_lst *first, int n);
+void	ft_lst_show(t_lst *first);
+void	ft_print_lst(t_lst *first, int n);
 void	ft_info_show(t_info info_struct);
 
 // Fonctions utiles pour va_arg

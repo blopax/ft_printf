@@ -7,7 +7,7 @@ int		main(int argc, char **argv)
 	int		i;
 //	int		count;
 	char	*format;
-	t_lst	*first;
+//	t_lst	*first;
 //	t_lst	*index;
 //	int		n;
 //	t_info	info_struct;
@@ -23,17 +23,16 @@ int		main(int argc, char **argv)
 //	format = "af%   164.14hhSalors %d%hschaine_finale";
 
 //ATTENTION
-	format = "af%   164.14hhCalors %d%hschaine_finale";
+//	format = "af%   164.14hhCalors %d%hschaine_finale";
+	format = "Pablo est une %Dfds%C%p";
 
-
-first = ft_format_split(format);
-	ft_v_type_clean(first);
+	ft_printf((const char * restrict)format, 541093, 97,&i);
 	
-	while (first)
-	{
-		ft_lst_show(first, 0);
-		first = first->next;
-	}
+//	while (first)
+//	{
+//		ft_lst_show(first, 0);
+//		first = first->next;
+//	}
 // ft_putstr(ft_v_type('s', "hh"));
 
 /*

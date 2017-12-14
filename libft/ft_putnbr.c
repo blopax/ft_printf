@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:58:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/15 19:09:44 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:53:37 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putnbr(int n)
 	long	result;
 	char	c;
 
-	result = (long)(n);
+	result = (intmax_t)(n);
 	if (result < 0)
 	{
 		write(1, "-", 1);

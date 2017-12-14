@@ -6,32 +6,35 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/13 19:33:59 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/14 18:24:37 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char * restrict format, ...)
+int		ft_printf(const char *format, ...)
 {
-		va_list		ap;
-		t_lst		*first;
+	va_list		ap;
+	int			n;
+	t_lst		*first;
+	t_lst		*index;
 
-		va_start(ap, format);
-
-		first = ft_format_split((char *)format);
-		while (first)
+	n = 1;
+	va_start(ap, format);
+	first = ft_format_split((char *)format);
+	ft_v_type_clean(first);
+	index = first;
+	while (index)
+	{
+		if (index->v_type != 0)
 		{
-			if (first->v_type != 0)
-			{
-				first->value_ptr = va_arg_void(ap, first->v_type);
-				first->value_signed = va_arg_intmax(ap, first->v_type);
-				first->value_unsigned = va_arg_uintmax(ap, first->v_type);
-			}
-			if (first->next != 0)
-				ft_lst_show(first, 1);
-			first = first->next;
+			index->value_signed = va_arg_intmax(ap, index->v_type);
+			index->value_ptr = va_arg_void(ap, index->v_type);
+			index->value_unsigned = va_arg_uintmax(ap, index->v_type);
 		}
-		va_end(ap);
+		index = index->next;
+	}
+	ft_lst_show(first);
+	va_end(ap);
 	return (0);
 }

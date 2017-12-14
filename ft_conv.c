@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:13:14 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/11 19:29:28 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/14 16:27:56 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		ft_type(char *format, int st, t_info *inf)
 	{
 		if (format[st] == type_str[j])
 		{
-		ft_putstr("A\n\n");
 			inf->type = type_str[j];
 			return (1);
 		}
