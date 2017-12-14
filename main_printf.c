@@ -65,6 +65,8 @@ int		main(int argc, char **argv)
 //	printf("gestion de s avec nb:\t\t%s\n", nb);
 
 //	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
+	printf("hhC =%hhU\n", 123456789);
+	printf("hhC =%hhu\n", 123456789);
 
 	str = "Yo";
 	printf("S =%c\n", nb + 141);
