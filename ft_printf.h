@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/14 20:32:39 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/15 19:36:40 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,8 @@ void	*va_arg_void(va_list ap, char *v_type);
 intmax_t	va_arg_intmax(va_list ap, char *v_type);
 uintmax_t	va_arg_uintmax(va_list ap, char *v_type);
 char		*ft_itoa_base(intmax_t n, int base);
+
+// Fonctions utiles pour traitement options
+char	*ft_str_pos_ins(char *str, int pos, char *ins_str);
+char	*ft_accuracy_treatment(char *str, char *acc, char type);
 #endif
