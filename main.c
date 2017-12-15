@@ -24,9 +24,9 @@ int		main(int argc, char **argv)
 
 //ATTENTION
 //	format = "af%   164.14hhCalors %d%hschaine_finale";
-	format = "Pablo est une %d%D%hhd%hd";
+	format = "Pablo est une %dko%Djfk%s";
 
-	ft_printf((const char * restrict)format, 3000000000, 3000000000,100, 33000);
+	ft_printf((const char * restrict)format, 3000000000, 3000000000, "a");
 	
 //	while (first)
 //	{
