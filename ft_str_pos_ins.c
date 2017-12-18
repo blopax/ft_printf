@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:39:31 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/15 17:39:33 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:07:01 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char	*ft_str_pos_ins(char *str, int pos, char *ins_str)
 		result[index + i] = str[index];
 		index++;
 	}
+	free(str);
 	return(result);
 }

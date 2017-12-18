@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 19:51:07 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/14 20:38:32 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:12:01 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static char		ft_check_hex(intmax_t result, int base, int size)
 			c = (result / (ft_power(size, base))) + 48;
 		return (c);
 }
+
 
 char			*ft_itoa_base(intmax_t n, int base)
 {

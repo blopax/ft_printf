@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/15 17:13:53 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/18 20:51:52 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	first = ft_format_split((char *)format);
 	ft_v_type_clean(first);
+
 	index = first;
 	while (index)
 	{
@@ -34,6 +35,8 @@ int		ft_printf(const char *format, ...)
 		}
 		index = index->next;
 	}
+	ft_conv_treatment(first);
+	ft_accuracy_treatment(first);
 	ft_lst_show(first);
 	va_end(ap);
 	return (0);

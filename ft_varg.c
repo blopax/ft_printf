@@ -120,7 +120,6 @@ uintmax_t	va_arg_uintmax(va_list ap, char *v_type)
 		return (0);
 }
 
-
 void	*va_arg_void(va_list ap, char *v_type)
 {
 	if (ft_strcmp(v_type, "char *") == 0)

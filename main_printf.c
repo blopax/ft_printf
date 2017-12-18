@@ -70,7 +70,12 @@ int		main(int argc, char **argv)
 //	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
 //	printf("adresse avec %%p : \t\t%p\n", &i);
 //	printf("adresse avec itoa_base : \t%s\n", ft_itoa_base(test, 16));
-	printf("|%.3d|\n", -100);
+//	printf("|%x|\n", 10001);
+
+	printf("|%d|\n", -1);
+	printf("|%u|\n", -1);
+	printf("|%ju|\n", -1);
+	printf("|%hhx|\n", -1);
 	return (0);
 }
 
