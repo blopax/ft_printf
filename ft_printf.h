@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/15 19:36:40 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/18 20:35:05 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,18 @@ char		*ft_itoa_base(intmax_t n, int base);
 // Fonctions utiles pour traitement options
 char	*ft_str_pos_ins(char *str, int pos, char *ins_str);
 char	*ft_accuracy_treatment(char *str, char *acc, char type);
+
+//Fonctions get_clean_flag_mofo
+void	ft_add_char(t_lst *first, char c);
+void	ft_fill_char(t_lst *first, char c);
+void	ft_left_justif(t_lst *first);
+char	*ft_fill_flag(char a, char *flag);
+void	ft_clean_flag(t_lst *first);
+void	ft_clean_flag_suc(t_lst *first);
+void	ft_clean_flag_d(t_lst *first);
+void	ft_clean_flag_o(t_lst *first);
+void	ft_clean_flag_x(t_lst *first);
+void	ft_get_clean_flag(t_lst *first);
+
+
 #endif

@@ -26,9 +26,8 @@ int		main(int argc, char **argv)
 //	format = "af%   164.14hhCalors %d%hschaine_finale";
 	format = "%0.10d";
 
-	
-	ft_putstr(ft_accuracy_treatment("012345",".0",'s'));
-	printf("\n%.0s\n", "012345");
+	ft_printf(format, i);
+//	printf("\n%.0s\n", "012345");
 //	while (first)
 //	{
 //		ft_lst_show(first, 0);
