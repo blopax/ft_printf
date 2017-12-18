@@ -24,10 +24,11 @@ int		main(int argc, char **argv)
 
 //ATTENTION
 //	format = "af%   164.14hhCalors %d%hschaine_finale";
-	format = "Pablo est une %d%D%hhd%hd";
+	format = "%0.10d";
 
-	ft_printf((const char * restrict)format, 3000000000, 3000000000,100, 33000);
 	
+	ft_putstr(ft_accuracy_treatment("012345",".0",'s'));
+	printf("\n%.0s\n", "012345");
 //	while (first)
 //	{
 //		ft_lst_show(first, 0);

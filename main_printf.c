@@ -6,8 +6,8 @@
 int		main(int argc, char **argv)
 {
 	int		i;
-	char	*str;
-	int		nb;
+//	char	*str;
+//	int		nb;
 	intmax_t test;
 //	int		size;
 
@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 
-	nb = -30;
+//	nb = -30;
 /*
 	printf("LIST OF CONVERSIONS WITHOUT FLAGS, ACCURACY AND FIELD MIN SIZE \n\n");
 	i = 0;
@@ -68,8 +68,9 @@ int		main(int argc, char **argv)
 //	printf("gestion de s avec nb:\t\t%s\n", nb);
 
 //	printf("pointeur =%p\n pointeur =%lld\n\n", &nb, (long long int)&nb);
-	printf("adresse avec %%p : \t\t%p\n", &i);
-	printf("adresse avec itoa_base : \t%s\n", ft_itoa_base(test, 16));
+//	printf("adresse avec %%p : \t\t%p\n", &i);
+//	printf("adresse avec itoa_base : \t%s\n", ft_itoa_base(test, 16));
+	printf("|%.3d|\n", -100);
 	return (0);
 }
 

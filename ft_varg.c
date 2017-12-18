@@ -32,10 +32,11 @@ char	*ft_v_type(char type, char *mdf)
 	char	*v_type;
 
 	j = 1;
-	while (type_tab[0][j] == 0 || ft_strcmp(type_tab[0][j], "END") != 0)
+	while (ft_strcmp(type_tab[0][j], "END") != 0)
 	{
 		if (ft_strchr(type_tab[0][j], (int)type))
 		{
+
 			i = 1;
 			while (type_tab[i][j] == 0 || ft_strcmp(type_tab[i][j], "END") != 0)
 			{
