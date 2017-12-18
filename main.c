@@ -25,6 +25,15 @@ int		main(int argc, char **argv)
 	format = "% 8.4dalors %dautremaillon%schaine_finale";
 	ft_printf(format, 3, 4, "hello");
 
+	ft_printf(format, i);
+//	printf("\n%.0s\n", "012345");
+//	while (first)
+//	{
+//		ft_lst_show(first, 0);
+//		first = first->next;
+//	}
+// ft_putstr(ft_v_type('s', "hh"));
+
 	ft_empty_lst(first);
 //	sleep(100);
 

@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:13:14 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/14 16:27:56 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:32:21 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_type(char *format, int st, t_info *inf)
 {
 	int		j;
 	char	*type_str;
-	
+
 	type_str = "sSpdDioOuUxXcC";
 	j = 0;
 	while (type_str[j] != 0)
@@ -135,19 +135,23 @@ int		ft_size(char *format, int st, t_info *inf)
 	char	*tmp;
 
 	k = 0;
-	if (!(tmp = ft_strnew(1)))
-		exit(0);
-	while (format[st + k] >= '0' && format[st + k] <= '9')
+	if (format[st] >= '1' && format[st] <= '9')
 	{
-		if (!(tmp = ft_append_size_char(format[st + k], k, tmp)))
+		if (!(tmp = ft_strnew(1)))
 			exit(0);
-		k++;
+		while (format[st + k] >= '0' && format[st + k] <= '9')
+		{
+			if (!(tmp = ft_append_size_char(format[st + k], k, tmp)))
+				exit(0);
+			k++;
+		}
+		free(inf->size);
+		if (!(inf->size = ft_strdup(tmp)))
+			exit(0);
+		free(tmp);
+		return (k);
 	}
-	free(inf->size);
-	if (!(inf->size = ft_strdup(tmp)))
-		exit(0);
-	free(tmp);
-	return (k);
+	return (0);
 }
 
 char	*ft_apd_flg_chr(char format, t_flag flag)
@@ -173,7 +177,7 @@ int		ft_flag(char *format, int st, t_info *inf)
 {
 	t_flag		flag;
 
-	flag.flag_str = "# +-";
+	flag.flag_str = "#0-+ ";
 	flag.k = 0;
 	flag.switch_flag = 0;
 	while (format[st + flag.k] != 0 && flag.switch_flag == 0)
