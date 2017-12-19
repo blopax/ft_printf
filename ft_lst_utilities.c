@@ -25,7 +25,7 @@ t_lst	*ft_lst_init(void)
 	new_lst->final_str = NULL;
 	new_lst->flags = NULL;
 	new_lst->size = NULL;
-	new_lst->acc = NULL;
+	new_lst->acc = 0;
 	new_lst->mdf = NULL;
 	new_lst->type = 0;
 	new_lst->next = NULL;
@@ -38,6 +38,8 @@ t_lst	*ft_lst_init(void)
 
 void	ft_empty_lst(t_lst *first)
 {
+	t_lst	*index;
+
 	while (first)
 	{
 		free(first->init_str);
@@ -46,7 +48,10 @@ void	ft_empty_lst(t_lst *first)
 		free(first->size);
 		free(first->acc);
 		free(first->mdf);
-		first = first->next;
+		free(first->value_ptr);
+		index = first->next;
+		free(first);
+		first = index;
 	}
 }
 
@@ -68,22 +73,22 @@ void	ft_reinit_struct(t_info *info_struct_ptr)
 		if (info_struct_ptr->flags)
 		{
 			free(info_struct_ptr->flags);
-			info_struct_ptr->flags = ft_strnew(0);
+			info_struct_ptr->flags = NULL;
 		}
 		if (info_struct_ptr->size)
 		{
 			free(info_struct_ptr->size);
-			info_struct_ptr->size = ft_strnew(0);
+			info_struct_ptr->size = NULL;
 		}
 		if (info_struct_ptr->acc)
 		{
 			free(info_struct_ptr->acc);
-			info_struct_ptr->acc = ft_strnew(0);
+			info_struct_ptr->acc = NULL;
 		}
 		if (info_struct_ptr->mdf)
 		{
 			free(info_struct_ptr->mdf);
-			info_struct_ptr->mdf = ft_strnew(0);
+			info_struct_ptr->mdf = NULL;
 		}
 		info_struct_ptr->type = 0;
 }
