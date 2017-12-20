@@ -36,8 +36,8 @@ int		main(int argc, char **argv)
 	ft_printf(format, "1hello",  "2hello", "hello3");
 	ft_putstr("\n\n");
 */
-	format = "fjdksa%d%#0 34.3d";
-	ft_printf(format, 1,2);
+	format = "%ho";
+	ft_printf(format, 10);
 	ft_putstr("\n\n");
 
 
@@ -52,7 +52,7 @@ int		main(int argc, char **argv)
 // ft_putstr(ft_v_type('s', "hh"));
 
 //	ft_empty_lst(first);
-	sleep(100);
+//	sleep(100);
 
 	return (0);
 }

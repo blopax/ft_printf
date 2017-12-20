@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/19 16:40:16 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 18:43:03 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	ft_init_format_split(t_split *sp_sct)
 {
 	sp_sct->i = 0;
 	sp_sct->spec_flag = 1;
-	sp_sct->start  = 0;
+	sp_sct->start = 0;
 	sp_sct->first = ft_lst_init();
 	sp_sct->info_struct = ft_info_init();
 }
 
 int		ft_double_percent(int i, char *format)
 {
-	while (format[i] == '%' && format [i + 1] == '%')
+	while (format[i] == '%' && format[i + 1] == '%')
 		i = i + 2;
 	return (i);
 }
@@ -40,9 +40,9 @@ t_lst	*ft_format_split(char *format)
 	t_split	sp_sct;
 
 	ft_init_format_split(&sp_sct);
-		while (format[sp_sct.i] != 0)
-		{
-		sp_sct.i = ft_double_percent(sp_sct.i , format);
+	while (format[sp_sct.i] != 0)
+	{
+		sp_sct.i = ft_double_percent(sp_sct.i, format);
 		if (ft_conv(format, sp_sct.i, 0, &(sp_sct.info_struct)) >= 1)
 		{
 			if (sp_sct.spec_flag == 0)

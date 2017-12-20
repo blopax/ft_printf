@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 15:50:10 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 17:35:17 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 
 	added_str = 0;
 	acc_nb = ft_atoi(acc + 1);
-	if (type == 's')
-		((int)ft_strlen(str) > acc_nb) ? (str[acc_nb] = 0) : (str[0] = str[0]);
+	if (type == 's' && (int)ft_strlen(str) > acc_nb)
+		str[acc_nb] = 0;
 	else if (!(type == 'c' || type == 'C' || type == 's'))
 	{
 		(str[0] == '-') ? acc_nb++ : acc_nb;
@@ -46,9 +46,8 @@ void	ft_accuracy_treatment(t_lst *first)
 	while (first)
 	{
 		if (first->acc != 0)
-		{
-			first->init_str = ft_accuracy_str_treatment(first->init_str, first->acc, first->type);
-		}
+			first->init_str = ft_accuracy_str_treatment(first->init_str,
+					first->acc, first->type);
 		first = first->next;
 	}
 }

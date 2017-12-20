@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/18 20:55:19 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 18:43:00 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,33 @@ t_lst	*ft_format_split(char *format);
 t_lst	ft_struct_init();
 t_lst	*ft_struct_fill(char *str);
 t_lst	*ft_lst_pushback();
-int		ft_conv(char *format, int start, int flag, t_info *info_struct);
 void	ft_empty_struct(t_info *info_struct_ptr);
 void	ft_empty_lst(t_lst *first);
 t_lst	*ft_lst_init(void);
 t_info	ft_info_init(void);
+void	ft_reinit_struct(t_info *info_struct_ptr);
 int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr);
 void	ft_add_str_lst(char *format, int i, int start, t_lst *first);
+int		ft_conv(char *format, int st, int flag, t_info *inf_ptr);
+
+// Fonctions utiles pour ft_conv
+int		ft_type(char *format, int st, t_info *inf);
+int		ft_mdf(char *format, int st, t_info *inf);
+int		ft_chk_spec_mdf(char *format, int st, char mdf_str, t_info *info);
+int		ft_acc(char *format, int st, t_info *inf);
+char	*ft_append_acc_char(char format, int k, char *tmp);
+int		ft_size(char *format, int st, t_info *inf);
+char	*ft_append_size_char(char format, int k, char *tmp);
+int		ft_flag(char *format, int st, t_info *inf);
+char	*ft_apd_flg_chr(char format, t_flag flag);
+void	ft_flag_init(t_flag flag);
 
 // Fonctions utiles pour afficher les listes
 void	ft_lst_show(t_lst *first);
 void	ft_print_lst(t_lst *first, int n);
 void	ft_info_show(t_info info_struct);
+
+
 
 // Fonctions utiles pour va_arg
 char	*ft_v_type(char type, char *mdf);

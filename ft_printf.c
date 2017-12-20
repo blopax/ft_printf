@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/19 16:56:19 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 17:37:51 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,12 @@
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
-	int			n;
 	t_lst		*first;
 	t_lst		*index;
 
-	n = 1;
 	va_start(ap, format);
 	first = ft_format_split((char *)format);
 	ft_v_type_clean(first);
-
 	index = first;
 	while (index)
 	{

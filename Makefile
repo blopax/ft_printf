@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 14:56:41 by pclement          #+#    #+#              #
-#    Updated: 2017/12/20 16:07:41 by pclement         ###   ########.fr        #
+#    Updated: 2017/12/20 18:45:06 by pclement         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = .
-SRC_NAME = ft_accuracy_treatment.c ft_str_pos_ins.c ft_conv.c\
+SRC_NAME = ft_accuracy_treatment.c ft_str_pos_ins.c ft_conv_if.c\
+		   ft_conv_if_utilities.c ft_format_split_utilities.c\
+		   ft_debug_show.c\
 		   ft_format_split.c ft_lst_utilities.c\
 		   ft_printf.c ft_varg.c ft_printf_itoa_base.c ft_conv_treatment.c\
 

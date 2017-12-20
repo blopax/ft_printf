@@ -6,25 +6,24 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 15:51:15 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 17:24:31 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_val_filled(char *v_type)
+char	*ft_val_filled(char *v_type)
 {
 	char	*str;
 
 	str = 0;
 	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
-			||(ft_strcmp(v_type, "signed char") == 0) 
-			|| (ft_strcmp(v_type, "long") == 0) 
-			|| (ft_strcmp(v_type, "long long") == 0) 
-			|| (ft_strcmp(v_type, "intmax_t") == 0) 
+			|| (ft_strcmp(v_type, "signed char") == 0)
+			|| (ft_strcmp(v_type, "long") == 0)
+			|| (ft_strcmp(v_type, "long long") == 0)
+			|| (ft_strcmp(v_type, "intmax_t") == 0)
 			|| (ft_strcmp(v_type, "wint_t") == 0))
 		str = "value_signed";
-
 	if ((ft_strcmp(v_type, "size_t") == 0)
 			|| (ft_strcmp(v_type, "unsigned short int") == 0)
 			|| (ft_strcmp(v_type, "unsigned char") == 0)
@@ -32,8 +31,7 @@ char		*ft_val_filled(char *v_type)
 			|| (ft_strcmp(v_type, "unsigned long long") == 0)
 			|| (ft_strcmp(v_type, "uintmax_t") == 0))
 		str = "value_unsigned";
-
-	if ((ft_strcmp(v_type, "char *") == 0) 
+	if ((ft_strcmp(v_type, "char *") == 0)
 			|| (ft_strcmp(v_type, "wchar_t *") == 0)
 			|| (ft_strcmp(v_type, "void *") == 0))
 		str = "value_ptr";
@@ -49,24 +47,25 @@ char	*ft_char_conv(int value_signed)
 	return (str);
 }
 
-#include <stdio.h>
 char	*ft_signed_conv_treatment(t_lst *first)
 {
+	uintmax_t	value;
+
+	value = (uintmax_t)first->value_signed;
 	if (first->type == 'd')
 		return (ft_itoa_base_intmax(first->value_signed, "0123456789"));
 	if (first->type == 'o')
-		return (ft_itoa_base_uintmax((uintmax_t)first->value_signed, "01234567"));
+		return (ft_itoa_base_uintmax(value, "01234567"));
 	if (first->type == 'u')
-		return (ft_itoa_base_uintmax((uintmax_t)first->value_signed, "0123456789"));
+		return (ft_itoa_base_uintmax(value, "0123456789"));
 	if (first->type == 'x')
-		return (ft_itoa_base_uintmax((uintmax_t)first->value_signed, "0123456789abcdef"));
+		return (ft_itoa_base_uintmax(value, "0123456789abcdef"));
 	if (first->type == 'X')
-		return (ft_itoa_base_uintmax((uintmax_t)first->value_signed, "0123456789ABCDEF"));
+		return (ft_itoa_base_uintmax(value, "0123456789ABCDEF"));
 	if (first->type == 'c')
 		return (ft_char_conv(first->value_signed));
 	return (NULL);
 }
-// adapter itoa base prend bien intmax_t
 
 char	*ft_unsigned_conv_treatment(t_lst *first)
 {
@@ -84,13 +83,6 @@ char	*ft_unsigned_conv_treatment(t_lst *first)
 	return (str);
 }
 
-void	ft_ptr_conv_treatment(t_lst *first)
-{
-	if (!(first->init_str = ft_strdup((char *)first->value_ptr)))
-		exit(0);
-}
-//traiter wint et wchar et *
-
 void	ft_conv_treatment(t_lst *first)
 {
 	while (first)
@@ -100,8 +92,10 @@ void	ft_conv_treatment(t_lst *first)
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
 			first->init_str = ft_unsigned_conv_treatment(first);
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
-			ft_ptr_conv_treatment(first);
+		{
+			if (!(first->init_str = ft_strdup((char *)first->value_ptr)))
+				exit(0);
+		}
 		first = first->next;
 	}
 }
-//traiter wint et wchar et *

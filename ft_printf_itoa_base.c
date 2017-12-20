@@ -6,15 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 17:30:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/18 17:49:24 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 18:58:22 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/includes/libft.h"
 #include <stdlib.h>
-
-
 
 int		ft_neg(int value, int base_size)
 {
@@ -26,9 +24,8 @@ int		ft_neg(int value, int base_size)
 	return (1);
 }
 
-
 /*
-Doesn't take into account sign if base different from 10
+**Doesn't take into account sign if base different from 10
 */
 
 char	*ft_itoa_base_intmax(intmax_t value, char *base)
@@ -57,9 +54,9 @@ char	*ft_itoa_base_intmax(intmax_t value, char *base)
 		tab[0] = '-';
 	return (tab);
 }
-//pb ac intmax min qd negqtif en passant au plus
 
 /*
+**pb ac intmax min qd negqtif en passant au plus
 **Only for uintmax_t everything positive. cast before
 */
 
@@ -69,7 +66,7 @@ char	*ft_itoa_base_uintmax(uintmax_t value, char *base)
 	int			tab_len;
 	uintmax_t	result;
 	int			i;
-	
+
 	result = value;
 	tab_len = 1;
 	while ((value = value / ft_strlen(base)) >= 1)
