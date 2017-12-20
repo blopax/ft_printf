@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ft_printf.h"
+#include <limits.h>
 
 int		main(int argc, char **argv)
 {
@@ -40,21 +41,19 @@ int		main(int argc, char **argv)
 	format = "%#+-5d%#+05d%#05x%#08x";
 	ft_printf(format, 10, 10, 1000, 1000);
 	ft_putstr("\n\n");
-
-
-
-//	ft_printf(format, i);
+//	format = "%ho";
+//	ft_printf(format, 10);
+//	ft_putstr("\n\n");
 //	printf("\n%.0s\n", "012345");
 //	while (first)
 //	{
 //		ft_lst_show(first, 0);
 //		first = first->next;
 //	}
-// ft_putstr(ft_v_type('s', "hh"));
+// ft_putstr(ft_v_type('s', "hh"););
 
 //	ft_empty_lst(first);
-	sleep(100);
+//	sleep(100);
 
 	return (0);
 }
-

@@ -1,7 +1,6 @@
 #include "ft_printf.h"
 
 
-char	*ft_c_pos_ins(char *str, int pos, char *ins_str);
 
 int		main(void)
 {
@@ -12,7 +11,7 @@ int		main(void)
 	str = "yo" ;
 	ins_str = "hello ";
 	pos = 0;
-	ft_putstr(ft_c_pos_ins(str, pos, ins_str));
+	ft_putstr(ft_str_pos_ins(str, pos, ins_str));
 	ft_putstr("\n");
 
 
