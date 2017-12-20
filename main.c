@@ -5,10 +5,10 @@
 int		main(int argc, char **argv)
 {
 	int		i;
-	int		count;
+//	int		count;
 	char	*format;
-	int		n;
-	char	*str;
+//	int		n;
+//	char	*str;
 
 	i = 1;
 	while (i < argc)
@@ -36,8 +36,9 @@ int		main(int argc, char **argv)
 	ft_printf(format, "1hello",  "2hello", "hello3");
 	ft_putstr("\n\n");
 */
-	format = "fjdksa%d%#0 34.3d";
-	ft_printf(format, 1,2);
+	//format = "%#-5o%#05o%#-4o%#04o";
+	format = "%#+-5d%#+05d%#05x%#08x";
+	ft_printf(format, 10, 10, 1000, 1000);
 	ft_putstr("\n\n");
 
 

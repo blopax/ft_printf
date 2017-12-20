@@ -6,11 +6,12 @@
 int		main(int argc, char **argv)
 {
 	int		i;
-//	char	*str;
+	char	*str;
 //	int		nb;
 	intmax_t test;
 //	int		size;
 
+	str = 0;
 	i = 1;
 	test = (intmax_t)&i;
 	while (i < argc)
@@ -72,11 +73,10 @@ int		main(int argc, char **argv)
 //	printf("adresse avec itoa_base : \t%s\n", ft_itoa_base(test, 16));
 //	printf("|%x|\n", 10001);
 
-	printf("|%d|\n", -1);
+/*	printf("|%d|\n", -1);
 	printf("|%u|\n", -1);
 	printf("|%ju|\n", -1);
 	printf("|%hhx|\n", -1);
-	printf("|.12d|%.12d\n", 12);
 	printf("|0.3d|%0.3d\n", 12);
 	printf("|-5.3p|%-5.3d\n", 12);
 	printf("|-20.3p|%-20.3p\n", &i);
@@ -125,6 +125,38 @@ int		main(int argc, char **argv)
 	printf("|#0o|%#0o\n", 100);
 	printf("|#6o|%#6o\n", 100);
 	printf("|.s|%.s\n", "allo");
+	printf("|0 6d|%0 6d\n", 2);
+	printf("|0+6d|%0+6d\n", 2);
+	printf("| d|% d\n", 2);
+	printf("| 1d|% 1d\n", 2);
+	printf("|+.5d|%+.5d\n", 1);
+	printf("| 04d|% 04d\n", 10000);
+	printf("| -10d|% -10d\n", 10000);
+	printf("| 04d|% --10d\n", 10000);
+	printf("|--+--10d|%--+--10d\n", 10);*/
+/*	printf("|- 5d|%- 5d\n", -10);
+	printf("|0+5d|%0+5d\n", -10);
+	printf("|-5d|%-5d\n", -10);
+	printf("|0 5d|%0 5d\n", -10);
+	printf("|- 4d|%- 4d\n", -10);
+	printf("|0+4d|%0+4d\n", -10);
+	printf("|-4d|%-4d\n", -10);
+	printf("|0 4d|%0 4d\n", -10);
+	printf("|- 3d|%- 3d\n", -10);
+	printf("|0+3d|%0+3d\n", -10);
+	printf("|-3d|%-3d\n", -10);
+	printf("|0 3d|%0 3d\n", -10);
+	printf("|-10.2s|%-10.2s\n", str);
+	printf("|-5s|%-5s\n", str);
+	printf("|5s|%5s\n", "\0 11abcds/0einwfeiun");
+	printf("|5s|%5s\n", "\111");
+	printf("|#-5o|%#-5o\n", 10);
+	printf("|#05o|%#05o\n", 10);
+	printf("|#-4o|%#-4o\n", 10);
+	printf("|#05o|%#05o\n", 1000);
+	printf("|+05d|%+05d\n", 1000);*/
+	printf("|#05x|%#05x\n", 1000);
+	printf("|#08x|%#08x\n", 1000);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/19 16:56:19 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 19:31:07 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_printf(const char *format, ...)
 	}
 	ft_conv_treatment(first);
 	ft_accuracy_treatment(first);
+	ft_get_clean_flag(first);
 	ft_lst_show(first);
 	va_end(ap);
 	ft_empty_lst(first);
