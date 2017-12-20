@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/18 20:26:08 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/20 15:51:15 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ char	*ft_char_conv(int value_signed)
 #include <stdio.h>
 char	*ft_signed_conv_treatment(t_lst *first)
 {
-	char	*str;
-
 	if (first->type == 'd')
 		return (ft_itoa_base_intmax(first->value_signed, "0123456789"));
 	if (first->type == 'o')
