@@ -150,13 +150,15 @@ int		main(int argc, char **argv)
 	printf("|-5s|%-5s\n", str);
 	printf("|5s|%5s\n", "\0 11abcds/0einwfeiun");
 	printf("|5s|%5s\n", "\111");
-	printf("|#-5o|%#-5o\n", 10);
-	printf("|#05o|%#05o\n", 10);
-	printf("|#-4o|%#-4o\n", 10);
+	printf("|#-5o|%#-5o\n", 10);*/
+	printf("|+05d|%+05d\n", 1000);
 	printf("|#05o|%#05o\n", 1000);
-	printf("|+05d|%+05d\n", 1000);*/
-	printf("|#05x|%#05x\n", 1000);
-	printf("|#08x|%#08x\n", 1000);
+	printf("|+6d|%+6d\n", 1000);
+	printf("|#6o|%#6o\n", 1000);
+	printf("|04o|%04o\n", 1000);
+	printf("|04d|%04d\n", 1000);
+/*	printf("|#05x|%#05x\n", 1000);
+	printf("|#08x|%#08x\n", 1000);*/
 	return (0);
 }
 
