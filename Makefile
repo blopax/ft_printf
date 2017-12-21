@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 14:56:41 by pclement          #+#    #+#              #
-#    Updated: 2017/12/21 11:48:06 by pclement         ###   ########.fr        #
+#    Updated: 2017/12/21 15:19:19 by pclement         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_NAME = ft_accuracy_treatment.c ft_str_pos_ins.c ft_conv_if.c\
 		   ft_debug_show.c\
 		   ft_format_split.c ft_lst_utilities.c\
 		   ft_printf.c ft_varg.c ft_printf_itoa_base.c ft_conv_treatment.c\
+		   ft_display.c\
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
