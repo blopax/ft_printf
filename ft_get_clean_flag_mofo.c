@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 18:21:44 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/21 17:59:43 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/21 18:20:07 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,9 +316,9 @@ void	ft_get_clean_flag(t_lst *first)
 		//write(1,"ALLO\n",5);
 		if (first->flags)
 		{
-			write(1,"INIT\n",5);
-			ft_putstr(first->init_str);
-			write(1,"\n",1);
+			//write(1,"INIT\n",5);
+			//ft_putstr(first->init_str);
+			//write(1,"\n",1);
 			//write(1,"TEST\n",5);
 			ft_clean_flag(first);
 			real_size = ft_adjust_size(first);
