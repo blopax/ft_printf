@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 17:30:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 18:58:22 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 13:18:29 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/includes/libft.h"
 #include <stdlib.h>
 
-int		ft_neg(int value, int base_size)
+int		ft_neg(intmax_t value, int base_size)
 {
 	if (value < 0)
 	{
@@ -43,7 +43,7 @@ char	*ft_itoa_base_intmax(intmax_t value, char *base)
 		tab_len++;
 	if (!(tab = ft_strnew(tab_len + 1)))
 		return (0);
-	(value < 0) ? (result = -(long)value) : (result = (long)value);
+	(value < 0) ? (result = -value) : (result = value);
 	i = 0;
 	while (++i <= tab_len)
 	{

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 20:10:29 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 13:32:16 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ char	*ft_signed_conv_treatment(t_lst *first)
 {
 	uintmax_t	value;
 
-	value = (uintmax_t)first->value_signed;
+	if (ft_strcmp(first->v_type, "int") == 0)
+		value = (uintmax_t)((unsigned int)first->value_signed);
+	else
+		value = (uintmax_t)first->value_signed;
 	if (first->type == 'd')
 		return (ft_itoa_base_intmax(first->value_signed, "0123456789"));
 	if (first->type == 'o')
@@ -73,13 +76,13 @@ char	*ft_unsigned_conv_treatment(t_lst *first)
 
 	str = NULL;
 	if (first->type == 'o')
-		str = ft_itoa_base_uintmax(first->value_signed, "01234567");
+		str = ft_itoa_base_uintmax(first->value_unsigned, "01234567");
 	if (first->type == 'u')
-		str = ft_itoa_base_uintmax(first->value_signed, "0123456789");
+		str = ft_itoa_base_uintmax(first->value_unsigned, "0123456789");
 	if (first->type == 'x')
-		str = ft_itoa_base_uintmax(first->value_signed, "0123456789abcdef");
+		str = ft_itoa_base_uintmax(first->value_unsigned, "0123456789abcdef");
 	if (first->type == 'X')
-		str = ft_itoa_base_uintmax(first->value_signed, "0123456789ABCDEF");
+		str = ft_itoa_base_uintmax(first->value_unsigned, "0123456789ABCDEF");
 	return (str);
 }
 

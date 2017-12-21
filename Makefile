@@ -6,13 +6,20 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 14:56:41 by pclement          #+#    #+#              #
-#    Updated: 2017/12/20 18:45:06 by pclement         ###   ########.fr        #
+#    Updated: 2017/12/21 11:48:06 by pclement         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 NAME1 = printf_tests
 NAME2 = ft_accuracy_treatment
+NAME3 = numbers
+NAME4 = numbers_h
+NAME5 = numbers_hh
+NAME6 = numbers_l
+NAME7 = numbers_ll
+NAME8 = numbers_j
+NAME9 = numbers_z
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -33,7 +40,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 CPPFLAGS = -I.
 #*. peut etre remplace par include ou le nom du dossier ou se trouvent les #include *
 
-all: $(NAME) $(NAME1) $(NAME2) clean
+all: $(NAME) $(NAME1) $(NAME2) $(NAME3) $(NAME4) $(NAME5) $(NAME6) $(NAME7) $(NAME8) $(NAME9) clean
 
 $(NAME): $(OBJ)
 	$(CC) $^ main.c libft/libft.a -o $@
@@ -47,6 +54,32 @@ $(NAME1): $(OBJ)
 
 $(NAME2): $(OBJ)
 	$(CC) $^ main_ft_acc_treatment.c libft/libft.a -o $@
+
+$(NAME3): $(OBJ)
+	$(CC) $^ main_numbers.c libft/libft.a -o $@
+
+$(NAME4): $(OBJ)
+	$(CC) $^ main_numbers_h.c libft/libft.a -o $@
+
+$(NAME5): $(OBJ)
+	$(CC) $^ main_numbers_hh.c libft/libft.a -o $@
+
+$(NAME6): $(OBJ)
+	$(CC) $^ main_numbers_l.c libft/libft.a -o $@
+
+$(NAME7): $(OBJ)
+	$(CC) $^ main_numbers_ll.c libft/libft.a -o $@
+
+$(NAME8): $(OBJ)
+	$(CC) $^ main_numbers_j.c libft/libft.a -o $@
+
+$(NAME9): $(OBJ)
+	$(CC) $^ main_numbers_z.c libft/libft.a -o $@
+
+
+
+
+
 
 
 

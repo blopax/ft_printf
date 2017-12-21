@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 20:37:55 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/21 13:19:06 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ int		ft_printf(const char *format, ...)
 	}
 	ft_conv_treatment(first);
 	ft_accuracy_treatment(first);
-	ft_get_clean_flag(first);
-	ft_lst_show(first);
+//	ft_get_clean_flag(first);
 //	ft_lst_show(first);
-//	index = first->next;
-//	ft_putstr(index->init_str);
+	index = first->next;
+	ft_putstr(index->init_str);
 	va_end(ap);
 	ft_empty_lst(first);
 	return (0);
