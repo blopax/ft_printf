@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 15:18:33 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 16:21:45 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_printf(const char *format, ...)
 	va_list		ap;
 	t_lst		*first;
 	t_lst		*index;
-//	int			read_bytes;
+	int			read_bytes;
 
 	va_start(ap, format);
 	first = ft_format_split((char *)format);
@@ -36,13 +36,13 @@ int		ft_printf(const char *format, ...)
 	}
 	ft_conv_treatment(first);
 	ft_accuracy_treatment(first);
-//	ft_get_clean_flag(first);
-//	read_bytes = ft_display(first);
-
-	ft_lst_show(first);
+	ft_get_clean_flag(first);
+	read_bytes = ft_display(first);
+//	read_bytes = 0;
+//	ft_lst_show(first);
 //	index = first->next;
 //	ft_putstr(index->init_str);
 	va_end(ap);
 	ft_empty_lst(first);
-	return (0);
+	return (read_bytes);
 }

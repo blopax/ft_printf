@@ -38,9 +38,12 @@ int		main(int argc, char **argv)
 	ft_putstr("\n\n");
 */
 	//format = "%#-5o%#05o%#-4o%#04o";
-	format = "%#+-5d%#+05d%#+6d%#6o%6o%6d";
-	ft_printf(format, 10, 10, 1000, 1000, 1000, 1000);
+//	format = "%+7d%#7o%+7o%#7d";
+	format = "%.7d";
+	ft_printf(format, 0);
 	ft_putstr("\n\n");
+	printf(format, 0);
+//	ft_putstr("\n\n");
 //	format = "%ho";
 //	ft_printf(format, 10);
 //	ft_putstr("\n\n");
