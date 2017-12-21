@@ -151,14 +151,47 @@ int		main(int argc, char **argv)
 	printf("|5s|%5s\n", "\0 11abcds/0einwfeiun");
 	printf("|5s|%5s\n", "\111");
 	printf("|#-5o|%#-5o\n", 10);*/
-	printf("|+05d|%+05d\n", 1000);
-	printf("|#05o|%#05o\n", 1000);
-	printf("|+6d|%+6d\n", 1000);
-	printf("|#6o|%#6o\n", 1000);
-	printf("|04o|%04o\n", 1000);
-	printf("|04d|%04d\n", 1000);
+	printf("+04o\t|% 04o|\n", 1000);
+	printf("+06d\t|%+06d|\n", 1000);
+	printf("+06d\t|%+06d|\n", -1000);
+	printf("#06o\t|%#06o|\n", 1000);
+	printf("#06o\t|%#06o|\n", -1000);
+	printf("+6d\t|%+6d|\n", 1000);
+	printf("+6d\t|%06d|\n", -1000);
+	printf("#6o\t|%#6o|\n", 1000);
+	printf("#6o\t|%#6o|\n", -1000);
+	printf("04o\t|%04o|\n", 1000);
+	printf("04o\t|%04o|\n", -1000);
+	printf("04d\t|%04d|\n", 1000);
+	printf("04d\t|%04d|\n", -1000);
 /*	printf("|#05x|%#05x\n", 1000);
 	printf("|#08x|%#08x\n", 1000);*/
+	printf("\n");
+	printf("# 06d\t|%# 06d|\n", 1000);
+	printf("#-06d\t|%#-06d|\n", 1000);
+	printf("#-6d\t|%#-6d|\n", 1000);
+	printf("#- 6d\t|%#- 6d|\n", 1000);
+	printf(" 1d\t|%# 1d|\n", 1);
+	printf("\n");
+	
+	printf("#-06x\t|%#-06x|\n", 1000);
+	printf("#-3x\t|%#-3x|\n", 1000);
+	printf("#- 6x\t|%# 6x|\n", 1000);
+	printf("#- 6x\t|%#-6x|\n", 1000);
+	printf("#0 6x\t|%#0 6x|\n", 1000);
+	printf("\n");
+	
+	printf("#-06o\t|%#-06o|\n", 1000);
+	printf("#-3o\t|%#-3o|\n", 1000);
+	printf("#-0 6o\t|%#-0 6o|\n", 1000);
+	printf("#0 6o\t|%#0 6o|\n", 1000);
+	printf("\n");
+	
+
+	printf("#0 6o\t|%#0 6o|\n", 1000);
+	
+
+
 	return (0);
 }
 
