@@ -37,10 +37,11 @@ int		main(int argc, char **argv)
 	ft_printf(format, "1hello",  "2hello", "hello3");
 	ft_putstr("\n\n");
 */
-//	format = "%ho";
+//	format = "%o";
 //	ft_printf(format, 10);
 //	ft_putstr("\n\n");
 
+	printf("\n\n\nNO FLAGS_____________________________________NO FLAGS\n");
 //TEST BASE 10
 	printf("\nTEST ON d  NO FLAGS_________________\n");
 	printf("\n\nCase1: d > 0 No Flags\n");
@@ -71,35 +72,35 @@ int		main(int argc, char **argv)
 	ft_printf("%d", INT_MAX);
 	printf("|");
 
-	printf("\n\nCase5: d =  INT_MIN Flags\n");
+	printf("\n\nCase5: d =  INT_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", INT_MIN);
 	printf("\n----func----\n");
 	ft_printf("%d", INT_MIN);
 	printf("|");
 
-	printf("\n\nCase7: d =  UINT_MAX Flags\n");
+	printf("\n\nCase7: d =  UINT_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", UINT_MAX);
 	printf("\n----func----\n");
 	ft_printf("%d", UINT_MAX);
 	printf("|");
 
-	printf("\n\nCase8: d =  LONG_MIN Flags\n");
+	printf("\n\nCase8: d =  LONG_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", LONG_MIN);
 	printf("\n----func----\n");
 	ft_printf("%d", LONG_MIN);
 	printf("|");
 
-	printf("\n\nCase8: d =  LONG_MAX Flags\n");
+	printf("\n\nCase8: d =  LONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", LONG_MAX);
 	printf("\n----func----\n");
 	ft_printf("%d", LONG_MAX);
 	printf("|");
 
-	printf("\n\nCase8: d =  ULONG_MAX Flags\n");
+	printf("\n\nCase8: d =  ULONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", ULONG_MAX);
 	printf("\n----func----\n");
@@ -138,35 +139,35 @@ int		main(int argc, char **argv)
 	ft_printf("%o", INT_MAX);
 	printf("|");
 
-	printf("\n\nCase5: o =  INT_MIN Flags\n");
+	printf("\n\nCase5: o =  INT_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%o|", INT_MIN);
 	printf("\n----func----\n");
 	ft_printf("%o", INT_MIN);
 	printf("|");
 
-	printf("\n\nCase7: o =  UINT_MAX Flags\n");
+	printf("\n\nCase7: o =  UINT_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%o|", UINT_MAX);
 	printf("\n----func----\n");
 	ft_printf("%o", UINT_MAX);
 	printf("|");
 
-	printf("\n\nCase8: o =  LONG_MIN Flags\n");
+	printf("\n\nCase8: o =  LONG_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%o|", LONG_MIN);
 	printf("\n----func----\n");
 	ft_printf("%o", LONG_MIN);
 	printf("|");
 
-	printf("\n\nCase8: o =  LONG_MAX Flags\n");
+	printf("\n\nCase8: o =  LONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%o|", LONG_MAX);
 	printf("\n----func----\n");
 	ft_printf("%o", LONG_MAX);
 	printf("|");
 
-	printf("\n\nCase8: o =  ULONG_MAX Flags\n");
+	printf("\n\nCase8: o =  ULONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%o|", ULONG_MAX);
 	printf("\n----func----\n");
@@ -179,7 +180,7 @@ int		main(int argc, char **argv)
 	printf("\n\n\nTEST ON x  NO FLAGS_________________\n");
 	printf("\n\nCase1: x > 0 No Flags\n");
 	printf("\n----real----\n");
-	printf("%llx|", 25);
+	printf("%x|", 25);
 	printf("\n----func----\n");
 	ft_printf("%llx", 25);
 	printf("|");
@@ -205,35 +206,35 @@ int		main(int argc, char **argv)
 	ft_printf("%x", INT_MAX);
 	printf("|");
 
-	printf("\n\nCase5: x =  INT_MIN Flags\n");
+	printf("\n\nCase5: x =  INT_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%x|", INT_MIN);
 	printf("\n----func----\n");
 	ft_printf("%x", INT_MIN);
 	printf("|");
 
-	printf("\n\nCase7: x =  UINT_MAX Flags\n");
+	printf("\n\nCase7: x =  UINT_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%x|", UINT_MAX);
 	printf("\n----func----\n");
 	ft_printf("%x", UINT_MAX);
 	printf("|");
 
-	printf("\n\nCase8: x =  LONG_MIN Flags\n");
+	printf("\n\nCase8: x =  LONG_MIN No Flags\n");
 	printf("\n----real----\n");
 	printf("%x|", LONG_MIN);
 	printf("\n----func----\n");
 	ft_printf("%x", LONG_MIN);
 	printf("|");
 
-	printf("\n\nCase8: x =  LONG_MAX Flags\n");
+	printf("\n\nCase8: x =  LONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%x|", LONG_MAX);
 	printf("\n----func----\n");
 	ft_printf("%x", LONG_MAX);
 	printf("|");
 
-	printf("\n\nCase8: x =  ULONG_MAX Flags\n");
+	printf("\n\nCase8: x =  ULONG_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%x|", ULONG_MAX);
 	printf("\n----func----\n");
@@ -241,22 +242,6 @@ int		main(int argc, char **argv)
 	printf("|");
 
 
-
-
-
-
-
-
-//	printf("\n%.0s\n", "012345");
-//	while (first)
-//	{
-//		ft_lst_show(first, 0);
-//		first = first->next;
-//	}
-// ft_putstr(ft_v_type('s', "hh"););
-
-//	ft_empty_lst(first);
-//	sleep(100);
 
 	return (0);
 }

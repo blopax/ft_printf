@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:39:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 20:02:23 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 14:36:53 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ const char		*g_type[9][7] =
 	{"l", "long", "unsigned long", "wint_t", "wchar_t *", 0, "END"},
 	{"ll", "long long", "unsigned long long", 0, 0, 0, "END"},
 	{"j", "intmax_t", "uintmax_t", 0, 0, 0, "END"},
-	{"z", "size_t", "size_t", 0, 0, 0, "END"},
+	{"z", "ssize_t", "size_t", 0, 0, 0, "END"},
 	{"END", "END", "END", "END", "END", "END", "END"}
 };
 
@@ -95,13 +95,15 @@ intmax_t	va_arg_intmax(va_list ap, char *v_type)
 		return (va_arg(ap, intmax_t));
 	if (ft_strcmp(v_type, "wint_t") == 0)
 		return (va_arg(ap, intmax_t));
+	if (ft_strcmp(v_type, "ssize_t") == 0)
+		return (va_arg(ap, intmax_t));
 	return (0);
 }
 
 uintmax_t	va_arg_uintmax(va_list ap, char *v_type)
 {
 	if (ft_strcmp(v_type, "size_t") == 0)
-		return ((unsigned short)va_arg(ap, uintmax_t));
+		return ((uintmax_t)va_arg(ap, uintmax_t));
 	if (ft_strcmp(v_type, "unsigned short int") == 0)
 		return ((unsigned short)va_arg(ap, uintmax_t));
 	if (ft_strcmp(v_type, "unsigned char") == 0)
@@ -112,6 +114,8 @@ uintmax_t	va_arg_uintmax(va_list ap, char *v_type)
 		return ((unsigned long long)va_arg(ap, uintmax_t));
 	if (ft_strcmp(v_type, "uintmax_t") == 0)
 		return ((uintmax_t)va_arg(ap, uintmax_t));
+	if (ft_strcmp(v_type, "size_t") == 0)
+		return (va_arg(ap, uintmax_t));
 	return (0);
 }
 

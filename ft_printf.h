@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 20:36:59 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/21 15:17:16 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_reinit_struct(t_info *info_struct_ptr);
 int		ft_add_spec_lst(t_lst *first, t_info *info_struct_ptr);
 void	ft_add_str_lst(char *format, int i, int start, t_lst *first);
 int		ft_conv(char *format, int st, int flag, t_info *inf_ptr);
+t_lst	*ft_delete_first(t_lst *first);
 
 // Fonctions utiles pour ft_conv
 int		ft_type(char *format, int st, t_info *inf);
@@ -121,7 +122,7 @@ void	ft_flag_init(t_flag flag);
 void	ft_lst_show(t_lst *first);
 void	ft_print_lst(t_lst *first, int n);
 void	ft_info_show(t_info info_struct);
-
+int		ft_display(t_lst *first);
 
 
 // Fonctions utiles pour va_arg
