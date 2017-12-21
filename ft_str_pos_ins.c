@@ -6,11 +6,21 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:39:31 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 18:55:43 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:55:23 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char*		ft_parameters_check(char *str, char *ins_str)
+{
+	char	*result;
+
+	if (str == 0 || ins_str == 0 ||
+		!(result = ft_strnew(ft_strlen(str) + ft_strlen(ins_str))))
+		return (NULL);
+	return (result);
+}
 
 char	*ft_str_pos_ins(char *str, int pos, char *ins_str)
 {
@@ -18,8 +28,7 @@ char	*ft_str_pos_ins(char *str, int pos, char *ins_str)
 	int		index;
 	int		i;
 
-	if (str == 0 || ins_str == 0 ||
-			!(result = ft_strnew(ft_strlen(str) + ft_strlen(ins_str))))
+	if (!(result = ft_parameters_check(str, ins_str)))
 		return (NULL);
 	index = 0;
 	while (index < pos && str[index] != 0)
@@ -27,9 +36,12 @@ char	*ft_str_pos_ins(char *str, int pos, char *ins_str)
 		result[index] = str[index];
 		index++;
 	}
-	i = -1;
-	while (i++ < (int)strlen(ins_str))
+	i = 0;
+	while (i < (int)strlen(ins_str))
+	{
 		result[index + i] = ins_str[i];
+		i++;
+	}
 	while (str[index] != 0)
 	{
 		result[index + i] = str[index];

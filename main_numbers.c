@@ -60,11 +60,11 @@ int		main(int argc, char **argv)
 
 	printf("\n\nCase3: d = 0 No Flags\n");
 	printf("\n----real----\n");
-	printf("%d|", 0);
+	printf("%.7d|", 0);
 	printf("\n----func----\n");
-	ft_printf("%d", 0);
+	ft_printf("%.7d", 0);
 	printf("|");
-
+/*
 	printf("\n\nCase4: d = INT_MAX No Flags\n");
 	printf("\n----real----\n");
 	printf("%d|", INT_MAX);
@@ -240,7 +240,7 @@ int		main(int argc, char **argv)
 	printf("\n----func----\n");
 	ft_printf("%x", ULONG_MAX);
 	printf("|");
-
+*/
 
 
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 17:35:17 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:55:45 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 		(str[0] == '-') ? acc_nb++ : acc_nb;
 		if ((int)ft_strlen(str) < acc_nb)
 		{
-			added_str = ft_strnew(acc_nb - ft_strlen(str));
+			added_str = ft_strnew(acc_nb - (int)ft_strlen(str));
 			i = 0;
 			while (i < acc_nb - (int)ft_strlen(str))
 				added_str[i++] = '0';
