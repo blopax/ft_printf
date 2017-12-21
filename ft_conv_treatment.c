@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 13:32:16 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 14:38:45 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_val_filled(char *v_type)
 			|| (ft_strcmp(v_type, "long") == 0)
 			|| (ft_strcmp(v_type, "long long") == 0)
 			|| (ft_strcmp(v_type, "intmax_t") == 0)
+			|| (ft_strcmp(v_type, "ssize_t") == 0)
 			|| (ft_strcmp(v_type, "wint_t") == 0))
 		str = "value_signed";
 	if ((ft_strcmp(v_type, "size_t") == 0)
