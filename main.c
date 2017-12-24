@@ -39,11 +39,11 @@ int		main(int argc, char **argv)
 */
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%p";
-	ft_printf(format, &format);
+	format = "1234%04d";
+	ft_printf(format, 2);
 	ft_putstr("\n\n");
 	ft_putstr("real_printf\n\n");
-	printf("%p", &format);
+	printf(format, 2);
 //	ft_putstr("\n\n");
 //	format = "%ho";
 //	ft_printf(format, 10);
