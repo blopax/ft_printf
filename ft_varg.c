@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:39:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 20:40:13 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/27 17:32:01 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ void		ft_change_type(t_lst *first)
 		free(first->mdf);
 		first->mdf = ft_strnew(1);
 		first->mdf[0] = 'l';
-		first->flags = ft_str_pos_ins(first->flags, 0, "#");
+		if (first->flags)
+			first->flags = ft_str_pos_ins(first->flags, 0, "#");
+		else
+			{
+				first->flags = ft_strnew(1);
+				first->flags[0] = '#';
+			}
 	}
 }
 

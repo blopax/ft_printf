@@ -6,14 +6,14 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 18:21:44 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/21 18:20:07 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/27 17:50:26 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_add_char(t_lst *first, char c)
+int		ft_add_char(t_lst *first, char c)
 {
 	char *tmp;
 	int i;
@@ -42,11 +42,13 @@ int	ft_add_char(t_lst *first, char c)
 	return (1);
 }
 
-char	*ft_create_fill_str(t_lst *first, char c))
+char	*ft_create_fill_str(t_lst *first, char c)
 {
-	int	size_to_fill;
+	int		size_to_fill;
 	char	*fill_str;
-	
+	int		i;
+
+	i = 0;
 	size_to_fill = ft_atoi(first->size) - ft_strlen(first->init_str);
 	if (!(fill_str = ft_strnew(size_to_fill)))
 		exit (0);
@@ -56,44 +58,6 @@ char	*ft_create_fill_str(t_lst *first, char c))
 		i++;
 	}
 	return (fill_str);
-}
-
-void	ft_fill_char(t_lst *first, char c, int neg, int real_size)
-{
-	char *tmp;
-	char *str;
-	int i;
-	int k;
-
-	i = 0;
-	k = 0;
-	if (!(tmp = ft_strnew(ft_atoi(first->size) + real_size)))
-		exit (0);
-	if (!(str = ft_strdup(first->init_str)))
-		exit (0);
-	//ft_putstr(str);
-	//write(1,"\n",1);
-	//ft_putnbr(ft_atoi(first->size));
-	//write(1,"\n",1);
-	//ft_putnbr((int)ft_strlen(str));
-	//write(1,"\n",1);
-	while (i < (ft_atoi(first->size) - (int)ft_strlen(str) - neg + real_size))
-	{
-		//write(1,"a\n",2);
-		tmp[i++] = c;
-	}
-	//write(1,"2\n",2);
-	while (i < ft_atoi(first->size) + real_size)
-		tmp[i++] = str[k++];
-	free(first->init_str);
-	//ft_putstr(tmp);
-	//write(1,"\n",1);
-	if (!(first->init_str = ft_strdup(tmp)))
-		exit (0);
-	free(tmp);
-	free(str);
-	//ft_putstr(first->init_str);
-	//write(1,"\n",1);
 }
 
 void	ft_left_justif(t_lst *first, int real_size)
@@ -178,8 +142,7 @@ void	ft_clean_flag_d(t_lst *first, int real_size)
 			neg = neg + ft_add_char(first, '+');
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > ((int)ft_strlen(first->init_str))))
 	{
-
-			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first));
+			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
 	}
 		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first, real_size);
@@ -252,7 +215,7 @@ void	ft_clean_flag(t_lst *first)
 	int i;
 
 	flag = ft_strnew(6);
-	ref = "0#-+ '";
+	ref = "#+ 0-'";
 	while (*ref != 0)
 	{
 		i = 0;
@@ -272,56 +235,6 @@ void	ft_clean_flag(t_lst *first)
 	free(flag);
 }
 
-int		ft_check_flag(t_lst *first)
-{
-	int i;
-
-	i = 0;
-	while(first->flags[i])
-	{
-		if (first->flags[i] == '+' && first->init_str[0] != '-' && first->type == 'd')
-			return (1);
-		if (first->flags[i] == ' ' && first->init_str[0] != '-' && first->type == 'd')
-			return (1);
-		if (first->flags[i] == '#' && first->type == 'o')
-			return (1);
-		if (first->flags[i] == '#' && first->type == 'x')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int		ft_adjust_size(t_lst *first)
-{
-	int size;
-	
-	size = 0;
-	if (first->size)
-		size = ft_atoi(first->size);
-	else
-		return (0);
-	if (first->type == 'x')
-	{
-	if (size > (int)ft_strlen(first->init_str) && ft_check_flag(first) == 1 )
-		{
-			free(first->size);
-			first->size = ft_itoa(size - 2);
-			return (2);
-		}
-	}
-	else
-	{
-	if (size > (int)ft_strlen(first->init_str) && ft_check_flag(first) == 1 )
-		{
-			free(first->size);
-			first->size = ft_itoa(size - 1);
-			return (1);
-		}
-	}
-	return (0);
-}
-
 void	ft_get_clean_flag(t_lst *first)
 {
 	int real_size;
@@ -337,7 +250,7 @@ void	ft_get_clean_flag(t_lst *first)
 			//write(1,"\n",1);
 			//write(1,"TEST\n",5);
 			ft_clean_flag(first);
-			real_size = ft_adjust_size(first);
+//			real_size = ft_adjust_size(first);
 			//write(1,"TEST\n",5);
 			//write(1,"FLAG\n",5);
 			//ft_putstr(first->flags);
@@ -348,7 +261,11 @@ void	ft_get_clean_flag(t_lst *first)
 			if (first->type == 's' || first->type == 'u' || first->type == 'c')
 				ft_clean_flag_suc(first, real_size);
 			if (first->type == 'd')
+			{
+				//write(1,"1234\n",5);
 				ft_clean_flag_d(first,real_size);
+				//write(1,"1234\n",5);
+			}
 			if (first->type == 'o')
 			{
 				//write(1,"1234\n",5);
@@ -366,48 +283,10 @@ void	ft_get_clean_flag(t_lst *first)
 		//ft_putnbr((int)ft_strlen(first->init_str));
 		//write(1,"\n",1);
 		//write(1,"AAAA\n",5);
-		if ((!first->flags && first->size) || (real_size + ft_atoi(first->size)) > (int)ft_strlen(first->init_str))
+		if (ft_atoi(first->size) > (int)ft_strlen(first->init_str))
 		{
-			if (ft_atoi(first->size) + real_size > (int)ft_strlen(first->init_str))
-				ft_fill_char(first, ' ', 0, real_size);
+			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
 		}
 		first = first->next;
 	}
 }
-/*
-   char	*ft_clean_flag(char *first)
-   {
-   const char *ref;
-   char *flag;
-   int i;
-
-   flag = ft_strnew(6);
-   ref = "#0-+ '";
-   while (*ref != 0)
-   {
-   printf("%c\n",*ref);
-   i = 0;
-   while (first[i] != 0)
-   {
-   if (first[i] == *ref)
-   {
-   flag = ft_fill_flag(*ref, flag);
-   break ;
-   }
-   i++;
-   }
-   ref++;
-   }
-   return (flag);
-   }
-
-   int main(void)
-   {
-   printf("flag :\t|%s|\n", ft_clean_flag("###00000   #   '## ++ - +++ 000 '#   +-"));
-   printf("flag :\t|%s|\n", ft_clean_flag(" + 00000   #   '## ++  +++ 000 '#   +"));
-   printf("flag :\t|%s|\n", ft_clean_flag(" 00000   #   '## - 000 '#-"));
-   printf("flag :\t|%s|\n", ft_clean_flag("  00000   #   '## 000 '#   "));
-   printf("flag :\t|%s|\n", ft_clean_flag(" 00000   # +  '##  000 '#"));
-   return (0);
-   }
-   */
