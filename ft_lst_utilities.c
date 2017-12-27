@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:07:04 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 15:11:39 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/27 17:44:07 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_empty_lst(t_lst *first)
 		free(first->size);
 		free(first->acc);
 		free(first->mdf);
-		free(first->value_ptr);
+	//free(first->value_ptr);
 		index = first->next;
 		free(first);
 		first = index;

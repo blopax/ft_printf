@@ -6,6 +6,7 @@
 int		main(int argc, char **argv)
 {
 	int		i;
+//	int		a;
 //	int		count;
 	char	*format;
 //	int		n;
@@ -39,12 +40,10 @@ int		main(int argc, char **argv)
 */
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%#08x";
-	ft_printf(format, 42);
-	ft_putstr("\n\n");
-	ft_putstr("real_printf\n\n");
-	printf(format, 42);
-//	ft_putstr("\n\n");
+	format = "%.10d";
+	ft_printf(format, 4242);
+//	ft_putstr("real_printf\n\n");
+//	printf("coco\net titi \n");
 //	format = "%ho";
 //	ft_printf(format, 10);
 //	ft_putstr("\n\n");
