@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 18:21:44 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/21 18:20:07 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/27 16:49:14 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ void	ft_clean_flag(t_lst *first)
 	int i;
 
 	flag = ft_strnew(6);
-	ref = "0#-+ '";
+	ref = "#0-+ '";
 	while (*ref != 0)
 	{
 		i = 0;
