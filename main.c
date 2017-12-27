@@ -40,10 +40,12 @@ int		main(int argc, char **argv)
 */
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%.10d";
-	ft_printf(format, 4242);
-//	ft_putstr("real_printf\n\n");
-//	printf("coco\net titi \n");
+	format = "%10.4s \n%d";
+	ft_putstr("real_printf\n\n");
+	printf(format, NULL, 3);
+	ft_putstr("ft_printf\n\n");
+	ft_printf(format, "fds", 3);
+
 //	format = "%ho";
 //	ft_printf(format, 10);
 //	ft_putstr("\n\n");

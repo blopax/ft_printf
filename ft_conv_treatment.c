@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 14:38:45 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/27 19:44:41 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,7 @@ void	ft_conv_treatment(t_lst *first)
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
 			first->init_str = ft_unsigned_conv_treatment(first);
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
-		{
-			if (!(first->init_str = ft_strdup((char *)first->value_ptr)))
-				exit(0);
-		}
+			first->init_str = ft_strdup((char *)first->value_ptr);
 		first = first->next;
 	}
 }
