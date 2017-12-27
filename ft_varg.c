@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:39:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 14:36:53 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/21 20:40:13 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,20 @@ char		*ft_v_type(char type, char *mdf)
 	return (0);
 }
 
+void		ft_change_type(t_lst *first)
+{
+	if (first->type == 'i')
+		first->type = 'd';
+	if (first->type == 'p')
+	{
+		first->type = 'x';
+		free(first->mdf);
+		first->mdf = ft_strnew(1);
+		first->mdf[0] = 'l';
+		first->flags = ft_str_pos_ins(first->flags, 0, "#");
+	}
+}
+
 void		ft_v_type_clean(t_lst *first)
 {
 	char	*str;
@@ -62,6 +76,7 @@ void		ft_v_type_clean(t_lst *first)
 	while (first)
 	{
 		i = 0;
+		ft_change_type(first);
 		while (str[i])
 		{
 			if (first->type == str[i])

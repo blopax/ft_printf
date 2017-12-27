@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	ft_add_char(t_lst *first, char c)
+int	ft_add_char(t_lst *first, char c)
 {
 	char *tmp;
 	int i;
@@ -39,6 +39,23 @@ void	ft_add_char(t_lst *first, char c)
 	//write(1,"ADD\n",4);
 	//ft_putstr(first->init_str);
 	//write(1,"\n",1);
+	return (1);
+}
+
+char	*ft_create_fill_str(t_lst *first, char c))
+{
+	int	size_to_fill;
+	char	*fill_str;
+	
+	size_to_fill = ft_atoi(first->size) - ft_strlen(first->init_str);
+	if (!(fill_str = ft_strnew(size_to_fill)))
+		exit (0);
+	while (fill_str[i] != 0)
+	{
+		fill_str[i] = c;
+		i++;
+	}
+	return (fill_str);
 }
 
 void	ft_fill_char(t_lst *first, char c, int neg, int real_size)
@@ -152,20 +169,19 @@ void	ft_clean_flag_d(t_lst *first, int real_size)
 	neg = 0;
 	i = 0;
 	if (first->init_str[0] ==  '-')
-		neg = ft_remove_neg_sign(first);
+		neg = 1;
 		while (first->flags[i])
 	{
-		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > ((int)ft_strlen(first->init_str) + neg)))
-			ft_fill_char(first, '0', neg, 0);
 		if (first->flags[i] == ' ' && neg == 0)
-			ft_add_char(first, ' ');
+			neg = neg + ft_add_char(first, ' ');
 		if (first->flags[i] == '+' && neg == 0)
-			ft_add_char(first, '+');
-		if (neg == 1 && first->init_str[0] != '-')
-			{
-				ft_add_char(first, '-');
-			}
-		if (first->flags[i] == '-' && (ft_atoi(first->size) + real_size > (int)ft_strlen(first->init_str)))
+			neg = neg + ft_add_char(first, '+');
+		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > ((int)ft_strlen(first->init_str))))
+	{
+
+			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first));
+	}
+		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first, real_size);
 		i++;
 	}

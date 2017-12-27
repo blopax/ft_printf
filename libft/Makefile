@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 16:13:50 by pclement          #+#    #+#              #
-#    Updated: 2017/12/21 17:13:03 by nvergnac         ###   ########.fr        #
+#    Updated: 2017/12/21 19:23:06 by nvergnac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,6 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME).a
 
 re: fclean all
