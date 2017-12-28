@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ft_printf.h"
+#include <limits.h>
 
 int		main(int argc, char **argv)
 {
 	int		i;
+//	int		a;
 //	int		count;
 	char	*format;
-//	t_lst	*first;
-//	t_lst	*index;
 //	int		n;
-//	t_info	info_struct;
+//	char	*str;
 
 	i = 1;
 	while (i < argc)
@@ -20,39 +20,45 @@ int		main(int argc, char **argv)
 	}
 //	first = ft_lst_init();
 //	info_struct = ft_info_init();
-//	format = "af%   164.14hhSalors %d%hschaine_finale";
 
-//ATTENTION
-//	format = "af%   164.14hhCalors %d%hschaine_finale";
-	format = "Pablo est une %d%D%hhd%hd";
+/*	format = "% 8.4dalors %dautremaillon%schaine_finale";
+	ft_printf(format, 3,4,"hello");
 
-	ft_printf((const char * restrict)format, 3000000000, 3000000000,100, 33000);
-	
+	ft_putstr("\n\n");
+
+	format = "%sifdsf%s";
+	ft_printf(format,"hello", "hello");
+	ft_putstr("\n\n");
+*/
+/*	format = "%s%s%.2s";
+	ft_printf(format, "1hello",  "2hello", "hello3");
+	ft_putstr("\n\n");
+
+	format = "%s%.0s%s";
+	ft_printf(format, "1hello",  "2hello", "hello3");
+	ft_putstr("\n\n");
+*/
+	//format = "%#-5o%#05o%#-4o%#04o";
+//	format = "%+7d%#7o%+7o%#7d";
+	format = "%10.4s \n%d";
+	ft_putstr("real_printf\n\n");
+	printf(format, NULL, 3);
+	ft_putstr("ft_printf\n\n");
+	ft_printf(format, "fds", 3);
+
+//	format = "%ho";
+//	ft_printf(format, 10);
+//	ft_putstr("\n\n");
+//	printf("\n%.0s\n", "012345");
 //	while (first)
 //	{
 //		ft_lst_show(first, 0);
 //		first = first->next;
 //	}
-// ft_putstr(ft_v_type('s', "hh"));
+// ft_putstr(ft_v_type('s', "hh"););
 
-/*
-	count = 0;
-	index = first;
-	while (index != 0)
-	{
-		index = index->next;
-		count ++;
-	}
-
-	i = 1;
-	while (i < count)
-	{
-		ft_lst_show(first, i);
-		i++;
-	}
-	ft_empty_lst(first);
+//	ft_empty_lst(first);
 //	sleep(100);
-*/
+
 	return (0);
 }
-

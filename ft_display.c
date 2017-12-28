@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 18:56:12 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/15 14:28:58 by pclement         ###   ########.fr       */
+/*   Created: 2017/12/21 14:49:15 by pclement          #+#    #+#             */
+/*   Updated: 2017/12/21 19:22:27 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+t_lst	*ft_delete_first(t_lst *first)
 {
-	size_t	len;
+	t_lst	*tmp;
 
-	if (!s)
-		return (0);
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
+	tmp = first;
+	if (first->next)
+		first = first->next;
+	free(tmp);
+	return (first);
+}
+
+
+int		ft_display(t_lst *first)
+{
+	int		read_bytes;
+
+	read_bytes = 0;
+	while (first)
+	{
+		read_bytes = read_bytes + ft_strlen(first->init_str);
+		write(1, first->init_str, ft_strlen(first->init_str));
+		first = first->next;
+	}
+	return (read_bytes);
 }
