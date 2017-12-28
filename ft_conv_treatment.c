@@ -96,7 +96,10 @@ void	ft_conv_treatment(t_lst *first)
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
 			first->init_str = ft_unsigned_conv_treatment(first);
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
-			first->init_str = ft_strdup((char *)first->value_ptr);
+		{
+			if (!(first->init_str = ft_strdup((char *)first->value_ptr)))
+				first->init_str = ft_strdup("(null)");
+		}
 		first = first->next;
 	}
 }

@@ -18,33 +18,17 @@ int		main(int argc, char **argv)
 		printf("%s", argv[i]);
 		i++;
 	}
-//	first = ft_lst_init();
-//	info_struct = ft_info_init();
-
-/*	format = "% 8.4dalors %dautremaillon%schaine_finale";
-	ft_printf(format, 3,4,"hello");
-
-	ft_putstr("\n\n");
-
-	format = "%sifdsf%s";
-	ft_printf(format,"hello", "hello");
-	ft_putstr("\n\n");
-*/
-/*	format = "%s%s%.2s";
-	ft_printf(format, "1hello",  "2hello", "hello3");
-	ft_putstr("\n\n");
-
-	format = "%s%.0s%s";
-	ft_printf(format, "1hello",  "2hello", "hello3");
-	ft_putstr("\n\n");
-*/
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%10.4s \n%d";
-	ft_putstr("real_printf\n\n");
-	printf(format, NULL, 3);
-	ft_putstr("ft_printf\n\n");
-	ft_printf(format, "fds", 3);
+	format = "%.0c\n";
+
+	ft_putstr("\nformat\t");
+	ft_putstr(format);
+	ft_putstr("\n");
+	ft_putstr("real_printf\n");
+	printf(format, 0);
+	ft_putstr("\nft_printf\n");
+	ft_printf(format, 0);
 
 //	format = "%ho";
 //	ft_printf(format, 10);
