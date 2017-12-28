@@ -20,9 +20,9 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 
 	added_str = 0;
 	acc_nb = ft_atoi(acc + 1);
-	if (type == 's' && (int)ft_strlen(str) > acc_nb)
+	if ((type == 's' && (int)ft_strlen(str) > acc_nb))
 		str[acc_nb] = 0;
-	else if (!(type == 'c' || type == 'C' || type == 's'))
+	if (!(type == 'c' || type == 'C' || type == 's'))
 	{
 		(str[0] == '-') ? acc_nb++ : acc_nb;
 		if ((int)ft_strlen(str) < acc_nb)
@@ -36,6 +36,8 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 			else
 				str = ft_str_pos_ins(str, 0, added_str);
 		}
+		if (acc_nb == 0 && ft_atoi(str) == 0)
+			str[acc_nb] = 0;
 	}
 	free(added_str);
 	return (str);

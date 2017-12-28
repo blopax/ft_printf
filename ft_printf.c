@@ -39,11 +39,8 @@ int		ft_printf(const char *format, ...)
 	ft_conv_treatment(first);
 	ft_accuracy_treatment(first);
 	ft_get_clean_flag(first);
-	read_bytes = ft_display(first);
-//	read_bytes = 0;
 //	ft_lst_show(first);
-//	index = first->next;
-//	ft_putstr(index->init_str);
+	read_bytes = ft_display(first);
 	va_end(ap);
 	ft_empty_lst(first);
 	return (read_bytes);

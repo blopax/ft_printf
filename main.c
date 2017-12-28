@@ -20,15 +20,16 @@ int		main(int argc, char **argv)
 	}
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%.0c\n";
+	format = "@moulitest: %.0x %.d";
 
 	ft_putstr("\nformat\t");
-	ft_putstr(format);
+//	ft_putstr(format);
 	ft_putstr("\n");
 	ft_putstr("real_printf\n");
-	printf(format, 0);
-	ft_putstr("\nft_printf\n");
-	ft_printf(format, 0);
+	printf(format, 42, 43);
+//	printf("\n");
+//	ft_putstr("\nft_printf\n");
+	ft_printf(format, 42, 43);
 
 //	format = "%ho";
 //	ft_printf(format, 10);
