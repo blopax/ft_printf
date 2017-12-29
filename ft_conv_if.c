@@ -109,6 +109,7 @@ int		ft_flag(char *format, int st, t_info *inf)
 
 	flag.flag_str = "#0-+ ";
 	flag.k = 0;
+//	flag.tmp = NULL;
 	flag.switch_flag = 0;
 	while (format[st + flag.k] != 0 && flag.switch_flag == 0)
 	{
@@ -129,6 +130,7 @@ int		ft_flag(char *format, int st, t_info *inf)
 	free(inf->flags);
 	if (!(inf->flags = ft_strdup(flag.tmp)))
 		exit(0);
-	free(flag.tmp);
+//	if (flag.tmp)
+		free(flag.tmp);
 	return (flag.k - 1);
 }

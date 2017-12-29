@@ -119,6 +119,20 @@ void	ft_left_justif(t_lst *first)
 	free(str);
 }
 
+int		ft_adjust_size(t_lst *first)
+{
+	int size;
+	
+	size = 0;
+	if (first->size)
+		size = ft_atoi(first->size);
+	else
+		return (0);
+	free(first->size);
+	first->size = ft_itoa(size - 1);
+	return (0);
+}
+
 void	ft_clean_flag_suc(t_lst *first)
 {
 	int i;
@@ -131,6 +145,16 @@ void	ft_clean_flag_suc(t_lst *first)
 		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first);
 		i++;
+	}
+	if (first->type == 'c')
+	{
+
+		if (ft_atoi(first->size) > (int)ft_strlen(first->init_str) && (int)ft_strlen(first->init_str) != 0)
+			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
+		if (ft_atoi(first->size) > (int)ft_strlen(first->init_str) && (int)ft_strlen(first->init_str) == 0)
+		{
+			ft_adjust_size(first);
+			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
 	}
 }
 
@@ -264,7 +288,7 @@ void	ft_get_clean_flag(t_lst *first)
 			if (first->type == 'x' || first->type == 'X')
 				ft_clean_flag_x(first);
 		}
-		if (ft_atoi(first->size) > (int)ft_strlen(first->init_str))
+		if (first->type != 'c' && ft_atoi(first->size) > (int)ft_strlen(first->init_str))
 			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
 		first = first->next;
 	}

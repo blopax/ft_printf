@@ -39,7 +39,7 @@ typedef struct	s_info
 typedef struct	s_lst
 {
 	char			*init_str;
-	char			*final_str;
+	wchar_t			*final_str;
 	char			*flags;
 	char			*size;
 	char			*acc;
@@ -49,6 +49,8 @@ typedef struct	s_lst
 	void			*value_ptr;
 	intmax_t		value_signed;
 	uintmax_t		value_unsigned;
+	int				read_bytes;
+	int				ret;
 	struct s_lst	*next;
 }					t_lst;
 

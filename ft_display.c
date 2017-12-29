@@ -23,17 +23,33 @@ t_lst	*ft_delete_first(t_lst *first)
 	return (first);
 }
 
+void	ft_read_bytes(t_lst *first)
+{
+	int		size_nb;
+
+	size_nb = 0;
+	if (first->size)
+		size_nb = ft_atoi(first->size);
+	if (first->read_bytes == 0)
+		first->read_bytes = (int)ft_strlen(first->init_str);
+	else
+	{
+		if (size_nb > first->read_bytes) 
+			first->read_bytes = size_nb;
+	}
+}
 
 int		ft_display(t_lst *first)
 {
-	int		read_bytes;
+	int		total_read_bytes;
 
-	read_bytes = 0;
+	total_read_bytes = 0;
 	while (first)
 	{
-		read_bytes = read_bytes + ft_strlen(first->init_str);
-		write(1, first->init_str, ft_strlen(first->init_str));
+		ft_read_bytes(first);
+		total_read_bytes = total_read_bytes + first->read_bytes;
+		write(1, first->init_str, first->read_bytes);
 		first = first->next;
 	}
-	return (read_bytes);
+	return (total_read_bytes);
 }

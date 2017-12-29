@@ -24,7 +24,7 @@ SRC = ft_strcat.c ft_strchr.c ft_strcpy.c ft_strncpy.c ft_strdup.c ft_strlen.c\
 	  ft_putnbr_intmax.c\
 	  ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c\
 	  ft_lstadd.c ft_lstdelone.c ft_lstdel.c ft_lstiter.c ft_lstmap.c \
-	  ft_count_if.c\
+	  ft_count_if.c ft_wstrlen.c ft_wstrnew.c\
 	  ../ft_accuracy_treatment.c ../ft_str_pos_ins.c ../ft_conv_if.c\
 	  ../ft_conv_if_utilities.c ../ft_format_split_utilities.c\
 	  ../ft_debug_show.c\

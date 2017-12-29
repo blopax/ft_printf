@@ -42,6 +42,8 @@ t_lst	*ft_lst_init(void)
 	new_lst->value_ptr = 0;
 	new_lst->value_signed = 0;
 	new_lst->value_unsigned = 0;
+	new_lst->read_bytes = 0;
+	new_lst->ret = 0;
 	return (new_lst);
 }
 
