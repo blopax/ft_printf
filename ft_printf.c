@@ -12,6 +12,17 @@
 
 #include "ft_printf.h"
 
+int		ft_check_ret(t_lst *first)
+{
+	while (first)
+	{
+		if (first->ret == -1)
+			return (-1);
+		first = first->next;
+	}
+	return (0);
+}
+
 int		ft_printf(const char *format, ...)
 {
 	va_list		ap;
@@ -37,9 +48,11 @@ int		ft_printf(const char *format, ...)
 		index = index->next;
 	}
 	ft_conv_treatment(first);
+	if (ft_check_ret(first) == -1)
+		return (-1);
 	ft_accuracy_treatment(first);
 	ft_get_clean_flag(first);
-//	ft_lst_show(first);
+	ft_lst_show(first);
 	read_bytes = ft_display(first);
 	va_end(ap);
 	ft_empty_lst(first);

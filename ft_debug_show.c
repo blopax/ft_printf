@@ -43,8 +43,8 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("init_str = \t|");
 	ft_putstr(index->init_str);
 	ft_putstr("|\n");
-	ft_putstr("final_str = \t|");
-	ft_putstr(index->final_str);
+	ft_putstr("final_str converted in char = \t|");
+	ft_putstr((char *)index->final_str);
 	ft_putstr("|\n");
 	ft_putstr("flags = \t|");
 	ft_putstr(index->flags);
@@ -72,6 +72,9 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr("|\n");
 	ft_putstr("value_ptr = \t|");
 	ft_putnbr((long long)index->value_ptr);
+	ft_putstr("|\n");
+	ft_putstr("read_bytes = \t|");
+	ft_putnbr((long long)index->read_bytes);
 	ft_putstr("|\n\n");
 }
 

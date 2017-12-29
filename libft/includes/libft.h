@@ -25,6 +25,7 @@ typedef struct	s_list
 }				t_list;
 
 size_t			ft_strlen(const char *s);
+size_t			ft_wstrlen(const wchar_t *s);
 char			*ft_strdup(const char *s1);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t len);
@@ -55,6 +56,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memalloc(size_t size);
 void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
+wchar_t			*ft_wstrnew(size_t size);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
