@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/27 18:53:38 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:26:49 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,8 @@ void	ft_fill_char(t_lst *first, char c, int neg);
 void	ft_left_justif(t_lst *first);
 char	*ft_fill_flag(char a, char *flag);
 void	ft_clean_flag(t_lst *first);
-void	ft_clean_flag_suc(t_lst *first);
+void	ft_clean_flag_su(t_lst *first);
+void	ft_clean_flag_c(t_lst *first);
 void	ft_clean_flag_d(t_lst *first);
 void	ft_clean_flag_o(t_lst *first);
 void	ft_clean_flag_x(t_lst *first);
