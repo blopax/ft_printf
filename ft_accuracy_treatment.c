@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/27 19:44:36 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:17:48 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	ft_accuracy_treatment(t_lst *first)
 	while (first)
 	{
 		if (first->acc != 0)
+		{	
 			first->init_str = ft_accuracy_str_treatment(first->init_str,
-					first->acc, first->type);
+				first->acc, first->type);
+		}
 		first = first->next;
 	}
 }

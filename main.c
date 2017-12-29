@@ -27,15 +27,69 @@ int		main(int argc, char **argv)
 //	format = "%+7d%#7o%+7o%#7d";
 	format = "\n";
 
-	i = ft_printf(format);
-	ft_putstr("\n");
-	ft_putnbr(i);
+//	i = ft_printf(format, 0);
+//	ft_putstr("\n");
+//	ft_putnbr(i);
+
+//	printf("%d", printf("%S\n", (wchar_t *)NULL));
+//	printf("%d", ft_printf("%S\n", NULL));
+printf("%.0p, %.p", NULL, NULL);
+
+   ft_printf("#o ft%#o\n", 0);
+  printf("#o real %#o\n", 0);
+//   ft_printf("ptr ft %p\n", NULL);
+   //printf("ptr real %p\n", NULL);
+//ft_printf("@moulitestx: %#.x %#.0x\n", 0, 0);
+//ft_printf("@moulitestd: %.d %.0d\n", 0, 0);
+//ft_printf("@moulitestu: %.u %.0u\n", 0, 0);
+
+//printf("%#.o %#.0o\n", 0, 0);
+//printf("@moulitest x: %#.x %#.0x\n", 0, 0);
+//printf("@moulitest d: %.d %.0d\n", 0, 0);
+//printf("@moulitest u: %.u %.0u\n", 0, 0);
 //	ft_putstr("\nformat\t");
-	ft_putstr("\n");
-	ft_putstr("real_printf\n");
+//	ft_putstr("\n");
+/*
+	format = "%c";
+	ft_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+//
+//	printf("\n");
+	printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
+' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|');
+	assert_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C",
+' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
+}
+*/
+//	ft_putstr("\n");
+//	ft_putstr("real_printf\n");
 //	printf("%p", NULL);
-	printf("%%");
-	ft_putstr("\n");
+//	i = printf(format, 0);
+//	ft_putstr("\n");
+//	sleep(3);
+//	ft_putnbr(i);
 
 /*
 	i = 65536 / 262144 + 128 + 64 + 32 + 16;
