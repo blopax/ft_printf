@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/29 15:32:34 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:36:35 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,10 +149,10 @@ void	ft_clean_flag_c(t_lst *first)
 			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, '0'));
 		if (first->flags[i] == '-' && (ft_atoi(first->size) > size))
 			ft_left_justif(first);
-		if (ft_atoi(first->size) > size && !first->flags)
-			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
 		i++;
 	}
+	if (ft_atoi(first->size) > size && !first->flags)
+		first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
 }
 
 void	ft_clean_flag_su(t_lst *first)

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/27 19:44:36 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:29:11 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,33 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 	return (str);
 }
 
+int		ft_check_acc_zero(t_lst *first)
+{
+	int		ret;
+
+	ret = 1;
+	if (ft_atoi(first->acc + 1) != 0)
+		ret = 0;
+	if (first->type == 's' || first->type == 'p' || first->type == 'c')
+		ret = 0;
+	if (first->value_signed != 0 || first->value_unsigned != 0)
+		ret = 0;
+
+	return (ret);
+}
+
 void	ft_accuracy_treatment(t_lst *first)
 {
 	while (first)
 	{
 		if (first->acc != 0)
-			first->init_str = ft_accuracy_str_treatment(first->init_str,
+		{	
+			if (ft_check_acc_zero(first) == 1)
+				first->init_str = ft_strdup("");
+			else
+				first->init_str = ft_accuracy_str_treatment(first->init_str,
 					first->acc, first->type);
+		}
 		first = first->next;
 	}
 }

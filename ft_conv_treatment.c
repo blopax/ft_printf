@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 15:29:17 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:11:59 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ char	*ft_wchar_conv(t_lst *first)
 	val = first->value_signed;
 	if (val < 128)
 	{
-		first->read_bytes = 1;
+		first->read_bytes = first->read_bytes + 1;
 		str = ft_strnew(1);
 		str[0] = val;
 	}
 	else if (val < 2048)
 	{
-		first->read_bytes = 2;
+		first->read_bytes = first->read_bytes + 2;
 		str = ft_strnew(2);
 		str[0] = val / 64 + 128 + 64;
 		str[1] = val % 64 + 128;
@@ -65,7 +65,7 @@ char	*ft_wchar_conv(t_lst *first)
 	}
 	else if (val < 65536)
 	{
-		first->read_bytes = 3;
+		first->read_bytes = first->read_bytes + 3;
 		str = ft_strnew(3);
 		str[0] = val / 4096 + 128 + 64 + 32;
 		str[1] = (val - (val / 4096) * 4096) / 64 + 128;
@@ -73,7 +73,7 @@ char	*ft_wchar_conv(t_lst *first)
 	}
 	else
 	{
-		first->read_bytes = 4;
+		first->read_bytes = first->read_bytes + 4;
 		str = ft_strnew(4);
 		str[0] = val / 262144 + 128 + 64 + 32 + 16;
 		str[1] = (val - (val / 262144) * 262144) / 4096 + 128;
@@ -136,22 +136,39 @@ char	*ft_unsigned_conv_treatment(t_lst *first)
 	return (str);
 }
 
-/*
+
 char	*ft_wstr_conv(t_lst *first)
 {
 	char	*str;
+	char	*added_str;
+	int		i;
+	int		pos;
+
+	str = ft_strnew(0);
+	pos = 0;
+	while (((wchar_t *)first->value_ptr)[i] != 0)
+	{
+		first->value_signed = ((wchar_t *)first->value_ptr)[i];
+		added_str = ft_wchar_conv(first);
+		str = ft_str_pos_ins(str, pos, added_str);
+		free(added_str);
+		pos = first->read_bytes;
+		i++;
+	}
+	return (str);
 }
 
-*/
+
+//a voir si on fqit pqs un ft_wstrdup de wchar a char ? ds libft
+
 char	*ft_str_conv_treatment(t_lst *first)
 {
 	char	*str;
 
-	str = NULL;
 //	if (ft_strcmp(first->mdf, "l") == 0)
 //		return(ft_wstr_conv(first));
-	if (!(first->init_str = ft_strdup((char *)first->value_ptr)))
-		first->init_str = ft_strdup("(null)");
+	if (!(str = ft_strdup((char *)first->value_ptr)))
+		str = ft_strdup("(null)");
 	return (str);
 }
 
@@ -166,5 +183,6 @@ void	ft_conv_treatment(t_lst *first)
 			first->init_str = ft_unsigned_conv_treatment(first);
 		if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
 			first->init_str = ft_str_conv_treatment(first);
+		first = first->next;
 	}
 }
