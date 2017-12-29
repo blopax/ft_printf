@@ -33,10 +33,10 @@ int		main(int argc, char **argv)
 
 //	printf("%d", printf("%S\n", (wchar_t *)NULL));
 //	printf("%d", ft_printf("%S\n", NULL));
-printf("%.0p, %.p", NULL, NULL);
+//printf("%.0p, %.p", NULL, NULL);
 
-   ft_printf("#o ft%#o\n", 0);
-  printf("#o real %#o\n", 0);
+   ft_printf("%.0%");
+//  printf("#o real %#o\n", 0);
 //   ft_printf("ptr ft %p\n", NULL);
    //printf("ptr real %p\n", NULL);
 //ft_printf("@moulitestx: %#.x %#.0x\n", 0, 0);

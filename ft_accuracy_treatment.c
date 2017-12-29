@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 18:17:48 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:43:25 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_accuracy_treatment(t_lst *first)
 {
 	while (first)
 	{
-		if (first->acc != 0)
+		if (first->acc != 0 && first->type != '%')
 		{	
 			first->init_str = ft_accuracy_str_treatment(first->init_str,
 				first->acc, first->type);
