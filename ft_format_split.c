@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 18:43:03 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:01:05 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_init_format_split(t_split *sp_sct)
 	sp_sct->info_struct = ft_info_init();
 }
 
-int		ft_double_percent(int i, char *format)
+/*int		ft_double_percent(int i, char *format)
 {
 	while (format[i] == '%' && format[i + 1] == '%')
 		i = i + 2;
 	return (i);
-}
+}*/
 
 t_lst	*ft_format_split(char *format)
 {
@@ -42,14 +42,16 @@ t_lst	*ft_format_split(char *format)
 	ft_init_format_split(&sp_sct);
 	while (format[sp_sct.i] != 0)
 	{
-		sp_sct.i = ft_double_percent(sp_sct.i, format);
 		if (ft_conv(format, sp_sct.i, 0, &(sp_sct.info_struct)) >= 1)
 		{
+			ft_putstr("A\n");
 			if (sp_sct.spec_flag == 0)
 				ft_add_str_lst(format, sp_sct.i, sp_sct.start, sp_sct.first);
+			ft_putstr("B\n");
 			sp_sct.spec_flag = 1;
 			sp_sct.spec_size = ft_add_spec_lst(sp_sct.first,
 					&(sp_sct.info_struct));
+			ft_putstr("C\n");
 			sp_sct.i = sp_sct.i + sp_sct.spec_size;
 		}
 		else

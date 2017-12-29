@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:43:08 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/20 17:06:05 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:12:39 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ char	*ft_apd_flg_chr(char format, t_flag flag)
 			exit(0);
 	}
 	buf = ft_strdup(flag.tmp);
-	free(flag.tmp);
+//	free(flag.tmp);
 	if (!(flag.tmp = ft_strnew(ft_strlen(buf) + 1)))
 		exit(0);
 	ft_strcpy(flag.tmp, buf);
-	free(buf);
+//	free(buf);
 	flag.tmp[flag.k] = format;
 	return (flag.tmp);
 }

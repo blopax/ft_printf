@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 16:56:14 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:52:14 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		ft_printf(const char *format, ...)
 		return (0);
 	va_start(ap, format);
 	first = ft_format_split((char *)format);
+	ft_putstr("TEST\n");
 	first= ft_delete_first(first);
 	ft_v_type_clean(first);
 	index = first;

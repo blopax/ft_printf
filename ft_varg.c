@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:39:41 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/27 17:32:01 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/29 18:42:01 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		ft_change_type(t_lst *first)
 	{
 		first->type = 'x';
 		free(first->mdf);
+		first->ret = 1;
 		first->mdf = ft_strnew(1);
 		first->mdf[0] = 'l';
 		if (first->flags)

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:24:10 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 15:27:11 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:05:18 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int		ft_conv(char *format, int st, int flag, t_info *inf_ptr)
 {
-	if (format[st] != '%' && flag == 0)
-		return (0);
-	if (flag == 0)
+	if (flag == 0 && format[st] == '%')
 		st++;
+	ft_putstr("A\n");
 	if (ft_type(format, st, inf_ptr) >= 1 && flag <= 5)
 		return (1);
+	ft_putstr("B\n");
 	if (ft_mdf(format, st, inf_ptr) >= 1 && flag <= 4)
 		return (ft_conv(format, st + ft_mdf(format, st, inf_ptr), 5, inf_ptr));
+	ft_putstr("C\n");
 	if (ft_acc(format, st, inf_ptr) >= 1 && flag <= 3)
 		return (ft_conv(format, st + ft_acc(format, st, inf_ptr), 4, inf_ptr));
+	ft_putstr("D\n");
 	if (ft_size(format, st, inf_ptr) >= 1 && flag <= 2)
 		return (ft_conv(format, st + ft_size(format, st, inf_ptr), 3, inf_ptr));
+	ft_putstr("E\n");
 	if (ft_flag(format, st, inf_ptr) >= 1 && flag <= 1)
 		return (ft_conv(format, st + ft_flag(format, st, inf_ptr), 2, inf_ptr));
+	ft_putstr("F\n");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/29 17:19:21 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:47:11 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,13 +151,22 @@ void	ft_clean_flag_su(t_lst *first)
 	int i;
 
 	i = 0;
-	while (first->flags[i])
+	if (first->type == '%')
 	{
-		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
-			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, '0'));
-		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
-			ft_left_justif(first);
-		i++;
+		if (!(first->init_str = ft_strnew(1)))
+			exit (0);
+		first->init_str[0] = '%';
+	}
+	if (first->flags)
+	{
+		while (first->flags[i])
+		{
+			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+				first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, '0'));
+			if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+				ft_left_justif(first);
+			i++;
+		}
 	}
 }
 
@@ -195,7 +204,7 @@ void	ft_clean_flag_o(t_lst *first)
 	i = 0;
 	while (first->flags[i])
 	{
-		if (first->flags[i] == '#' && ft_atoi(first->init_str) != 0)
+		if (first->flags[i] == '#')
 			neg = neg + ft_add_char(first, '0');
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
@@ -205,16 +214,16 @@ void	ft_clean_flag_o(t_lst *first)
 	}
 }
 
-void	ft_clean_flag_x(t_lst *first)
+void	ft_clean_flag_p(t_lst *first)
 {
 	int i;
 	int neg;
 
 	neg = 0;
 	i = 0;
-	while (first->flags[i])
+	while (first->flags[i] && first->ret == 0)
 	{
-		if (first->flags[i] == '#' && (ft_atoi(first->init_str) != 0))
+		if (first->flags[i] == '#')
 		{
 			if (first->type == 'X')
 				neg = neg + ft_add_char(first, 'X');
@@ -228,6 +237,35 @@ void	ft_clean_flag_x(t_lst *first)
 			ft_left_justif(first);
 		i++;
 	}
+}
+void	ft_clean_flag_x(t_lst *first)
+{
+	int i;
+	int neg;
+
+	neg = 0;
+	i = 0;
+	if (first->ret == 0)
+	{
+		while (first->flags[i])
+		{
+			if (first->flags[i] == '#' && (ft_atoi(first->init_str) != 0))
+			{
+				if (first->type == 'X')
+					neg = neg + ft_add_char(first, 'X');
+				else	
+					neg = neg + ft_add_char(first, 'x');
+				neg = neg + ft_add_char(first, '0');
+			}
+			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+				first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
+			if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
+				ft_left_justif(first);
+			i++;
+		}
+	}
+	if (first->ret == 1)
+		ft_clean_flag_p(first);
 }
 
 char	*ft_fill_flag(char a, char *flag)
@@ -279,11 +317,11 @@ void	ft_get_clean_flag(t_lst *first)
 {
 	while (first)
 	{
-		if (first->flags || first->type == 'c')
+		if (first->flags || first->type == 'c' || first->type == '%')
 		{
 			if (first->flags)
 				ft_clean_flag(first);
-			if (first->type == 's' || first->type == 'u')
+			if (first->type == 's' || first->type == 'u' || first->type == '%')
 				ft_clean_flag_su(first);
 			if (first->type == 'c')
 				ft_clean_flag_c(first);

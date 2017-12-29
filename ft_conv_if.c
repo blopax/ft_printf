@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:13:14 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/20 17:06:37 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 20:19:20 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_type(char *format, int st, t_info *inf)
 	int		j;
 	char	*type_str;
 
-	type_str = "sSpdDioOuUxXcC";
+	type_str = "sSpdDioOuUxXcC%";
 	j = 0;
 	while (type_str[j] != 0)
 	{
@@ -109,14 +109,16 @@ int		ft_flag(char *format, int st, t_info *inf)
 
 	flag.flag_str = "#0-+ ";
 	flag.k = 0;
-//	flag.tmp = NULL;
+//	flag.tmp = ft_strnew(0);
 	flag.switch_flag = 0;
+	ft_putstr("A\n");
 	while (format[st + flag.k] != 0 && flag.switch_flag == 0)
 	{
 		flag.j = 0;
 		while (flag.flag_str[flag.j] != 0)
 		{
 			flag.switch_flag = 1;
+			ft_putstr("B\n");
 			if (flag.flag_str[flag.j++] == format[st + flag.k])
 			{
 				if (!(flag.tmp = ft_apd_flg_chr(format[st + flag.k], flag)))
@@ -125,12 +127,15 @@ int		ft_flag(char *format, int st, t_info *inf)
 				break ;
 			}
 		}
+		ft_putstr("C\n");
 		flag.k++;
 	}
-	free(inf->flags);
-	if (!(inf->flags = ft_strdup(flag.tmp)))
-		exit(0);
-//	if (flag.tmp)
+	if (inf->flags)
+		free(inf->flags);
+	ft_putstr("D\n");
+	inf->flags = ft_strdup(flag.tmp);
+	if (flag.tmp)
 		free(flag.tmp);
+	ft_putstr("E\n");
 	return (flag.k - 1);
 }
