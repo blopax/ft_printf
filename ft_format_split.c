@@ -53,8 +53,11 @@ t_lst	*ft_format_split(char *format)
 			sp_sct.i = sp_sct.i + sp_sct.spec_size;
 		}
 		else
+		{
 			sp_sct.spec_flag = ft_else_spec_flag(sp_sct.spec_flag,
 					&(sp_sct.start), sp_sct.i);
+		
+		}
 		(sp_sct.i)++;
 	}
 	if (sp_sct.spec_flag == 0)
