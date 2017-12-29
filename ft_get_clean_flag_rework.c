@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/29 15:36:35 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 17:36:38 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,16 @@ void	ft_left_justif(t_lst *first)
 	int i;
 
 	i = 0;
-	if (!(str = ft_strnew(ft_atoi(first->size - first->read_bytes))))
+	if (!(str = ft_strnew(ft_atoi(first->size))))
 		exit (0);
 	while (first->init_str[i])
 	{
 		str[i] = first->init_str[i];
 		i++;
 	}
-	while (i < ft_atoi(first->size) - first->read_bytes)
+	if (first->read_bytes)
+		i = first->read_bytes;
+	while (i < ft_atoi(first->size))
 		str[i++] = ' ';
 	free(first->init_str);
 	if (!(first->init_str = ft_strdup(str)))
@@ -122,34 +124,23 @@ void	ft_left_justif(t_lst *first)
 	free(str);
 }
 
-/*int		ft_adjust_size(t_lst *first)
-{
-	int size;
-	
-	size = 0;
-	if (first->size)
-		size = ft_atoi(first->size);
-	else
-		return (0);
-	free(first->size);
-	first->size = ft_itoa(size - 1);
-	return (0);
-}*/
-
 void	ft_clean_flag_c(t_lst *first)
 {
 	int i;
 	int size;
-	
+
 	size = first->read_bytes;
 	i = 0;
-	while (first->flags[i])
+	if (first->flags)
 	{
-		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > size))
-			first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, '0'));
-		if (first->flags[i] == '-' && (ft_atoi(first->size) > size))
-			ft_left_justif(first);
-		i++;
+		while (first->flags[i])
+		{
+			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > size))
+				first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, '0'));
+			if (first->flags[i] == '-' && (ft_atoi(first->size) > size))
+				ft_left_justif(first);
+			i++;
+		}
 	}
 	if (ft_atoi(first->size) > size && !first->flags)
 		first->init_str = ft_str_pos_ins(first->init_str, 0, ft_create_fill_str(first, ' '));
@@ -179,16 +170,16 @@ void	ft_clean_flag_d(t_lst *first)
 	i = 0;
 	if (first->init_str[0] ==  '-')
 		neg = 1;
-		while (first->flags[i])
+	while (first->flags[i])
 	{
 		if (first->flags[i] == ' ' && neg == 0)
 			neg = neg + ft_add_char(first, ' ');
 		if (first->flags[i] == '+' && neg == 0)
 			neg = neg + ft_add_char(first, '+');
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > ((int)ft_strlen(first->init_str))))
-	{
+		{
 			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
-	}
+		}
 		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first);
 		i++;
@@ -204,7 +195,7 @@ void	ft_clean_flag_o(t_lst *first)
 	i = 0;
 	while (first->flags[i])
 	{
-		if (first->flags[i] == '#')
+		if (first->flags[i] == '#' && ft_atoi(first->init_str) != 0)
 			neg = neg + ft_add_char(first, '0');
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
@@ -223,7 +214,7 @@ void	ft_clean_flag_x(t_lst *first)
 	i = 0;
 	while (first->flags[i])
 	{
-		if (first->flags[i] == '#')
+		if (first->flags[i] == '#' && (ft_atoi(first->init_str) != 0))
 		{
 			if (first->type == 'X')
 				neg = neg + ft_add_char(first, 'X');
@@ -288,10 +279,11 @@ void	ft_get_clean_flag(t_lst *first)
 {
 	while (first)
 	{
-		if (first->flags)
+		if (first->flags || first->type == 'c')
 		{
-			ft_clean_flag(first);
-			if (first->type == 's' || first->type == 'u' || first->type == 'c')
+			if (first->flags)
+				ft_clean_flag(first);
+			if (first->type == 's' || first->type == 'u')
 				ft_clean_flag_su(first);
 			if (first->type == 'c')
 				ft_clean_flag_c(first);

@@ -25,10 +25,15 @@ int		main(int argc, char **argv)
 	}
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%c";
+	format = "%#x";
 
+	i = ft_printf(format, 0);
+	ft_putstr("\n");
+	ft_putnbr(i);
 //	ft_putstr("\nformat\t");
 //	ft_putstr("\n");
+/*
+	format = "%c";
 	ft_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C|\n",
@@ -49,7 +54,7 @@ int		main(int argc, char **argv)
 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|');
-/*	assert_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+	assert_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C",
 ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
@@ -61,6 +66,14 @@ int		main(int argc, char **argv)
 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}');
 }
 */
+	ft_putstr("\n");
+	ft_putstr("real_printf\n");
+//	printf("%p", NULL);
+	i = printf(format, 0);
+	ft_putstr("\n");
+	sleep(3);
+	ft_putnbr(i);
+
 /*
 	i = 65536 / 262144 + 128 + 64 + 32 + 16;
 	ft_putnbr(i);
