@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 17:11:59 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/29 19:08:18 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	*ft_wchar_conv(t_lst *first)
 {
 	char		*str;
 	intmax_t	val;
-
 	val = first->value_signed;
 	if (val < 128)
 	{
@@ -144,8 +143,12 @@ char	*ft_wstr_conv(t_lst *first)
 	int		i;
 	int		pos;
 
-	str = ft_strnew(0);
+	i = 0;
 	pos = 0;
+	
+	if (!first->value_ptr)
+		return (ft_strdup("(null)"));
+	str = ft_strnew(0);
 	while (((wchar_t *)first->value_ptr)[i] != 0)
 	{
 		first->value_signed = ((wchar_t *)first->value_ptr)[i];
@@ -165,8 +168,8 @@ char	*ft_str_conv_treatment(t_lst *first)
 {
 	char	*str;
 
-//	if (ft_strcmp(first->mdf, "l") == 0)
-//		return(ft_wstr_conv(first));
+	if (ft_strcmp(first->mdf, "l") == 0)
+		return(ft_wstr_conv(first));
 	if (!(str = ft_strdup((char *)first->value_ptr)))
 		str = ft_strdup("(null)");
 	return (str);
