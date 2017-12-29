@@ -25,16 +25,16 @@ int		main(int argc, char **argv)
 	}
 	//format = "%#-5o%#05o%#-4o%#04o";
 //	format = "%+7d%#7o%+7o%#7d";
-	format = "%lc";
+	format = "%.1lc";
 
 //	ft_putstr("\nformat\t");
 //	ft_putstr("\n");
 	ft_putstr("real_printf\n");
 //	printf("%p", NULL);
-	i = ft_printf(format, 0x123);
-	printf("\n");
+	printf("%d",printf(format, 0x1234));
+//	printf("\n");
 
-
+/*
 	i = 65536 / 262144 + 128 + 64 + 32 + 16;
 	ft_putnbr(i);
 ft_putstr("\n");
@@ -47,7 +47,7 @@ ft_putstr("\n");
 	i = 65536 % 64 + 128;
 ft_putnbr(i);
 ft_putstr("\n");
-
+*/
 
 //ft_putnbr(i);
 
