@@ -73,11 +73,11 @@ char	*ft_apd_flg_chr(char format, t_flag flag)
 			exit(0);
 	}
 	buf = ft_strdup(flag.tmp);
-//	free(flag.tmp);
+	free(flag.tmp);
 	if (!(flag.tmp = ft_strnew(ft_strlen(buf) + 1)))
 		exit(0);
 	ft_strcpy(flag.tmp, buf);
-//	free(buf);
+	free(buf);
 	flag.tmp[flag.k] = format;
 	return (flag.tmp);
 }

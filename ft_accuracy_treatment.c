@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
+char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
 {
 	int		i;
 	int		acc_nb;
@@ -21,7 +21,10 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 	added_str = 0;
 	acc_nb = ft_atoi(acc + 1);
 	if ((type == 's' && (int)ft_strlen(str) > acc_nb))
+	{
 		str[acc_nb] = 0;
+		*r_ptr = 0;
+	}
 	if (!(type == 'c' || type == 'C' || type == 's'))
 	{
 		(str[0] == '-') ? acc_nb++ : acc_nb;
@@ -50,7 +53,7 @@ void	ft_accuracy_treatment(t_lst *first)
 		if (first->acc != 0 && first->type != '%')
 		{	
 			first->init_str = ft_accuracy_str_treatment(first->init_str,
-				first->acc, first->type);
+				first->acc, first->type, &(first->read_bytes));
 		}
 		first = first->next;
 	}

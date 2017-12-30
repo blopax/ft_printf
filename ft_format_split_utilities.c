@@ -14,6 +14,7 @@
 
 int		ft_conv(char *format, int st, int flag, t_info *inf_ptr)
 {
+	
 	if (flag == 0 && format[st] != '%')
 		return (0);
 	if (flag == 0 && format[st] == '%')
