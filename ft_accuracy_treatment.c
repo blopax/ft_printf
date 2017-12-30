@@ -36,7 +36,7 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type)
 			else
 				str = ft_str_pos_ins(str, 0, added_str);
 		}
-		if (acc_nb == 0 && ft_atoi(str) == 0)
+		if (acc_nb == 0 && ft_strcmp(str, "0") == 0)
 			str[acc_nb] = 0;
 	}
 	free(added_str);

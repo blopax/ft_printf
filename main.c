@@ -35,7 +35,11 @@ int		main(int argc, char **argv)
 //	printf("%d", ft_printf("%S\n", NULL));
 //printf("%.0p, %.p", NULL, NULL);
 
-   ft_printf("%.0%");
+//   ft_printf("%p\n", NULL);
+//   printf("%p", NULL);
+   ft_printf("%#.x\n", 0);
+   printf("%#.x\n\n", 0);
+//  ft_printf("s: %s, p: %#lx, d:%d\n", "a string", &free, 42);
 //  printf("#o real %#o\n", 0);
 //   ft_printf("ptr ft %p\n", NULL);
    //printf("ptr real %p\n", NULL);

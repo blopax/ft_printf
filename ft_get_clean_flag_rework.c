@@ -202,9 +202,11 @@ void	ft_clean_flag_o(t_lst *first)
 
 	neg = 0;
 	i = 0;
+	
 	while (first->flags[i])
 	{
-		if (first->flags[i] == '#')
+		if (first->flags[i] == '#' && (ft_atoi(first->init_str) != 0 ||
+		(first->acc && ft_atoi(first->acc) == 0)))
 			neg = neg + ft_add_char(first, '0');
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
@@ -245,27 +247,28 @@ void	ft_clean_flag_x(t_lst *first)
 
 	neg = 0;
 	i = 0;
-	if (first->ret == 0)
+	while (first->flags[i])
 	{
-		while (first->flags[i])
+		if (first->flags[i] == '#' && (ft_strcmp(first->init_str , "0") != 0) && ft_strcmp(first->init_str, "") != 0)
 		{
-			if (first->flags[i] == '#' && (ft_atoi(first->init_str) != 0))
-			{
-				if (first->type == 'X')
-					neg = neg + ft_add_char(first, 'X');
-				else	
-					neg = neg + ft_add_char(first, 'x');
-				neg = neg + ft_add_char(first, '0');
-			}
-			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
-				first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
-			if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
-				ft_left_justif(first);
-			i++;
+			if (first->type == 'X')
+				neg = neg + ft_add_char(first, 'X');
+			else	
+				neg = neg + ft_add_char(first, 'x');
+			neg = neg + ft_add_char(first, '0');
 		}
+		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+			first->init_str = ft_str_pos_ins(first->init_str, neg, ft_create_fill_str(first, '0'));
+		if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
+			ft_left_justif(first);
+		i++;
 	}
-	if (first->ret == 1)
-		ft_clean_flag_p(first);
+	if (first->ret == 1 && first->value_unsigned == 0)
+	{
+		free(first->init_str);
+		first->init_str = ft_strdup("0x0");
+	}
+//		ft_clean_flag_p(first);
 }
 
 char	*ft_fill_flag(char a, char *flag)

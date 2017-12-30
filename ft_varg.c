@@ -61,8 +61,7 @@ void		ft_change_type(t_lst *first)
 		first->type = 'x';
 		free(first->mdf);
 		first->ret = 1;
-		first->mdf = ft_strnew(1);
-		first->mdf[0] = 'l';
+		first->mdf = ft_strdup("l");
 		if (first->flags)
 			first->flags = ft_str_pos_ins(first->flags, 0, "#");
 		else
