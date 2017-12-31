@@ -24,13 +24,30 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	format = "\n";
+//ft_printf("%#.3O\n", 0);
+//printf("%-50.2zi\n", 0);
+	printf("%C\n", 0);
+	ft_printf("%C\n", 0);
 
+//ft_printf(",%-34.2O\n", 0);
 
+/*printf("%#.3O\n", (unsigned int)642891241091338830);
+ft_printf("%#.3O\n", (unsigned int) 642891241091338830);
+printf("%#.2O\n", (unsigned int)1);
+ft_printf("%#.2O\n", (unsigned int)1);
+printf("%#.O\n", (unsigned int)1);
+ft_printf("%#.O\n", (unsigned int)1);
+printf("%#.O\n", (unsigned int)0);
+ft_printf("%#.O\n", (unsigned int)0);
+printf("%#O\n", (unsigned int)0);
+ft_printf("%#O\n", (unsigned int)0);
+//ft_printf ("42%-60.30zi42\n", -1384289863);
+//printf ("42%-60.30zi42\n", -1384289863);
 //	printf("{%015p}\n", NULL);
 //	printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B");
 //printf("%.0p, %.p", 0, 0);
 //printf("%.5p", 0);
-
+*/
 /*printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
 %C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C",

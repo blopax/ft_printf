@@ -35,11 +35,11 @@ char		*ft_v_type(char type, char *mdf)
 	{
 		if (ft_strchr(g_type[0][j], (int)type))
 		{
-			i = 1;
+			if (mdf == 0)
+				return ((char *)g_type[1][j]);
+			i = 2;
 			while (g_type[i][j] == 0 || ft_strcmp(g_type[i][j], "END") != 0)
 			{
-				if (mdf == 0)
-					return ((char *)g_type[1][j]);
 				if (ft_strcmp(g_type[i][0], mdf) == 0 && g_type[i][j] == 0)
 					return ((char *)g_type[1][j]);
 				else if (ft_strcmp(g_type[i][0], mdf) == 0)

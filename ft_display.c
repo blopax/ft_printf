@@ -16,10 +16,13 @@ t_lst	*ft_delete_first(t_lst *first)
 {
 	t_lst	*tmp;
 
-	tmp = first;
-	if (first->next)
-		first = first->next;
-	free(tmp);
+	if (first)
+	{
+		tmp = first;
+		if (first->next)
+			first = first->next;
+		free(tmp);
+	}
 	return (first);
 }
 

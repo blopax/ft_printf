@@ -50,8 +50,8 @@ void	ft_accuracy_treatment(t_lst *first)
 {
 	while (first)
 	{
-		if (first->acc != 0 && first->type != '%')
-		{	
+		if (first->init_str && first->acc != 0 && first->type != '%')
+		{
 			first->init_str = ft_accuracy_str_treatment(first->init_str,
 				first->acc, first->type, &(first->read_bytes));
 		}

@@ -17,7 +17,8 @@ char	*ft_val_filled(char *v_type)
 	char	*str;
 
 	str = 0;
-	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
+	if (v_type)
+{	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
 			|| (ft_strcmp(v_type, "signed char") == 0)
 			|| (ft_strcmp(v_type, "long") == 0)
 			|| (ft_strcmp(v_type, "long long") == 0)
@@ -36,7 +37,7 @@ char	*ft_val_filled(char *v_type)
 			|| (ft_strcmp(v_type, "wchar_t *") == 0)
 			|| (ft_strcmp(v_type, "void *") == 0))
 		str = "value_ptr";
-	return (str);
+}	return (str);
 }
 
 char	*ft_wchar_conv(t_lst *first)
@@ -87,8 +88,11 @@ char	*ft_char_conv(t_lst *first)
 {
 	char	*str;
 
-	if (ft_strcmp(first->mdf, "l") == 0)
-		return(ft_wchar_conv(first));
+	if (first->mdf)
+	{
+		if (ft_strcmp(first->mdf, "l") == 0)
+			return(ft_wchar_conv(first));
+	}
 //creer une fonction void qui remplit str_final ac wchar_t et renvoyer null
 	str = ft_strnew(1);
 	str[0] = (unsigned char)(first->value_signed);
@@ -168,8 +172,11 @@ char	*ft_str_conv_treatment(t_lst *first)
 {
 	char	*str;
 
-	if (ft_strcmp(first->mdf, "l") == 0)
-		return(ft_wstr_conv(first));
+	if (first->mdf)
+	{
+		if (ft_strcmp(first->mdf, "l") == 0)
+			return(ft_wstr_conv(first));
+	}
 	if (!(str = ft_strdup((char *)first->value_ptr)))
 		str = ft_strdup("(null)");
 	return (str);
@@ -178,14 +185,18 @@ char	*ft_str_conv_treatment(t_lst *first)
 
 void	ft_conv_treatment(t_lst *first)
 {
+	char	*str;
 	while (first)
 	{
-		if (ft_strcmp(ft_val_filled(first->v_type), "value_signed") == 0)
-			first->init_str = ft_signed_conv_treatment(first);
-		if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
-			first->init_str = ft_unsigned_conv_treatment(first);
-		if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
-			first->init_str = ft_str_conv_treatment(first);
+		if (ft_val_filled(first->v_type))
+		{
+			if (ft_strcmp(ft_val_filled(first->v_type), "value_signed") == 0)
+				first->init_str = ft_signed_conv_treatment(first);
+			if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
+				first->init_str = ft_unsigned_conv_treatment(first);
+			if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
+				first->init_str = ft_str_conv_treatment(first);
+		}
 		first = first->next;
 	}
 }

@@ -29,7 +29,7 @@ int		ft_printf(const char *format, ...)
 	t_lst		*first;
 	t_lst		*index;
 	int			read_bytes;
-
+//	exit(0);
 	if (format == NULL || ft_strcmp(format, "") == 0)
 		return (0);
 	va_start(ap, format);
@@ -47,6 +47,7 @@ int		ft_printf(const char *format, ...)
 		}
 		index = index->next;
 	}
+	va_end(ap);
 	ft_conv_treatment(first);
 //	ft_lst_show(first);
 	if (ft_check_ret(first) == -1)
@@ -54,7 +55,6 @@ int		ft_printf(const char *format, ...)
 	ft_accuracy_treatment(first);
 	ft_get_clean_flag(first);
 	read_bytes = ft_display(first);
-	va_end(ap);
 	ft_empty_lst(first);
 	return (read_bytes);
 }
