@@ -44,6 +44,8 @@ char	*ft_wchar_conv(t_lst *first)
 {
 	char		*str;
 	intmax_t	val;
+
+	setlocale(LC_ALL, "en_US.UTF-8");
 	val = first->value_signed;
 	if (val < 128)
 	{
@@ -146,10 +148,13 @@ char	*ft_wstr_conv(t_lst *first)
 	char	*added_str;
 	int		i;
 	int		pos;
+	int		acc_nb;
 
 	i = 0;
 	pos = 0;
-	
+	acc_nb = 0;
+	if (first->acc)
+		acc_nb = ft_atoi(first->acc + 1);
 	if (!first->value_ptr)
 		return (ft_strdup("(null)"));
 	str = ft_strnew(0);
@@ -157,6 +162,12 @@ char	*ft_wstr_conv(t_lst *first)
 	{
 		first->value_signed = ((wchar_t *)first->value_ptr)[i];
 		added_str = ft_wchar_conv(first);
+		if (acc_nb > 0 && first->read_bytes > acc_nb)
+		{
+			first->read_bytes = first->read_bytes - ft_strlen(added_str);
+			free(added_str);
+			break;
+		}
 		str = ft_str_pos_ins(str, pos, added_str);
 		free(added_str);
 		pos = first->read_bytes;

@@ -18,6 +18,11 @@
 #include <stdlib.h>
 #include "libft/includes/libft.h"
 
+#include <wchar.h>
+#include <locale.h>
+#include <stdio.h>
+
+
 typedef struct	s_flag
 {
 	char			*tmp;

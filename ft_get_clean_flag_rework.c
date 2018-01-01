@@ -118,8 +118,14 @@ void	ft_left_justif(t_lst *first)
 		i = first->read_bytes;
 	while (i < ft_atoi(first->size))
 		str[i++] = ' ';
-	if (!(first->init_str = ft_strdup(str)))
+	if (!(first->init_str = ft_strnew(ft_atoi(first->size))))
 		exit (0);
+	i = 0;
+	while (i < ft_atoi(first->size))
+	{
+		first->init_str[i] = str[i];
+		i++;
+	}
 	free(str);
 }
 
@@ -179,7 +185,7 @@ void	ft_clean_flag_su(t_lst *first)
 				if (added_str)
 					free(added_str);
 			}
-		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+			if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 				ft_left_justif(first);
 			i++;
 		}

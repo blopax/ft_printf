@@ -42,16 +42,36 @@ void	ft_read_bytes(t_lst *first)
 	}
 }
 
+int		ft_check_ret(t_lst *first)
+{
+	while (first)
+	{
+		if (first->ret == -1)
+			return (-1);
+		first = first->next;
+}
+	return (0);
+}
+
 int		ft_display(t_lst *first)
 {
 	int		total_read_bytes;
 
 	total_read_bytes = 0;
-	while (first)
+	if (ft_check_ret(first) == -1)
+		total_read_bytes = -1;
+	while (first && total_read_bytes >= 0)
 	{
 		ft_read_bytes(first);
 		total_read_bytes = total_read_bytes + first->read_bytes;
 		write(1, first->init_str, first->read_bytes);
+		first = first->next;
+	}
+	while (first && total_read_bytes == -1 && first->ret != -1)
+	{
+		ft_read_bytes(first);
+		if (first->type != 0)
+			write(1, first->init_str, first->read_bytes);
 		first = first->next;
 	}
 	return (total_read_bytes);

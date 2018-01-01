@@ -15,7 +15,17 @@ int		main(int argc, char **argv)
 //	int		n;
 //	char	*str;
 
-	setlocale(LC_ALL, "en_US.UTF-8");
+	setlocale(LC_ALL, "");
+//	printf("%9.6ls %S", s, (wchar_t *)'a');
+	i = ft_printf("%-3c\n", 0);
+	i = printf("%-3c\n", 0);
+
+
+//	i = printf("%----4c\n", '\0');
+//	printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
+//ft_putnbr (i);
+//	i = printf("%.5ls\n", s);
+//ft_putnbr (i);
 
 	i = 1;
 	while (i < argc)
@@ -26,8 +36,20 @@ int		main(int argc, char **argv)
 	format = "\n";
 //ft_printf("%#.3O\n", 0);
 //printf("%-50.2zi\n", 0);
-	printf("%C\n", 0);
-	ft_printf("%C\n", 0);
+//	printf("%d\n", printf("%C\n", 0xbffe));
+//	printf("%d\n", ft_printf("%C\n", 0xbffe));
+
+//	printf("%d\n", printf("%lc\n", 254));
+//	printf("%d\n", ft_printf("%lc\n", 254));
+
+//	printf("%d\n", printf("%lc\n", 256));
+//	printf("%d\n", ft_printf("%lc\n", 256));
+
+
+//	i = printf("%lchello %C ca va", 65,  0xd800);
+//	i = ft_printf("%lc", 256);
+//	ft_putnbr(i);
+//	printf("%d\n", ft_printf("%8C et coco %C titi %lc", 3250, 0x11ffff, 'a'));
 
 //ft_printf(",%-34.2O\n", 0);
 
