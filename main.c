@@ -17,8 +17,11 @@ int		main(int argc, char **argv)
 
 	setlocale(LC_ALL, "");
 //	printf("%9.6ls %S", s, (wchar_t *)'a');
-	i = ft_printf("%-3c\n", 0);
-	i = printf("%-3c\n", 0);
+	printf("\n");
+	format = "3";
+	i = ft_printf("42%p42", (void *)0x0);
+//	ft_printf("%p\n", &format);
+	ft_putnbr(i);
 
 
 //	i = printf("%----4c\n", '\0');

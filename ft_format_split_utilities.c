@@ -78,5 +78,5 @@ void	ft_add_str_lst(char *format, int i, int start, t_lst *first)
 	new_lst = ft_lst_init();
 	new_lst->init_str = ft_strdup(str);
 	index->next = new_lst;
-	free(str);
+	str = ft_safe_free(str);
 }

@@ -44,7 +44,6 @@ void	ft_print_lst(t_lst *index, int n)
 	ft_putstr(index->init_str);
 	ft_putstr("|\n");
 	ft_putstr("final_str converted in char = \t|");
-	ft_putstr((char *)index->final_str);
 	ft_putstr("|\n");
 	ft_putstr("flags = \t|");
 	ft_putstr(index->flags);

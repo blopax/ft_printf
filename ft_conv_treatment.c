@@ -17,27 +17,26 @@ char	*ft_val_filled(char *v_type)
 	char	*str;
 
 	str = 0;
-	if (v_type)
-{	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
+	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
 			|| (ft_strcmp(v_type, "signed char") == 0)
 			|| (ft_strcmp(v_type, "long") == 0)
 			|| (ft_strcmp(v_type, "long long") == 0)
 			|| (ft_strcmp(v_type, "intmax_t") == 0)
 			|| (ft_strcmp(v_type, "ssize_t") == 0)
 			|| (ft_strcmp(v_type, "wint_t") == 0))
-		str = "value_signed";
+		str = ft_strdup("value_signed");
 	if ((ft_strcmp(v_type, "size_t") == 0)
 			|| (ft_strcmp(v_type, "unsigned short int") == 0)
 			|| (ft_strcmp(v_type, "unsigned char") == 0)
 			|| (ft_strcmp(v_type, "unsigned long") == 0)
 			|| (ft_strcmp(v_type, "unsigned long long") == 0)
 			|| (ft_strcmp(v_type, "uintmax_t") == 0))
-		str = "value_unsigned";
+		str = ft_strdup("value_unsigned");
 	if ((ft_strcmp(v_type, "char *") == 0)
 			|| (ft_strcmp(v_type, "wchar_t *") == 0)
 			|| (ft_strcmp(v_type, "void *") == 0))
-		str = "value_ptr";
-}	return (str);
+		str = ft_strdup("value_ptr");
+	return (str);
 }
 
 char	*ft_wchar_conv(t_lst *first)
@@ -95,7 +94,7 @@ char	*ft_char_conv(t_lst *first)
 		if (ft_strcmp(first->mdf, "l") == 0)
 			return(ft_wchar_conv(first));
 	}
-//creer une fonction void qui remplit str_final ac wchar_t et renvoyer null
+	//creer une fonction void qui remplit str_final ac wchar_t et renvoyer null
 	str = ft_strnew(1);
 	str[0] = (unsigned char)(first->value_signed);
 	first->read_bytes = 1;
@@ -165,11 +164,11 @@ char	*ft_wstr_conv(t_lst *first)
 		if (acc_nb > 0 && first->read_bytes > acc_nb)
 		{
 			first->read_bytes = first->read_bytes - ft_strlen(added_str);
-			free(added_str);
+			added_str = ft_safe_free(added_str);
 			break;
 		}
 		str = ft_str_pos_ins(str, pos, added_str);
-		free(added_str);
+		added_str = ft_safe_free(added_str);
 		pos = first->read_bytes;
 		i++;
 	}
@@ -199,14 +198,18 @@ void	ft_conv_treatment(t_lst *first)
 	char	*str;
 	while (first)
 	{
-		if (ft_val_filled(first->v_type))
+		if (first->v_type)
 		{
-			if (ft_strcmp(ft_val_filled(first->v_type), "value_signed") == 0)
-				first->init_str = ft_signed_conv_treatment(first);
-			if (ft_strcmp(ft_val_filled(first->v_type), "value_unsigned") == 0)
-				first->init_str = ft_unsigned_conv_treatment(first);
-			if (ft_strcmp(ft_val_filled(first->v_type), "value_ptr") == 0)
-				first->init_str = ft_str_conv_treatment(first);
+			if ((str = ft_val_filled(first->v_type)))
+			{
+				if (ft_strcmp(str, "value_signed") == 0)
+					first->init_str = ft_signed_conv_treatment(first);
+				if (ft_strcmp(str, "value_unsigned") == 0)
+					first->init_str = ft_unsigned_conv_treatment(first);
+				if (ft_strcmp(str, "value_ptr") == 0)
+					first->init_str = ft_str_conv_treatment(first);
+			}
+			str = ft_safe_free(str);
 		}
 		first = first->next;
 	}

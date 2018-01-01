@@ -33,18 +33,15 @@ int		ft_printf(const char *format, ...)
 		if (index->v_type != 0)
 		{
 			index->value_signed = va_arg_intmax(ap, index->v_type);
-			index->value_ptr = va_arg_void(ap, index->v_type);
 			index->value_unsigned = va_arg_uintmax(ap, index->v_type);
+			index->value_ptr = va_arg_void(ap, index->v_type);
 		}
 		index = index->next;
 	}
 	va_end(ap);
 	ft_conv_treatment(first);
-//	ft_lst_show(first);
 	ft_accuracy_treatment(first);
-//	ft_lst_show(first);
 	ft_get_clean_flag(first);
-//	ft_lst_show(first);
 	read_bytes = ft_display(first);
 //	ft_lst_show(first);
 	ft_empty_lst(first);

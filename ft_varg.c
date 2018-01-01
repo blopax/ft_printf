@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-const char		*g_type[9][7] =
+static char		*v_type_tab[9][7] =
 {
 	{0, "di", "ouxX", "c", "s", "p", "END"},
 	{0, "int", "int", "int", "char *", "void *", "END"},
@@ -31,19 +31,19 @@ char		*ft_v_type(char type, char *mdf)
 	int		j;
 
 	j = 1;
-	while (ft_strcmp(g_type[0][j], "END") != 0)
+	while (ft_strcmp(v_type_tab[0][j], "END") != 0)
 	{
-		if (ft_strchr(g_type[0][j], (int)type))
+		if (ft_strchr(v_type_tab[0][j], (int)type))
 		{
 			if (mdf == 0)
-				return ((char *)g_type[1][j]);
+				return ((char *)v_type_tab[1][j]);
 			i = 2;
-			while (g_type[i][j] == 0 || ft_strcmp(g_type[i][j], "END") != 0)
+			while (v_type_tab[i][j] == 0 || ft_strcmp(v_type_tab[i][j], "END") != 0)
 			{
-				if (ft_strcmp(g_type[i][0], mdf) == 0 && g_type[i][j] == 0)
-					return ((char *)g_type[1][j]);
-				else if (ft_strcmp(g_type[i][0], mdf) == 0)
-					return ((char *)g_type[i][j]);
+				if (ft_strcmp(v_type_tab[i][0], mdf) == 0 && v_type_tab[i][j] == 0)
+					return ((char *)v_type_tab[1][j]);
+				else if (ft_strcmp(v_type_tab[i][0], mdf) == 0)
+					return ((char *)v_type_tab[i][j]);
 				i++;
 			}
 		}
@@ -59,7 +59,7 @@ void		ft_change_type(t_lst *first)
 	if (first->type == 'p')
 	{
 		first->type = 'x';
-		free(first->mdf);
+		first->mdf = ft_safe_free(first->mdf);
 		first->ret = 1;
 		first->mdf = ft_strdup("l");
 		if (first->flags)
@@ -88,7 +88,7 @@ void		ft_v_type_clean(t_lst *first)
 			if (first->type == str[i])
 			{
 				first->type = str[i] + 'a' - 'A';
-				free(first->mdf);
+				first->mdf = ft_safe_free(first->mdf);
 				first->mdf = ft_strnew(1);
 				first->mdf[0] = 'l';
 			}
@@ -140,13 +140,17 @@ uintmax_t	va_arg_uintmax(va_list ap, char *v_type)
 	return (0);
 }
 
+
+
 void		*va_arg_void(va_list ap, char *v_type)
 {
 	if (ft_strcmp(v_type, "char *") == 0)
 		return (va_arg(ap, char *));
 	if (ft_strcmp(v_type, "wchar_t *") == 0)
 		return (va_arg(ap, wchar_t *));
-	if (ft_strcmp(v_type, "void *") == 0)
-		return (va_arg(ap, void *));
-	return (0);
+/*	if (ft_strcmp(v_type, "char *") == 0)
+		return (ft_strdup(va_arg(ap, char *)));
+	if (ft_strcmp(v_type, "wchar_t *") == 0)
+		return (ft_wstrdup(va_arg(ap, wchar_t *)));
+*/	return (0);
 }

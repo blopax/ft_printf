@@ -12,6 +12,16 @@
 
 #include "ft_printf.h"
 
+char	*ft_safe_free(char *str)
+{
+	if (str)
+	{
+		free(str);
+		str = NULL;
+	}
+	return (str);
+}
+
 t_info	ft_info_init(void)
 {
 	t_info	new_info;
@@ -31,14 +41,13 @@ t_lst	*ft_lst_init(void)
 	if (!(new_lst = (t_lst *)malloc(sizeof(t_lst))))
 		return (NULL);
 	new_lst->init_str = NULL;
-	new_lst->final_str = NULL;
 	new_lst->flags = NULL;
 	new_lst->size = NULL;
 	new_lst->acc = 0;
 	new_lst->mdf = NULL;
 	new_lst->type = 0;
 	new_lst->next = NULL;
-	new_lst->v_type = 0;
+	new_lst->v_type = NULL;
 	new_lst->value_ptr = 0;
 	new_lst->value_signed = 0;
 	new_lst->value_unsigned = 0;
@@ -53,13 +62,13 @@ void	ft_empty_lst(t_lst *first)
 
 	while (first)
 	{
-		free(first->init_str);
-		free(first->final_str);
-		free(first->flags);
-		free(first->size);
-		free(first->acc);
-		free(first->mdf);
-	//free(first->value_ptr);
+		first->init_str = ft_safe_free(first->init_str);
+		first->flags = ft_safe_free(first->flags);
+		first->size = ft_safe_free(first->size);
+		first->acc = ft_safe_free(first->acc);
+		first->mdf = ft_safe_free(first->mdf);
+//		first->v_type = ft_safe_free(first->v_type) non ca pas strdup ds tableau;
+//		first->value_ptr = ft_safe_free(first->value_ptr);
 		index = first->next;
 		free(first);
 		first = index;
@@ -68,38 +77,24 @@ void	ft_empty_lst(t_lst *first)
 
 void	ft_empty_struct(t_info *info_struct_ptr)
 {
-	if (info_struct_ptr->flags)
-		free(info_struct_ptr->flags);
-	if (info_struct_ptr->size)
-		free(info_struct_ptr->size);
-	if (info_struct_ptr->acc)
-		free(info_struct_ptr->acc);
-	if (info_struct_ptr->mdf)
-		free(info_struct_ptr->mdf);
-	info_struct_ptr->type = 0;
+	if (info_struct_ptr)
+	{
+		info_struct_ptr->flags = ft_safe_free(info_struct_ptr->flags);
+		info_struct_ptr->size = ft_safe_free(info_struct_ptr->size);
+		info_struct_ptr->acc = ft_safe_free(info_struct_ptr->acc);
+		info_struct_ptr->mdf = ft_safe_free(info_struct_ptr->mdf);
+		info_struct_ptr->type = 0;
+	}
 }
 
 void	ft_reinit_struct(t_info *info_struct_ptr)
 {
-	if (info_struct_ptr->flags)
+	if (info_struct_ptr)
 	{
-		free(info_struct_ptr->flags);
-		info_struct_ptr->flags = NULL;
+		info_struct_ptr->flags = ft_safe_free(info_struct_ptr->flags);
+		info_struct_ptr->size = ft_safe_free(info_struct_ptr->size);
+		info_struct_ptr->acc = ft_safe_free(info_struct_ptr->acc);
+		info_struct_ptr->mdf = ft_safe_free(info_struct_ptr->mdf);
+		info_struct_ptr->type = 0;
 	}
-	if (info_struct_ptr->size)
-	{
-		free(info_struct_ptr->size);
-		info_struct_ptr->size = NULL;
-	}
-	if (info_struct_ptr->acc)
-	{
-		free(info_struct_ptr->acc);
-		info_struct_ptr->acc = NULL;
-	}
-	if (info_struct_ptr->mdf)
-	{
-		free(info_struct_ptr->mdf);
-		info_struct_ptr->mdf = NULL;
-	}
-	info_struct_ptr->type = 0;
 }

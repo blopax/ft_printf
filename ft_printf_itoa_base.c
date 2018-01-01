@@ -56,7 +56,6 @@ char	*ft_itoa_base_intmax(intmax_t value, char *base)
 }
 
 /*
-**pb ac intmax min qd negqtif en passant au plus
 **Only for uintmax_t everything positive. cast before
 */
 

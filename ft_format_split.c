@@ -28,13 +28,6 @@ void	ft_init_format_split(t_split *sp_sct)
 	sp_sct->info_struct = ft_info_init();
 }
 
-/*int		ft_double_percent(int i, char *format)
-{
-	while (format[i] == '%' && format[i + 1] == '%')
-		i = i + 2;
-	return (i);
-}*/
-
 t_lst	*ft_format_split(char *format)
 {
 	t_split	sp_sct;

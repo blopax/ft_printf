@@ -42,7 +42,7 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
 		if (acc_nb == 0 && ft_strcmp(str, "0") == 0)
 			str[acc_nb] = 0;
 	}
-	free(added_str);
+	added_str = ft_safe_free(added_str);
 	return (str);
 }
 

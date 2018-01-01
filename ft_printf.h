@@ -44,7 +44,6 @@ typedef struct	s_info
 typedef struct	s_lst
 {
 	char			*init_str;
-	wchar_t			*final_str;
 	char			*flags;
 	char			*size;
 	char			*acc;
@@ -130,7 +129,7 @@ void	ft_lst_show(t_lst *first);
 void	ft_print_lst(t_lst *first, int n);
 void	ft_info_show(t_info info_struct);
 int		ft_display(t_lst *first);
-
+char	*ft_safe_free(char *str);
 
 // Fonctions utiles pour va_arg
 char	*ft_v_type(char type, char *mdf);

@@ -33,7 +33,7 @@ int		ft_add_char(t_lst *first, char c)
 	}
 	if (!(first->init_str = ft_strdup(tmp)))
 		exit (0);
-	free(tmp);
+	tmp = ft_safe_free(tmp);
 	return (1);
 }
 
@@ -50,29 +50,15 @@ void	ft_fill_char(t_lst *first, char c, int neg)
 		exit (0);
 	if (!(str = ft_strdup(first->init_str)))
 		exit (0);
-	//ft_putstr(str);
-	//write(1,"\n",1);
-	//ft_putnbr(ft_atoi(first->size));
-	//write(1,"\n",1);
-	//ft_putnbr((int)ft_strlen(str));
-	//write(1,"\n",1);
 	while (i < (ft_atoi(first->size) - (int)ft_strlen(str) - neg))
-	{
-		//write(1,"a\n",2);
 		tmp[i++] = c;
-	}
-	//write(1,"2\n",2);
 	while (i < ft_atoi(first->size))
 		tmp[i++] = str[k++];
-	free(first->init_str);
-	//ft_putstr(tmp);
-	//write(1,"\n",1);
+	first->init_str = ft_safe_free(first->init_str);
 	if (!(first->init_str = ft_strdup(tmp)))
 		exit (0);
-	free(tmp);
-	free(str);
-	//ft_putstr(first->init_str);
-	//write(1,"\n",1);
+	tmp = ft_safe_free(tmp);
+	str = ft_safe_free(str);
 }
 
 char	*ft_create_fill_str(t_lst *first, char c)
@@ -112,7 +98,7 @@ void	ft_left_justif(t_lst *first)
 			str[i] = first->init_str[i];
 			i++;
 		}
-		free(first->init_str);
+		first->init_str = ft_safe_free(first->init_str);
 	}
 	if (first->read_bytes)
 		i = first->read_bytes;
@@ -126,13 +112,13 @@ void	ft_left_justif(t_lst *first)
 		first->init_str[i] = str[i];
 		i++;
 	}
-	free(str);
+	str = ft_safe_free(str);
 }
 
 void	ft_clean_flag_c(t_lst *first)
 {
-	int i;
-	int size;
+	int		i;
+	int		size;
 	char	*added_str;
 
 	size = first->read_bytes;
@@ -145,8 +131,7 @@ void	ft_clean_flag_c(t_lst *first)
 			{
 				added_str =  ft_create_fill_str(first, '0');
 				first->init_str = ft_str_pos_ins(first->init_str, 0, added_str);
-				if (added_str)
-					free(added_str);
+				added_str = ft_safe_free(added_str);
 			}
 			if (first->flags[i] == '-' && (ft_atoi(first->size) > size))
 				ft_left_justif(first);
@@ -157,8 +142,7 @@ void	ft_clean_flag_c(t_lst *first)
 	{
 		added_str =  ft_create_fill_str(first, ' ');
 		first->init_str = ft_str_pos_ins(first->init_str, 0, added_str);
-		if (added_str)
-			free(added_str);
+		added_str = ft_safe_free(added_str);
 	}
 }
 
@@ -182,8 +166,7 @@ void	ft_clean_flag_su(t_lst *first)
 			{
 				added_str =  ft_create_fill_str(first, '0');
 				first->init_str = ft_str_pos_ins(first->init_str, 0, added_str);
-				if (added_str)
-					free(added_str);
+				added_str = ft_safe_free(added_str);
 			}
 			if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 				ft_left_justif(first);
@@ -212,8 +195,7 @@ void	ft_clean_flag_d(t_lst *first)
 		{
 			added_str = ft_create_fill_str(first, '0');
 			first->init_str = ft_str_pos_ins(first->init_str, neg, added_str);
-			if (added_str)
-				free (added_str);
+			added_str = ft_safe_free (added_str);
 		}
 		if (first->flags[i] == '-' && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first);
@@ -243,8 +225,7 @@ void	ft_clean_flag_o(t_lst *first)
 		{
 			added_str = ft_create_fill_str(first, '0');
 			first->init_str = ft_str_pos_ins(first->init_str, neg, added_str);
-			if (added_str)
-				free (added_str);
+			added_str = ft_safe_free (added_str);
 		}
 		if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first);
@@ -274,8 +255,7 @@ void	ft_clean_flag_p(t_lst *first)
 		{
 			added_str = ft_create_fill_str(first, '0');
 			first->init_str = ft_str_pos_ins(first->init_str, neg, added_str);
-			if (added_str)
-				free (added_str);
+			added_str = ft_safe_free (added_str);
 		}
 		if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
 			ft_left_justif(first);
@@ -304,15 +284,14 @@ void	ft_clean_flag_x(t_lst *first)
 			}
 			if (first->ret == 1 && first->value_unsigned == 0)
 			{
-				free(first->init_str);
+				first->init_str = ft_safe_free(first->init_str);
 				first->init_str = ft_strdup("0x0");
 			}
 			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			{
 				added_str = ft_create_fill_str(first, '0');
 				first->init_str = ft_str_pos_ins(first->init_str, neg, added_str);
-				if (added_str)
-					free (added_str);
+				added_str = ft_safe_free (added_str);
 			}
 			if (first->flags[i] == '-' && (ft_atoi(first->size)  > (int)ft_strlen(first->init_str)))
 				ft_left_justif(first);
@@ -361,9 +340,9 @@ void	ft_clean_flag(t_lst *first)
 		}
 		ref++;
 	}
-	free(first->flags);
+	first->flags = ft_safe_free(first->flags);
 	first->flags = ft_strdup(flag);
-	free(flag);
+	flag = ft_safe_free(flag);
 }
 
 void	ft_get_clean_flag(t_lst *first)
@@ -391,8 +370,7 @@ void	ft_get_clean_flag(t_lst *first)
 		{
 			added_str = ft_create_fill_str(first, ' ');
 			first->init_str = ft_str_pos_ins(first->init_str, 0, added_str);
-			if (added_str)
-				free(added_str);
+			added_str = ft_safe_free(added_str);
 		}
 		first = first->next;
 	}

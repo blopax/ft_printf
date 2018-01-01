@@ -42,7 +42,7 @@ int		ft_mdf(char *format, int st, t_info *inf)
 	{
 		if (format[st] == mdf_str[j] && mdf_str[j] != 'h' && mdf_str[j] != 'l')
 		{
-			free(inf->mdf);
+			inf->mdf = ft_safe_free(inf->mdf);
 			inf->mdf = ft_strnew(1);
 			inf->mdf[0] = mdf_str[j];
 			return (1);
@@ -71,10 +71,10 @@ int		ft_acc(char *format, int st, t_info *inf)
 			exit(0);
 		k++;
 	}
-	free(inf->acc);
+	inf->acc = ft_safe_free(inf->acc);
 	if (!(inf->acc = ft_strdup(tmp)))
 		exit(0);
-	free(tmp);
+	tmp = ft_safe_free(tmp);
 	return (k);
 }
 
@@ -94,10 +94,10 @@ int		ft_size(char *format, int st, t_info *inf)
 				exit(0);
 			k++;
 		}
-		free(inf->size);
+		inf->size = ft_safe_free(inf->size);
 		if (!(inf->size = ft_strdup(tmp)))
 			exit(0);
-		free(tmp);
+		tmp = ft_safe_free(tmp);
 		return (k);
 	}
 	return (0);
@@ -127,10 +127,8 @@ int		ft_flag(char *format, int st, t_info *inf)
 		}
 		flag.k++;
 	}
-	if (inf->flags)
-		free(inf->flags);
+	inf->flags = ft_safe_free(inf->flags);
 	inf->flags = ft_strdup(flag.tmp);
-	if (flag.tmp)
-		free(flag.tmp);
+	flag.tmp = ft_safe_free(flag.tmp);
 	return (flag.k - 1);
 }

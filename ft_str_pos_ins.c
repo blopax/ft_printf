@@ -47,7 +47,6 @@ char	*ft_str_pos_ins(char *str, int pos, char *ins_str)
 		result[index + i] = str[index];
 		index++;
 	}
-//	free(ins_str);
-	free(str);
+	str = ft_safe_free(str);
 	return (result);
 }
