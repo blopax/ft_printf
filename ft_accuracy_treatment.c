@@ -6,13 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:15:24 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 20:43:25 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 18:54:24 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
+char	*ft_accuracy_str_treatment_nb(char *str, char *acc, char type)
 {
 	int		i;
 	int		acc_nb;
@@ -20,11 +20,6 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
 
 	added_str = 0;
 	acc_nb = ft_atoi(acc + 1);
-	if ((type == 's' && (int)ft_strlen(str) > acc_nb))
-	{
-		str[acc_nb] = 0;
-		*r_ptr = 0;
-	}
 	if (!(type == 'c' || type == 'C' || type == 's'))
 	{
 		(str[0] == '-') ? acc_nb++ : acc_nb;
@@ -43,6 +38,22 @@ char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
 			str[acc_nb] = 0;
 	}
 	added_str = ft_safe_free(added_str);
+	return (str);
+}
+
+char	*ft_accuracy_str_treatment(char *str, char *acc, char type, int *r_ptr)
+{
+	int		i;
+	int		acc_nb;
+
+	acc_nb = ft_atoi(acc + 1);
+	if ((type == 's' && (int)ft_strlen(str) > acc_nb))
+	{
+		str[acc_nb] = 0;
+		*r_ptr = 0;
+	}
+	if (!(type == 'c' || type == 'C' || type == 's'))
+		str = ft_accuracy_str_treatment_nb(str, acc, type);
 	return (str);
 }
 
