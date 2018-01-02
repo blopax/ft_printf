@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:07:04 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/27 17:44:07 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/02 15:30:56 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	ft_empty_lst(t_lst *first)
 		first->size = ft_safe_free(first->size);
 		first->acc = ft_safe_free(first->acc);
 		first->mdf = ft_safe_free(first->mdf);
-//		first->v_type = ft_safe_free(first->v_type) non ca pas strdup ds tableau;
-//		first->value_ptr = ft_safe_free(first->value_ptr);
+		first->v_type = 0;
+		first->value_ptr = 0;
 		index = first->next;
 		free(first);
 		first = index;
