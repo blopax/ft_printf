@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 16:13:50 by pclement          #+#    #+#              #
-#    Updated: 2017/12/27 18:16:21 by nvergnac         ###   ########.fr        #
+#    Updated: 2018/01/02 19:52:46 by nvergnac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = ft_strcat.c ft_strchr.c ft_strcpy.c ft_strncpy.c ft_strdup.c ft_strlen.c\
 	  ../ft_debug_show.c\
 	  ../ft_format_split.c ../ft_lst_utilities.c\
 	  ../ft_printf.c ../ft_varg.c ../ft_printf_itoa_base.c ../ft_conv_treatment.c\
-	  ../ft_get_clean_flag_rework.c ../ft_display.c\
+	  ../ft_get_clean_flag_0.c ../ft_get_clean_flag_1.c ../ft_get_clean_flag_2.c ../ft_get_clean_flag_3.c ../ft_display.c\
 
 OBJ = $(SRC:.c=.o)
 
