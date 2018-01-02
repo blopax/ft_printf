@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2018/01/02 15:18:40 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 16:17:30 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,7 +219,7 @@ void	ft_clean_flag_o(t_lst *first)
 			(ft_atoi(first->acc + 1) < (int)ft_strlen(first->init_str)))))
 				neg = neg + ft_add_char(first, '0');
 		}
-		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
+		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) >= (int)ft_strlen(first->init_str)))
 		{
 			added_str = ft_create_fill_str(first, '0');
 			first->init_str = ft_str_pos_ins(first->init_str, neg, added_str);
