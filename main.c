@@ -20,9 +20,15 @@ int		main(int argc, char **argv)
 	printf("\n");
 	format = "3";
 	i = ft_printf("42%p42", (void *)0x0);
+	printf("\n");
 //	ft_printf("%p\n", &format);
 	ft_putnbr(i);
+	printf("\n");
 
+	i = ft_printf("42% d42", 42);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
 
 //	i = printf("%----4c\n", '\0');
 //	printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
