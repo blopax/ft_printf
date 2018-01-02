@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/29 20:27:59 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 15:18:40 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void	ft_left_justif(t_lst *first)
 	i = 0;
 	if (!(str = ft_strnew(ft_atoi(first->size))))
 		exit (0);
-
 	if (first->init_str)
 	{
 		while (first->init_str[i])
@@ -211,7 +210,6 @@ void	ft_clean_flag_o(t_lst *first)
 
 	neg = 0;
 	i = 0;
-	
 	while (first->flags[i])
 	{
 		if (first->flags[i] == '#')
@@ -307,9 +305,9 @@ char	*ft_fill_flag(char a, char *flag)
 	i = 0;
 	while (flag[i] != 0)
 		i++;
-	if (a == ' ' && flag[i - 1] == '+')
+	if (a == ' ' && flag[i - 1] == '+' && i >= 1)
 		return (flag);
-	if (a == '-' && flag [i - 1] == '0')
+	if (a == '-' && flag[i - 1] == '0' && i >= 1)
 	{
 		flag[i - 1] = '-';
 		return (flag);
