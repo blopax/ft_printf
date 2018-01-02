@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 15:15:58 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 19:08:18 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:25:19 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,11 @@ char	*ft_val_filled(char *v_type)
 	return (str);
 }
 
-char	*ft_wchar_conv(t_lst *first)
+char	*ft_big_wchar_conv(t_lst *first, intmax_t val)
 {
 	char		*str;
-	intmax_t	val;
 
-	setlocale(LC_ALL, "en_US.UTF-8");
-	val = first->value_signed;
-	if (val < 128)
-	{
-		first->read_bytes = first->read_bytes + 1;
-		str = ft_strnew(1);
-		str[0] = val;
-	}
-	else if (val < 2048)
-	{
-		first->read_bytes = first->read_bytes + 2;
-		str = ft_strnew(2);
-		str[0] = val / 64 + 128 + 64;
-		str[1] = val % 64 + 128;
-	}
-	else if ((val >= 55296 && val <= 57343) || val >= 1114112)
+	if ((val >= 55296 && val <= 57343) || val >= 1114112)
 	{
 		first->ret = -1;
 		str = NULL;
@@ -84,6 +68,30 @@ char	*ft_wchar_conv(t_lst *first)
 	return (str);
 }
 
+char	*ft_wchar_conv(t_lst *first)
+{
+	char		*str;
+	intmax_t	val;
+
+	setlocale(LC_ALL, "en_US.UTF-8");
+	val = first->value_signed;
+	if (val < 128)
+	{
+		first->read_bytes = first->read_bytes + 1;
+		str = ft_strnew(1);
+		str[0] = val;
+	}
+	else if (val < 2048)
+	{
+		first->read_bytes = first->read_bytes + 2;
+		str = ft_strnew(2);
+		str[0] = val / 64 + 128 + 64;
+		str[1] = val % 64 + 128;
+	}
+	else
+		str = ft_big_wchar_conv(first, val);
+	return (str);
+}
 
 char	*ft_char_conv(t_lst *first)
 {
@@ -92,9 +100,8 @@ char	*ft_char_conv(t_lst *first)
 	if (first->mdf)
 	{
 		if (ft_strcmp(first->mdf, "l") == 0)
-			return(ft_wchar_conv(first));
+			return (ft_wchar_conv(first));
 	}
-	//creer une fonction void qui remplit str_final ac wchar_t et renvoyer null
 	str = ft_strnew(1);
 	str[0] = (unsigned char)(first->value_signed);
 	first->read_bytes = 1;
@@ -140,22 +147,15 @@ char	*ft_unsigned_conv_treatment(t_lst *first)
 	return (str);
 }
 
-
-char	*ft_wstr_conv(t_lst *first)
+char	*ft_wstr_conv_treatment(t_lst *first, int acc_nb)
 {
-	char	*str;
 	char	*added_str;
 	int		i;
+	char	*str;
 	int		pos;
-	int		acc_nb;
 
 	i = 0;
 	pos = 0;
-	acc_nb = 0;
-	if (first->acc)
-		acc_nb = ft_atoi(first->acc + 1);
-	if (!first->value_ptr)
-		return (ft_strdup("(null)"));
 	str = ft_strnew(0);
 	while (((wchar_t *)first->value_ptr)[i] != 0)
 	{
@@ -165,7 +165,7 @@ char	*ft_wstr_conv(t_lst *first)
 		{
 			first->read_bytes = first->read_bytes - ft_strlen(added_str);
 			added_str = ft_safe_free(added_str);
-			break;
+			break ;
 		}
 		str = ft_str_pos_ins(str, pos, added_str);
 		added_str = ft_safe_free(added_str);
@@ -175,8 +175,19 @@ char	*ft_wstr_conv(t_lst *first)
 	return (str);
 }
 
+char	*ft_wstr_conv(t_lst *first)
+{
+	char	*str;
+	int		acc_nb;
 
-//a voir si on fqit pqs un ft_wstrdup de wchar a char ? ds libft
+	acc_nb = 0;
+	if (first->acc)
+		acc_nb = ft_atoi(first->acc + 1);
+	if (!first->value_ptr)
+		return (ft_strdup("(null)"));
+	str = ft_wstr_conv_treatment(first, acc_nb);
+	return (str);
+}
 
 char	*ft_str_conv_treatment(t_lst *first)
 {
@@ -185,17 +196,17 @@ char	*ft_str_conv_treatment(t_lst *first)
 	if (first->mdf)
 	{
 		if (ft_strcmp(first->mdf, "l") == 0)
-			return(ft_wstr_conv(first));
+			return (ft_wstr_conv(first));
 	}
 	if (!(str = ft_strdup((char *)first->value_ptr)))
 		str = ft_strdup("(null)");
 	return (str);
 }
 
-
 void	ft_conv_treatment(t_lst *first)
 {
 	char	*str;
+
 	while (first)
 	{
 		if (first->v_type)

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:24:10 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 20:30:34 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:27:39 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		ft_conv(char *format, int st, int flag, t_info *inf_ptr)
 {
-	
 	if (flag == 0 && format[st] != '%')
 		return (0);
 	if (flag == 0 && format[st] == '%')

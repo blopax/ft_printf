@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:28 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 20:43:51 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:27:59 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_lst	*ft_format_split(char *format)
 		{
 			sp_sct.spec_flag = ft_else_spec_flag(sp_sct.spec_flag,
 					&(sp_sct.start), sp_sct.i);
-		
 		}
 		(sp_sct.i)++;
 	}

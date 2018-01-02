@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 17:13:14 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/12/29 20:29:15 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 18:59:45 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,19 @@ int		ft_size(char *format, int st, t_info *inf)
 	return (0);
 }
 
+void	ft_init_flag(t_flag *flag_ptr)
+{
+	flag_ptr->flag_str = "#0-+ ";
+	flag_ptr->k = 0;
+	flag_ptr->tmp = 0;
+	flag_ptr->switch_flag = 0;
+}
+
 int		ft_flag(char *format, int st, t_info *inf)
 {
 	t_flag		flag;
 
-	flag.flag_str = "#0-+ ";
-	flag.k = 0;
-	flag.tmp = 0;
-	flag.switch_flag = 0;
+	ft_init_flag(&flag);
 	while (format[st + flag.k] != 0 && flag.switch_flag == 0)
 	{
 		flag.j = 0;

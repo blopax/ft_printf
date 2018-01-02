@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 14:49:15 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/21 19:22:27 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:26:58 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_read_bytes(t_lst *first)
 		first->read_bytes = (int)ft_strlen(first->init_str);
 	else
 	{
-		if (size_nb > first->read_bytes) 
+		if (size_nb > first->read_bytes)
 			first->read_bytes = size_nb;
 	}
 }
@@ -49,7 +49,7 @@ int		ft_check_ret(t_lst *first)
 		if (first->ret == -1)
 			return (-1);
 		first = first->next;
-}
+	}
 	return (0);
 }
 

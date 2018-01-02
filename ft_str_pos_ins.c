@@ -6,13 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 17:39:31 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 17:32:23 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/02 19:50:31 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char*		ft_parameters_check(char *str, char *ins_str)
+char	*ft_parameters_check(char *str, char *ins_str)
 {
 	char	*result;
 
