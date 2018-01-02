@@ -16,7 +16,7 @@ int		main(int argc, char **argv)
 //	char	*str;
 
 	setlocale(LC_ALL, "");
-//	printf("%9.6ls %S", s, (wchar_t *)'a');
+/*	printf("%9.6ls %S", s, (wchar_t *)'a');
 	printf("\n");
 	format = "3";
 	i = ft_printf("42%p42", (void *)0x0);
@@ -24,12 +24,36 @@ int		main(int argc, char **argv)
 //	ft_printf("%p\n", &format);
 	ft_putnbr(i);
 	printf("\n");
-
-	i = ft_printf("42% d42", 42);
+*/
+	i = ft_printf("%#02.3zx", 0);
 	printf("\n");
 	ft_putnbr(i);
 	printf("\n");
-
+	i = printf("%#02.3zx", 0);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
+/*	i = ft_printf("test%#.4o et %02o %0#14.0o!!",012,036,12587499);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
+	i = printf("test%#.4o et %02o %0#14.0o!!",012,036,12587499);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
+	i = ft_printf("test%0#5.3o!!", 32);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
+	i = printf("test%0#5.3o!!", 32);
+	printf("\n");
+	ft_putnbr(i);
+	i = ft_printf("test%0#5.3o!!", 32);
+	printf("\n");
+	ft_putnbr(i);
+	printf("\n");
+	i = printf("test%0#5.3o!!", 32);
+	printf("\n");*/
 //	i = printf("%----4c\n", '\0');
 //	printf("hello ca%----4c %1c va %10c%-c ??\n", '\0', '\n', (char)564, 0);
 //ft_putnbr (i);

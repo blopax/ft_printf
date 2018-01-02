@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/27 18:20:27 by nvergnac          #+#    #+#             */
-/*   Updated: 2018/01/02 15:18:40 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/02 17:29:28 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,22 @@ void	ft_clean_flag_d(t_lst *first)
 	}
 }
 
+int		ft_put_0(t_lst *first)
+{
+	if (first->init_str)
+	{
+		if ((((ft_atoi(first->init_str) != 0 && !first->acc) || 
+						(first->acc && ft_atoi(first->acc + 1) == 0) ||
+						(first->acc && (ft_atoi(first->acc + 1) <= (int)ft_strlen(first->init_str) &&
+						 (first->init_str[0] != '0' || first->init_str[0] == 0))))))
+		{
+			ft_add_char(first, '0');
+			return (1);
+		}
+	}
+	return (0);
+}
+
 void	ft_clean_flag_o(t_lst *first)
 {
 	int i;
@@ -214,10 +230,7 @@ void	ft_clean_flag_o(t_lst *first)
 	{
 		if (first->flags[i] == '#')
 		{
-			if ((ft_atoi(first->init_str) != 0 && !(first->acc)) || 
-			(first->acc && (ft_atoi(first->acc + 1) == 0 ||
-			(ft_atoi(first->acc + 1) < (int)ft_strlen(first->init_str)))))
-				neg = neg + ft_add_char(first, '0');
+			neg = ft_put_0(first);
 		}
 		if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 		{
@@ -272,7 +285,7 @@ void	ft_clean_flag_x(t_lst *first)
 	{
 		while (first->flags[i])
 		{
-			if (first->flags[i] == '#' && (ft_strcmp(first->init_str , "0") != 0) && ft_strcmp(first->init_str, "") != 0)
+			if (first->flags[i] == '#' && !(first->value_unsigned == 0 && first->value_signed == 0))
 			{
 				if (first->type == 'X')
 					neg = neg + ft_add_char(first, 'X');
@@ -284,6 +297,7 @@ void	ft_clean_flag_x(t_lst *first)
 			{
 				first->init_str = ft_safe_free(first->init_str);
 				first->init_str = ft_strdup("0x0");
+				neg = 3;
 			}
 			if (first->flags[i] == '0' && !first->acc && (ft_atoi(first->size) > (int)ft_strlen(first->init_str)))
 			{
