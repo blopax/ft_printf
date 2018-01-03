@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/02 19:36:40 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/03 20:07:35 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		ft_printf(const char *format, ...)
 			index->value_ptr = va_arg_void(ap, index->v_type);
 		}
 		index = index->next;
+		if (index->ret < 0)
+			break ;
 	}
 	va_end(ap);
 	read_bytes = ft_first_treatment(first);
