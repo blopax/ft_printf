@@ -5,15 +5,29 @@
 
 int		main()
 {
-	setlocale(LC_ALL, "");
+//	setlocale(LC_ALL, "");
 	int		i;
+	wchar_t	s[7];
 
-//	printf("%-44C\n", (wchar_t)(321));
-//	i = printf("42%34S42",L"こんにちは、私はprintf単体テストです");
+	s[0] = 'a';
+	s[1] = 'b';
+	s[2] = 'c';
+	s[3] = 'd';
+	s[4] = 256;
+	s[5] = 'e';
+	s[6] = 0;
+
+//	i = printf("yo%2C%-12lc%C%C", 'u',254, 256, 'a');
+//	ft_putnbr(i);
+//	i = ft_printf("yo%2C et %-12lc et %C titi %C tyty", 'u', 256, 254, 'a');
+//	ft_putnbr(i);
+//	ft_putstr("\n");
+
+	ft_putstr("\n");
 //	ft_putnbr(i);
 	ft_putstr("\n");
-
-	i = printf("%");
+	i = printf("%s", "Beer in mind");
+	ft_putstr("\n");
 	ft_putnbr(i);
 
 	return (0);

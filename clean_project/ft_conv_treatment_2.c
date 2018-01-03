@@ -6,38 +6,11 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 14:17:05 by nvergnac          #+#    #+#             */
-/*   Updated: 2018/01/03 15:37:03 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/03 19:33:48 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_val_filled(char *v_type)
-{
-	char	*str;
-
-	str = 0;
-	if ((ft_strcmp(v_type, "int") == 0) || (ft_strcmp(v_type, "short int") == 0)
-			|| (ft_strcmp(v_type, "signed char") == 0)
-			|| (ft_strcmp(v_type, "long") == 0)
-			|| (ft_strcmp(v_type, "long long") == 0)
-			|| (ft_strcmp(v_type, "intmax_t") == 0)
-			|| (ft_strcmp(v_type, "ssize_t") == 0)
-			|| (ft_strcmp(v_type, "wint_t") == 0))
-		str = ft_strdup("value_signed");
-	if ((ft_strcmp(v_type, "size_t") == 0)
-			|| (ft_strcmp(v_type, "unsigned short int") == 0)
-			|| (ft_strcmp(v_type, "unsigned char") == 0)
-			|| (ft_strcmp(v_type, "unsigned long") == 0)
-			|| (ft_strcmp(v_type, "unsigned long long") == 0)
-			|| (ft_strcmp(v_type, "uintmax_t") == 0))
-		str = ft_strdup("value_unsigned");
-	if ((ft_strcmp(v_type, "char *") == 0)
-			|| (ft_strcmp(v_type, "wchar_t *") == 0)
-			|| (ft_strcmp(v_type, "void *") == 0))
-		str = ft_strdup("value_ptr");
-	return (str);
-}
 
 char	*ft_big_wchar_conv(t_lst *first, intmax_t val)
 {
@@ -68,11 +41,33 @@ char	*ft_big_wchar_conv(t_lst *first, intmax_t val)
 	return (str);
 }
 
+char	*ft_wchar_setlocale_check(t_lst *first)
+{
+	char		*str;
+	intmax_t	val;
+
+	val = first->value_signed;
+	if (val >= 256)
+	{
+		first->ret = -2;
+		str = ft_strdup("");
+	}
+	else
+	{
+		first->read_bytes = first->read_bytes + 1;
+		str = ft_strnew(1);
+		str[0] = (char)val;
+	}
+	return (str);
+}
+
 char	*ft_wchar_conv(t_lst *first)
 {
 	char		*str;
 	intmax_t	val;
 
+	if (MB_CUR_MAX == 1)
+		return (ft_wchar_setlocale_check(first));
 	val = first->value_signed;
 	if (val < 128)
 	{

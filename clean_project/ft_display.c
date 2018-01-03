@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 14:49:15 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/02 19:26:58 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/03 19:27:40 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,29 @@ int		ft_check_ret(t_lst *first)
 	return (0);
 }
 
+int		ft_check_ret2(t_lst *first, int *int_ptr)
+{
+	if (first->ret == -2)
+	{
+		first->ret = -1;
+		*int_ptr = -1;
+		return (1);
+	}
+	if (first->type == 0)
+	{
+		if (first->next)
+		{
+			if (first->next->ret == -2)
+			{
+				first->ret = -1;
+				*int_ptr = -1;
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
+
 int		ft_display(t_lst *first)
 {
 	int		total_read_bytes;
@@ -62,6 +85,8 @@ int		ft_display(t_lst *first)
 		total_read_bytes = -1;
 	while (first && total_read_bytes >= 0)
 	{
+		if (ft_check_ret2(first, &total_read_bytes) == 1)
+			break ;
 		ft_read_bytes(first);
 		total_read_bytes = total_read_bytes + first->read_bytes;
 		write(1, first->init_str, first->read_bytes);

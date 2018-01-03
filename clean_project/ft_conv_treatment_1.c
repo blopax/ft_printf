@@ -6,7 +6,7 @@
 /*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 14:22:00 by nvergnac          #+#    #+#             */
-/*   Updated: 2018/01/03 14:22:05 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/03 19:27:06 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,9 @@ char	*ft_wstr_conv_treatment(t_lst *first, int acc_nb)
 	{
 		first->value_signed = ((wchar_t *)first->value_ptr)[i];
 		added_str = ft_wchar_conv(first);
-		if (acc_nb > 0 && first->read_bytes > acc_nb)
+		if ((acc_nb > 0 && first->read_bytes >= acc_nb))
 		{
-			first->read_bytes = first->read_bytes - ft_strlen(added_str);
-			added_str = ft_safe_free(added_str);
+			str = ft_fct(first, added_str, str, pos);
 			break ;
 		}
 		str = ft_str_pos_ins(str, pos, added_str);

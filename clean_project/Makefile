@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 16:13:50 by pclement          #+#    #+#              #
-#    Updated: 2018/01/03 16:05:19 by nvergnac         ###   ########.fr        #
+#    Updated: 2018/01/03 17:12:26 by pclement         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC = libft/ft_strcat.c libft/ft_strchr.c libft/ft_strcpy.c libft/ft_strncpy.c l
 	  ft_conv_if_utilities.c ft_format_split_utilities.c\
 	  ft_safe_free.c\
 	  ft_format_split.c ft_lst_utilities.c\
-	  ft_printf.c ft_varg_1.c ft_varg_2.c ft_printf_itoa_base.c ft_conv_treatment_1.c ft_conv_treatment_2.c\
+	  ft_printf.c ft_varg_1.c ft_varg_2.c ft_printf_itoa_base.c\
+	  ft_conv_treatment_1.c ft_conv_treatment_2.c ft_conv_treatment_3.c\
 	  ft_get_clean_flag_0.c ft_get_clean_flag_1.c ft_get_clean_flag_2.c ft_get_clean_flag_3.c ft_display.c\
 
 OBJ = $(SRC:.c=.o)

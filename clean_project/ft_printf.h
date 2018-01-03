@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/03 15:30:15 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/03 19:27:00 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ void				ft_conv_treatment(t_lst *first);
 char				*ft_wchar_conv(t_lst *first);
 char				*ft_val_filled(char *v_type);
 char				*ft_signed_conv_treatment(t_lst *first);
+char				*ft_val_filled(char *v_type);
+char				*ft_fct(t_lst *first, char *added_str, char *str, int pos);
 /*
 **Fonctions utiles pour traitement options
 */
