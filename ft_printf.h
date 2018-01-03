@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 13:09:23 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/02 20:13:01 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/03 14:22:49 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int					ft_size(char *format, int st, t_info *inf);
 char				*ft_append_size_char(char format, int k, char *tmp);
 int					ft_flag(char *format, int st, t_info *inf);
 char				*ft_apd_flg_chr(char format, t_flag flag);
-void				ft_flag_init(t_flag flag);
+void				ft_init_flag(t_flag *flag_ptr);
 /*
 **Fonctions utiles pour afficher les listes
 */
@@ -128,6 +128,9 @@ char				*ft_itoa_base(intmax_t n, int base);
 char				*ft_itoa_base_intmax(intmax_t value, char *base);
 char				*ft_itoa_base_uintmax(uintmax_t value, char *base);
 void				ft_conv_treatment(t_lst *first);
+char				*ft_wchar_conv(t_lst *first);
+char				*ft_val_filled(char *v_type);
+char				*ft_signed_conv_treatment(t_lst *first);
 /*
 **Fonctions utiles pour traitement options
 */

@@ -6,7 +6,7 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/20 16:13:50 by pclement          #+#    #+#              #
-#    Updated: 2018/01/02 19:52:46 by nvergnac         ###   ########.fr        #
+#    Updated: 2018/01/03 14:22:37 by nvergnac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,9 @@ SRC = ft_strcat.c ft_strchr.c ft_strcpy.c ft_strncpy.c ft_strdup.c ft_strlen.c\
 	  ft_count_if.c ft_wstrlen.c ft_wstrnew.c\
 	  ../ft_accuracy_treatment.c ../ft_str_pos_ins.c ../ft_conv_if.c\
 	  ../ft_conv_if_utilities.c ../ft_format_split_utilities.c\
-	  ../ft_debug_show.c\
+	  ../ft_debug_show.c ../ft_safe_free.c\
 	  ../ft_format_split.c ../ft_lst_utilities.c\
-	  ../ft_printf.c ../ft_varg.c ../ft_printf_itoa_base.c ../ft_conv_treatment.c\
+	  ../ft_printf.c ../ft_varg_1.c ../ft_varg_2.c ../ft_printf_itoa_base.c ../ft_conv_treatment_1.c ../ft_conv_treatment_2.c\
 	  ../ft_get_clean_flag_0.c ../ft_get_clean_flag_1.c ../ft_get_clean_flag_2.c ../ft_get_clean_flag_3.c ../ft_display.c\
 
 OBJ = $(SRC:.c=.o)

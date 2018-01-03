@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_varg.c                                          :+:      :+:    :+:   */
+/*   ft_varg_1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nvergnac <nvergnac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/20 17:39:41 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/02 19:55:21 by pclement         ###   ########.fr       */
+/*   Created: 2018/01/03 13:58:18 by nvergnac          #+#    #+#             */
+/*   Updated: 2018/01/03 13:58:21 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,54 +52,6 @@ char		*ft_v_type(char type, char *mdf)
 		j++;
 	}
 	return (0);
-}
-
-void		ft_change_type(t_lst *first)
-{
-	if (first->type == 'i')
-		first->type = 'd';
-	if (first->type == 'p')
-	{
-		first->type = 'x';
-		first->mdf = ft_safe_free(first->mdf);
-		first->ret = 1;
-		first->mdf = ft_strdup("l");
-		if (first->flags)
-			first->flags = ft_str_pos_ins(first->flags, 0, "#");
-		else
-		{
-			first->flags = ft_strnew(1);
-			first->flags[0] = '#';
-		}
-	}
-}
-
-void		ft_v_type_clean(t_lst *first)
-{
-	char	*str;
-	int		i;
-
-	i = 0;
-	str = "DOUCS";
-	while (first)
-	{
-		i = 0;
-		ft_change_type(first);
-		while (str[i])
-		{
-			if (first->type == str[i])
-			{
-				first->type = str[i] + 'a' - 'A';
-				first->mdf = ft_safe_free(first->mdf);
-				first->mdf = ft_strnew(1);
-				first->mdf[0] = 'l';
-			}
-			i++;
-		}
-		if (first->type)
-			first->v_type = ft_v_type(first->type, first->mdf);
-		first = first->next;
-	}
 }
 
 intmax_t	va_arg_intmax(va_list ap, char *v_type)

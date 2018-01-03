@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:43:08 by pclement          #+#    #+#             */
-/*   Updated: 2017/12/29 20:12:39 by nvergnac         ###   ########.fr       */
+/*   Updated: 2018/01/03 14:06:56 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,12 @@ char	*ft_apd_flg_chr(char format, t_flag flag)
 	buf = ft_safe_free(buf);
 	flag.tmp[flag.k] = format;
 	return (flag.tmp);
+}
+
+void	ft_init_flag(t_flag *flag_ptr)
+{
+	flag_ptr->flag_str = "#0-+ ";
+	flag_ptr->k = 0;
+	flag_ptr->tmp = 0;
+	flag_ptr->switch_flag = 0;
 }

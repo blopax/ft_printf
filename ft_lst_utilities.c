@@ -6,21 +6,11 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:07:04 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/02 15:45:25 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/03 14:01:50 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_safe_free(char *str)
-{
-	if (str)
-	{
-		free(str);
-		str = NULL;
-	}
-	return (str);
-}
 
 t_info	ft_info_init(void)
 {
