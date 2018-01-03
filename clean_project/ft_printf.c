@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 18:32:15 by pclement          #+#    #+#             */
-/*   Updated: 2018/01/03 20:29:30 by pclement         ###   ########.fr       */
+/*   Updated: 2018/01/03 20:33:36 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		ft_printf(const char *format, ...)
 		index = index->next;
 	}
 	va_end(ap);
-
 	read_bytes = ft_first_treatment(first);
 	return (read_bytes);
 }
